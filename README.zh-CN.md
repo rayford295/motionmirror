@@ -1,9 +1,11 @@
 # SwingForm AI
 
+<!-- PROMO (enabled once the narrated video is rendered)
 <p align="center">
   <a href="docs/assets/promo/swingform-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="观看 SwingForm AI 宣传片" width="900"></a>
   <br><sub><b>▶ <a href="docs/assets/promo/swingform-promo.mp4">观看英文配音宣传片</a></b></sub>
 </p>
+-->
 
 SwingForm AI 把一段普通手机拍摄的高尔夫挥杆、篮球跳投或羽毛球击球视频，转换成分阶段的姿态指标、
 通俗易懂的反馈和可回看的可视化结果。每一个数字都能追溯到具体的帧、关节和参考区间。

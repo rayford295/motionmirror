@@ -12,10 +12,12 @@
   <a href="https://rayford295.github.io/swingform-ai/"><img alt="Website" src="https://img.shields.io/badge/website-live-1d6fa5"></a>
 </p>
 
+<!-- PROMO (enabled once the narrated video is rendered)
 <p align="center">
   <a href="docs/assets/promo/swingform-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="Watch the SwingForm AI promo (narrated)" width="900"></a>
   <br><sub><b>▶ <a href="docs/assets/promo/swingform-promo.mp4">Watch the narrated promo</a></b> · or on the <a href="https://rayford295.github.io/swingform-ai/">website</a></sub>
 </p>
+-->
 
 SwingForm AI turns an ordinary phone video of a golf swing, a basketball jump shot or a badminton stroke into
 phase-by-phase posture metrics, plain-language feedback, and review visuals. Every number
