@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "swingform-ai"
+name = "motionmirror"
 version = "0.2.0"
 description = "Explainable golf, basketball and badminton technique analysis from ordinary video."
 readme = "README.md"
@@ -26,7 +26,8 @@ dev = [
 ]
 
 [project.scripts]
-swingform = "swingform_ai.cli:main"
+motionmirror = "motionmirror.cli:main"
+swingform = "motionmirror.cli:main"  # legacy alias
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -40,7 +41,7 @@ select = ["E", "F", "I", "B", "UP"]
 ignore = ["B905"]
 
 [tool.ruff.lint.per-file-ignores]
-"src/swingform_ai/reel.py" = ["E501", "B", "UP"]
+"src/motionmirror/reel.py" = ["E501", "B", "UP"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

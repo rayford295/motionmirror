@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SwingForm AI — Open-Source Sports Posture Intelligence</title>
+<title>MotionMirror · See your form, phase by phase</title>
+<meta name="description" content="Open-source golf, basketball and badminton technique analysis from a single phone video: phases, explainable metrics and plain-language feedback.">
+<meta property="og:title" content="MotionMirror">
+<meta property="og:description" content="See your form, phase by phase. Golf, basketball and badminton analysis from one phone video.">
+<meta property="og:image" content="https://rayford295.github.io/motionmirror/assets/readme/banner.png">
+<link rel="icon" href="assets/brand/motionmirror-icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -208,7 +213,7 @@ section{padding:var(--section-gap) 80px}
 
 /* EXAMPLES */
 #examples{background:var(--paper)}
-.examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.examples-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .ex-card{background:#fff;border:1px solid var(--border);border-radius:12px;
   overflow:hidden;transition:box-shadow .22s,transform .22s;display:flex;flex-direction:column}
 .ex-card:hover{box-shadow:0 10px 40px rgba(0,0,0,.09);transform:translateY(-3px)}
@@ -271,7 +276,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
 <body>
 
 <nav>
-  <a href="#" class="nav-brand">SWING<span>FORM</span> AI</a>
+  <a href="#" class="nav-brand">MOTION<span>MIRROR</span></a>
   <ul class="nav-links">
     <li><a href="#demo">Demo</a></li>
     <li><a href="#tracking">Tracking</a></li>
@@ -281,7 +286,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
     <li><a href="#quickstart">Quickstart</a></li>
     <li><a href="viewer/pose3d.html">3D Viewer</a></li>
   </ul>
-  <a href="https://github.com/rayford295/swingform-ai" class="nav-gh" target="_blank">
+  <a href="https://github.com/rayford295/motionmirror" class="nav-gh" target="_blank">
     <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
     GitHub
   </a>
@@ -292,7 +297,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
   <div class="hero-left">
     <div class="hero-kicker reveal">Open Source · Sports AI · Biomechanics</div>
     <h1 class="hero-title reveal reveal-delay-1">
-      SWING<br><span class="accent">FORM</span><br>AI
+      MOTION<br><span class="accent">MIRROR</span>
     </h1>
     <p class="hero-desc reveal reveal-delay-2">
       Turn a phone video of a golf swing, a jump shot or a badminton stroke into
@@ -305,7 +310,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       <span class="sport-pill bmt">🏸 Badminton</span>
     </div>
     <div class="hero-btns reveal reveal-delay-3">
-      <a href="https://github.com/rayford295/swingform-ai" class="btn-primary" target="_blank">
+      <a href="https://github.com/rayford295/motionmirror" class="btn-primary" target="_blank">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
         View on GitHub
       </a>
@@ -322,8 +327,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
 <!-- PROMO (enabled once the narrated video is rendered)
 <section id="promo">
   <div class="section-label reveal">Watch</div>
-  <h2 class="section-title reveal reveal-delay-1">SwingForm AI, Narrated</h2>
-  <video src="assets/promo/swingform-promo.mp4" poster="assets/promo/poster.jpg" controls playsinline preload="metadata" style="width:100%;max-width:1100px;border-radius:14px;display:block;margin:0 auto"></video>
+  <h2 class="section-title reveal reveal-delay-1">MotionMirror, Narrated</h2>
+  <video src="assets/promo/motionmirror-promo.mp4" poster="assets/promo/poster.jpg" controls playsinline preload="metadata" style="width:100%;max-width:1100px;border-radius:14px;display:block;margin:0 auto"></video>
 </section>
 -->
 
@@ -344,7 +349,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       <img src="assets/rayford-basketball/demo.gif" alt="Basketball jump shot skeleton overlay" loading="lazy">
       <div class="demo-sport-footer">
         Shooter fills 9% of the frame, so a second zoomed pose pass tracks him · 176° elbow at release · 0.37 s dip to release ·
-        <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/rayford-basketball/report.md" target="_blank">report ↗</a>
+        <a href="https://github.com/rayford295/motionmirror/blob/main/examples/rayford-basketball/report.md" target="_blank">report ↗</a>
       </div>
     </div>
     <div class="demo-sport-card reveal reveal-delay-2">
@@ -355,7 +360,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       <img src="assets/chen-jingyi-badminton/demo.gif" alt="Badminton overhead skeleton overlay" loading="lazy">
       <div class="demo-sport-footer">
         Strokes found from racket-hand speed; overhead contact at the top of the reach; stroke-specific cues ·
-        <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/chen-jingyi-badminton/report.md" target="_blank">report ↗</a>
+        <a href="https://github.com/rayford295/motionmirror/blob/main/examples/chen-jingyi-badminton/report.md" target="_blank">report ↗</a>
       </div>
     </div>
     <div class="demo-sport-card reveal reveal-delay-1">
@@ -366,7 +371,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       <img src="assets/yifan-golf-0601/demo.gif" alt="Golf swing skeleton overlay animation" loading="lazy">
       <div class="demo-sport-footer">
         Address → top → impact → finish from the hand path · 0.23–0.27 s downswings ·
-        <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0601/report.md" target="_blank">report ↗</a>
+        <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-golf-0601/report.md" target="_blank">report ↗</a>
       </div>
     </div>
     <div class="demo-sport-card reveal reveal-delay-2">
@@ -377,7 +382,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       <img src="assets/yifan-basketball-0710/demo.gif" alt="Basketball 1v1 skeleton overlay animation" loading="lazy">
       <div class="demo-sport-footer">
         Primary-athlete tracking · a defender's one-arm contest is not counted as a shot ·
-        <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0710/report.md" target="_blank">report ↗</a>
+        <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-basketball-0710/report.md" target="_blank">report ↗</a>
       </div>
     </div>
   </div>
@@ -416,7 +421,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       <div class="track-num">01 · TRACK</div>
       <div class="track-name">Primary-athlete lock</div>
       <div class="track-desc">
-        Up to three poses detected per frame; <code>swingform_ai.tracking</code> follows the one
+        Up to three poses detected per frame; <code>motionmirror.tracking</code> follows the one
         that continues the main track by hip continuity and body size. Small athletes get a
         second, zoomed pose pass. Phantom edge detections can never move the anchor.
       </div>
@@ -446,7 +451,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       On the 1v1 gameplay session, the release detector alone flagged <strong>3 shots, one of them a defender's contest</strong>
       after the track briefly switched players. The hands-together gate keeps <strong>exactly the 2 shots the tracked player takes</strong>.
       Identity can still switch in close contact; appearance-based re-identification is on the roadmap.
-      <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0710/report.md" target="_blank">Read the session report ↗</a>
+      <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-basketball-0710/report.md" target="_blank">Read the session report ↗</a>
     </div>
   </div>
 </section>
@@ -499,8 +504,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
         <div class="ex-card-title">Rayford · Oceanside jump shot</div>
         <div class="ex-card-meta">6.8s · auto-zoom pose pass · 1 shot · 5/5 checks in range</div>
         <div class="ex-files">
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/rayford-basketball/overlay.mp4" class="ex-file-link" target="_blank">overlay.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/rayford-basketball/report.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/rayford-basketball/overlay.mp4" class="ex-file-link" target="_blank">overlay.mp4</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/rayford-basketball/report.md" class="ex-file-link" target="_blank">report.md</a>
         </div>
       </div>
     </div>
@@ -511,8 +516,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
         <div class="ex-card-title">Chen Jingyi (陈静仪) · Drives and overheads</div>
         <div class="ex-card-meta">12.1s · 4 strokes · stroke type auto-classified</div>
         <div class="ex-files">
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/chen-jingyi-badminton/overlay.mp4" class="ex-file-link" target="_blank">overlay.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/chen-jingyi-badminton/report.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/chen-jingyi-badminton/overlay.mp4" class="ex-file-link" target="_blank">overlay.mp4</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/chen-jingyi-badminton/report.md" class="ex-file-link" target="_blank">report.md</a>
         </div>
       </div>
     </div>
@@ -523,9 +528,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
         <div class="ex-card-title">Yifan Golf 06.01</div>
         <div class="ex-card-meta">27s · 801 pose frames · 2 swings · TopGolf outdoor</div>
         <div class="ex-files">
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0601/golf.mp4" class="ex-file-link" target="_blank">golf.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0601/report.md" class="ex-file-link" target="_blank">report.md</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0601/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-golf-0601/golf.mp4" class="ex-file-link" target="_blank">golf.mp4</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-golf-0601/report.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-golf-0601/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
         </div>
       </div>
     </div>
@@ -536,9 +541,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
         <div class="ex-card-title">Yifan Basketball 07.10</div>
         <div class="ex-card-meta">56s · 1592 pose frames · 2 shots · 1v1 gameplay</div>
         <div class="ex-files">
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0710/basketball.mp4" class="ex-file-link" target="_blank">basketball.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0710/report.md" class="ex-file-link" target="_blank">report.md</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0710/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-basketball-0710/basketball.mp4" class="ex-file-link" target="_blank">basketball.mp4</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-basketball-0710/report.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-basketball-0710/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
         </div>
       </div>
     </div>
@@ -549,9 +554,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
         <div class="ex-card-title">Yifan Golf 05.20</div>
         <div class="ex-card-meta">7.2s · 216 frames · 2 swings · night range</div>
         <div class="ex-files">
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0520/golf.mp4" class="ex-file-link" target="_blank">golf.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0520/report.md" class="ex-file-link" target="_blank">report.md</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0520/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-golf-0520/golf.mp4" class="ex-file-link" target="_blank">golf.mp4</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-golf-0520/report.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/yifan-golf-0520/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
         </div>
       </div>
     </div>
@@ -562,9 +567,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
         <div class="ex-card-title">Golf Swing Demo</div>
         <div class="ex-card-meta">14.4s · 361 frames · 2 swings · original open example</div>
         <div class="ex-files">
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/golf-swing-demo/golf.mp4" class="ex-file-link" target="_blank">golf.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/golf-swing-demo/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/golf-swing-demo/report.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/golf-swing-demo/golf.mp4" class="ex-file-link" target="_blank">golf.mp4</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/golf-swing-demo/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
+          <a href="https://github.com/rayford295/motionmirror/blob/main/examples/golf-swing-demo/report.md" class="ex-file-link" target="_blank">report.md</a>
         </div>
       </div>
     </div>
@@ -588,7 +593,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       </div>
       <div class="code-block">
         <span class="c"># any two analyzed sessions, one command</span><br>
-        <span class="cmd">swingform compare \</span><br>
+        <span class="cmd">motionmirror compare \</span><br>
         &nbsp;&nbsp;<span class="flag">examples/yifan-golf-0520</span> <span class="flag">examples/yifan-golf-0601</span>
       </div>
     </div>
@@ -597,7 +602,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
            alt="Per-swing metric comparison between two golf sessions" loading="lazy">
       <div class="compare-fig-cap">
         <span>7 metrics · per-swing dots · session means</span>
-        <a href="https://github.com/rayford295/swingform-ai/blob/main/docs/examples/compare-yifan-golf-0520-vs-yifan-golf-0601.md" target="_blank">Full comparison report ↗</a>
+        <a href="https://github.com/rayford295/motionmirror/blob/main/docs/examples/compare-yifan-golf-0520-vs-yifan-golf-0601.md" target="_blank">Full comparison report ↗</a>
       </div>
     </div>
   </div>
@@ -610,7 +615,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       <div class="section-label">Get Started</div>
       <h3>Run on your own video in minutes.</h3>
       <p>Install the package, point it at your video, and get a report with feedback, a skeleton overlay, key poses and a metrics CSV.</p>
-      <a href="https://github.com/rayford295/swingform-ai" target="_blank">View full docs on GitHub →</a>
+      <a href="https://github.com/rayford295/motionmirror" target="_blank">View full docs on GitHub →</a>
     </div>
     <div class="reveal reveal-delay-2">
       <div class="code-block">
@@ -619,13 +624,13 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
       </div>
       <div class="code-block">
         <span class="c"># analyze: report, overlay, key poses, timeline</span><br>
-        <span class="cmd">swingform analyze <span class="flag">swing.mp4</span> --sport golf</span><br>
-        <span class="cmd">swingform analyze <span class="flag">shot.mov</span> --sport basketball --side auto</span><br>
-        <span class="cmd">swingform analyze <span class="flag">rally.mp4</span> --sport badminton --side auto</span>
+        <span class="cmd">motionmirror analyze <span class="flag">swing.mp4</span> --sport golf</span><br>
+        <span class="cmd">motionmirror analyze <span class="flag">shot.mov</span> --sport basketball --side auto</span><br>
+        <span class="cmd">motionmirror analyze <span class="flag">rally.mp4</span> --sport badminton --side auto</span>
       </div>
       <div class="code-block">
         <span class="c"># compare two sessions of the same sport</span><br>
-        <span class="cmd">swingform compare <span class="flag">examples/a</span> <span class="flag">examples/b</span></span>
+        <span class="cmd">motionmirror compare <span class="flag">examples/a</span> <span class="flag">examples/b</span></span>
       </div>
     </div>
   </div>
@@ -633,15 +638,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.38);padding:48px 80px;
 
 <footer>
   <div>
-    <div class="footer-brand">SWINGFORM AI</div>
-    <div style="font-size:12px;margin-top:6px">Open-source · MIT · Built by Yifan Yang</div>
+    <div class="footer-brand">MOTION<span style="color:var(--cyan)">MIRROR</span></div>
+    <div style="font-size:12px;margin-top:6px">Open-source · MIT · Built by Yifan Yang · formerly SwingForm AI</div>
   </div>
   <div class="footer-links">
-    <a href="https://github.com/rayford295/swingform-ai" target="_blank">GitHub</a>
+    <a href="https://github.com/rayford295/motionmirror" target="_blank">GitHub</a>
     <a href="viewer/pose3d.html">3D Viewer</a>
-    <a href="https://github.com/rayford295/swingform-ai/blob/main/docs/technical_tracks.md" target="_blank">Roadmap</a>
-    <a href="https://github.com/rayford295/swingform-ai/blob/main/CONTRIBUTING.md" target="_blank">Contributing</a>
-    <a href="https://github.com/rayford295/swingform-ai/blob/main/LICENSE" target="_blank">MIT License</a>
+    <a href="https://github.com/rayford295/motionmirror/blob/main/docs/technical_tracks.md" target="_blank">Roadmap</a>
+    <a href="https://github.com/rayford295/motionmirror/blob/main/CONTRIBUTING.md" target="_blank">Contributing</a>
+    <a href="https://github.com/rayford295/motionmirror/blob/main/LICENSE" target="_blank">MIT License</a>
   </div>
 </footer>
 

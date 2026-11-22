@@ -33,7 +33,7 @@ Unlike solo-practice clips, this footage has two athletes, occlusion, and stretc
 ## Main Read
 
 - This session drove two robustness upgrades that now apply to every basketball video:
-  a **primary-athlete tracker** (`swingform_ai.tracking`) that detects up to two poses per frame and follows the one continuing the main track, and a **plausibility gate** in event detection that rejects release candidates from collapsed or phantom poses.
+  a **primary-athlete tracker** (`motionmirror.tracking`) that detects up to two poses per frame and follows the one continuing the main track, and a **plausibility gate** in event detection that rejects release candidates from collapsed or phantom poses.
 - The impact was concrete: single-pose tracking produced 4 claimed releases of which only 1 was real; with the tracker plus gate, the pipeline reports exactly the 2 real shots — including one at 18.00s that single-pose tracking had missed entirely because it was following the defender.
 - Summary metrics are now computed only from plausible frames inside detected shot windows, so whole-clip transition noise no longer contaminates them.
 - The release label is pose-based: it comes from visible wrist height, wrist speed, and arm extension, not from ball contact.

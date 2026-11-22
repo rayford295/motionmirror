@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MotionMirror icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16213a"/><stop offset="1" stop-color="#0b111d"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2ec4b6" stop-opacity=".75"/><stop offset="1" stop-color="#2ec4b6" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <!-- athlete: head, torso, raised arm, legs -->
+  <g stroke="#ff7a45" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M32 15v13M32 19l-8 6M32 19l9-7M32 28l-6 5M32 28l6 5"/>
+  </g>
+  <circle cx="32" cy="10.5" r="3.6" fill="#ff7a45"/>
+  <!-- mirror line -->
+  <path d="M14 35.5h36" stroke="#f5f7fa" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+  <!-- reflection -->
+  <g stroke="url(#fade)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M32 56V43M32 52l-8-6M32 52l9 7M32 43l-6-5M32 43l6-5"/>
+  </g>
+</svg>

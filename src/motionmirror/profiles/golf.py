@@ -19,9 +19,9 @@ from __future__ import annotations
 from statistics import mean
 from typing import Any
 
-from swingform_ai.feedback import Check
-from swingform_ai.geometry import angle_difference_degrees
-from swingform_ai.profiles.base import (
+from motionmirror.feedback import Check
+from motionmirror.geometry import angle_difference_degrees
+from motionmirror.profiles.base import (
     Rep,
     Row,
     body_frame,
@@ -33,9 +33,9 @@ from swingform_ai.profiles.base import (
     safe_dist,
     value_at,
 )
-from swingform_ai.profiles.base import build_rows as _build_rows
-from swingform_ai.schema import FramePose, PoseSequence
-from swingform_ai.signal import argmax, argmin, local_extrema, percentile
+from motionmirror.profiles.base import build_rows as _build_rows
+from motionmirror.schema import FramePose, PoseSequence
+from motionmirror.signal import argmax, argmin, local_extrema, percentile
 
 NAME = "golf"
 PHASES = ["address", "top", "impact", "finish"]

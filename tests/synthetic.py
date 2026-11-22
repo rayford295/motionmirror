@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import math
 
-from swingform_ai.schema import FramePose, Landmark, PoseSequence
+from motionmirror.schema import FramePose, Landmark, PoseSequence
 
 FPS = 30.0
 BASE = {  # standing athlete, normalized coords in a square frame

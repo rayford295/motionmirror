@@ -33,7 +33,7 @@ def render_markdown(report: dict[str, Any], assets: dict[str, str] | None = None
     q = report["quality"]
     coverage = "n/a" if q.get("coverage") is None else f"{q['coverage']:.0%}"
     lines = [
-        f"# SwingForm report: {report['sport']} ({report.get('source') or 'clip'})",
+        f"# MotionMirror report: {report['sport']} ({report.get('source') or 'clip'})",
         "",
         f"*{report['tool']}* | side: **{report['side']}** | reps detected: "
         f"**{report['rep_count']}**",

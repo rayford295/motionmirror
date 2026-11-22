@@ -1,22 +1,27 @@
 <p align="center">
-  <img src="docs/assets/brand/swingform-icon.svg" alt="SwingForm AI icon" width="72">
+  <img src="docs/assets/readme/banner.png" alt="MotionMirror: see your form, phase by phase" width="100%">
 </p>
 
-<h1 align="center">SwingForm AI</h1>
+<p align="center">
+  <a href="https://github.com/rayford295/motionmirror/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/motionmirror/actions/workflows/test.yml/badge.svg"></a>
+  <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
+  <img alt="Sports" src="https://img.shields.io/badge/sports-golf%20%C2%B7%20basketball%20%C2%B7%20badminton-ff7a45">
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2ec4b6"></a>
+  <a href="https://rayford295.github.io/motionmirror/"><img alt="Website" src="https://img.shields.io/badge/website-live-1d6fa5"></a>
+  <a href="https://rayford295.github.io/motionmirror/viewer/pose3d.html"><img alt="3D Viewer" src="https://img.shields.io/badge/3D%20viewer-open-7c3aed"></a>
+</p>
 
 <p align="center">
-  <a href="https://github.com/rayford295/swingform-ai/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/swingform-ai/actions/workflows/test.yml/badge.svg"></a>
-  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2f6f4e"></a>
-  <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
-  <img alt="Sports" src="https://img.shields.io/badge/sports-golf%20%C2%B7%20basketball%20%C2%B7%20badminton-c46a2c">
-  <a href="https://rayford295.github.io/swingform-ai/"><img alt="Website" src="https://img.shields.io/badge/website-live-1d6fa5"></a>
-  <a href="https://rayford295.github.io/swingform-ai/viewer/pose3d.html"><img alt="3D Viewer" src="https://img.shields.io/badge/3D%20viewer-open-7c3aed"></a>
+  <b>English</b> · <a href="README.zh-CN.md">中文</a> ·
+  <a href="https://rayford295.github.io/motionmirror/">Website</a> ·
+  <a href="docs/metrics.md">Metrics</a> ·
+  <a href="CHANGELOG.md">Changelog</a>
 </p>
 
 <!-- PROMO (enabled once the narrated video is rendered)
 <p align="center">
-  <a href="docs/assets/promo/swingform-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="Watch the SwingForm AI promo (narrated)" width="900"></a>
-  <br><sub><b>▶ <a href="docs/assets/promo/swingform-promo.mp4">Watch the narrated promo</a></b> · or on the <a href="https://rayford295.github.io/swingform-ai/">website</a></sub>
+  <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="Watch the MotionMirror promo (narrated)" width="900"></a>
+  <br><sub><b>▶ <a href="docs/assets/promo/motionmirror-promo.mp4">Watch the narrated promo</a></b></sub>
 </p>
 -->
 
@@ -24,65 +29,78 @@
 <tr>
 <td width="33%" align="center"><img src="docs/assets/rayford-basketball/demo.gif" alt="Basketball jump shot overlay" width="100%"><br><sub>🏀 <b>Jump shot</b> · 120 fps · auto-zoom</sub></td>
 <td width="33%" align="center"><img src="docs/assets/chen-jingyi-badminton/demo.gif" alt="Badminton overhead overlay" width="100%"><br><sub>🏸 <b>Badminton overhead</b> · contact detection</sub></td>
-<td width="33%" align="center"><img src="docs/assets/yifan-golf-0601/demo.gif" alt="Golf swing overlay" width="100%"><br><sub>⛳ <b>Golf · TopGolf</b> · swing phases</sub></td>
+<td width="33%" align="center"><img src="docs/assets/yifan-golf-0601/demo.gif" alt="Golf swing overlay" width="100%"><br><sub>⛳ <b>Golf swing</b> · TopGolf · phases</sub></td>
 </tr>
 </table>
 
-SwingForm AI turns an ordinary phone video of a golf swing, a basketball jump shot or a badminton stroke into
-phase-by-phase posture metrics, plain-language feedback, and review visuals. Every number
-can be traced back to a frame, a joint, and a reference range.
+**MotionMirror** turns an ordinary phone video of a golf swing, a basketball jump shot or a
+badminton stroke into phase-by-phase posture metrics, plain-language feedback and review
+visuals. Every number traces back to a frame, a joint and a reference range.
 
+```text
+video ─► pose (33 landmarks) ─► reps + phases ─► metrics at each phase ─► feedback + report
 ```
-video ─► pose (MediaPipe, 33 landmarks) ─► reps + phases ─► metrics at each phase ─► feedback + report
-```
 
-## Flagship Demos
+## Highlights
 
-### Basketball: Rayford, oceanside jump shot
+<table>
+<tr>
+<td width="33%" valign="top">
 
-The shooter fills only **9% of a 1080×1920, 120 fps frame**. SwingForm locates him, zooms in
-for a second pose pass, and splits the shot into six phases.
+**🎯 Phase-aware**<br>
+Metrics are read at the moment that matters (top of the backswing, release, contact), not
+averaged over the whole clip.
 
-![Rayford key poses](docs/assets/rayford-basketball/keyposes.jpg)
+</td>
+<td width="33%" valign="top">
 
-| Check | Value | Reference | Status |
-| --- | --- | --- | --- |
-| Elbow extension at release | 176° | ≥ 145° | in range |
-| Knee bend in the dip | 152° | 95° to 160° | in range |
-| Release height above head | +0.52 torso | ≥ 0.2 | in range |
-| Dip-to-release time | 0.37 s | 0.2 to 0.8 s | in range |
-| Sideways drift on landing | 0.23 torso | ≤ 0.5 | in range |
+**💬 Explainable feedback**<br>
+Each check shows the value, the reference range and a plain-language cue, so you can see why
+a cue was raised.
 
-[Report](examples/rayford-basketball/report.md) · [overlay video](examples/rayford-basketball/overlay.mp4) · [timeline](examples/rayford-basketball/timeline.png)
+</td>
+<td width="33%" valign="top">
 
-### Badminton: Chen Jingyi (陈静仪), mixed strokes
+**🔍 Small or crowded scenes**<br>
+An auto-zoom pass handles tiny athletes; a primary-athlete tracker and shot gate handle
+1v1 gameplay.
 
-A new badminton profile finds **4 strokes in 12 s** from racket-hand speed, classifies them
-as **drive** or **overhead**, and applies stroke-specific checks. On overheads, contact is
-placed at the highest point of the reach, because the arm keeps accelerating after the hit.
+</td>
+</tr>
+<tr>
+<td valign="top">
 
-![Chen Jingyi key poses](docs/assets/chen-jingyi-badminton/keyposes.jpg)
+**📐 Honest geometry**<br>
+Aspect-corrected, image-plane angles; distances in torso lengths; hidden joints shown as
+`n/a`, never guessed.
 
-| Stroke | Type | Checks in range | Main cue |
-| --- | --- | --- | --- |
-| #1 | drive | 0 / 2 | Long, slow preparation; ready stance very low |
-| #2 | overhead | 2 / 4 | Contact low for an overhead; raise the free arm |
-| #3 | drive | 3 / 3 | All in range |
-| #4 | overhead | 2 / 4 | Strike at full extension, take the shuttle earlier |
+</td>
+<td valign="top">
 
-[Report](examples/chen-jingyi-badminton/report.md) · [overlay video](examples/chen-jingyi-badminton/overlay.mp4) · [timeline](examples/chen-jingyi-badminton/timeline.png)
+**🎬 Review-ready output**<br>
+Overlay video, real-frame key-pose sheet, metric timeline, Markdown and JSON report, CSV.
+
+</td>
+<td valign="top">
+
+**📈 You vs. you**<br>
+`motionmirror compare` lines up two sessions of the same sport, per rep and per metric.
+
+</td>
+</tr>
+</table>
 
 ## Quickstart
 
 ```bash
-pip install -e ".[pose]"          # core + video/pose dependencies
+pip install -e ".[pose]"
 
-swingform analyze my_swing.mp4 --sport golf --out runs/range-day
-swingform analyze my_shot.mov  --sport basketball --side auto
-swingform analyze rally.mp4    --sport badminton  --side auto
+motionmirror analyze my_swing.mp4 --sport golf --out runs/range-day
+motionmirror analyze my_shot.mov  --sport basketball --side auto
+motionmirror analyze rally.mp4    --sport badminton  --side auto
 ```
 
-```
+```text
 golf: 2 rep(s), side=right
   rep 2: 60% in range (confidence 0.84)
     - Tempo (backswing : downswing): Downswing is slow relative to the backswing; ...
@@ -91,59 +109,61 @@ Wrote:
   runs/range-day/pose.json  metrics.csv  report.json  report.md  overlay.mp4  timeline.png  keyposes.jpg
 ```
 
-| Output | What it is |
-| --- | --- |
-| `report.md` / `report.json` | Per-rep phases, timing, metrics, checks with reference ranges, cross-rep consistency |
-| `overlay.mp4` | Skeleton, ghost trail, phase labels and live joint angles (H.264, plays in browsers) |
-| `keyposes.jpg` | Real frames at every detected phase, one row per rep |
-| `timeline.png` | Hand/wrist signals and angles with phase markers |
-| `metrics.csv` | Every per-frame metric, phase-tagged |
-| `pose.json` | Raw landmarks, re-analyzable without re-running pose |
+Already have landmarks? `motionmirror analyze pose.json --sport golf` needs no video
+dependencies at all. The old `swingform` command still works as an alias.
 
-Already have landmarks? `swingform analyze pose.json --sport golf` needs no video
-dependencies at all.
+## Flagship Demos
+
+### 🏀 Basketball · Rayford, oceanside jump shot
+
+The shooter fills only **9% of a 1080×1920, 120 fps frame**. MotionMirror locates him, zooms in
+for a second pose pass, and splits the shot into six phases.
+
+![Rayford key poses](docs/assets/rayford-basketball/keyposes.jpg)
+
+| Check | Value | Reference | |
+| --- | --- | --- | --- |
+| Elbow extension at release | **176°** | ≥ 145° | ✅ |
+| Knee bend in the dip | **152°** | 95° to 160° | ✅ |
+| Release height above head | **+0.52 torso** | ≥ 0.2 | ✅ |
+| Dip-to-release time | **0.37 s** | 0.2 to 0.8 s | ✅ |
+| Sideways drift on landing | **0.23 torso** | ≤ 0.5 | ✅ |
+
+[Report](examples/rayford-basketball/report.md) · [Overlay video](examples/rayford-basketball/overlay.mp4) · [Timeline](examples/rayford-basketball/timeline.png)
+
+### 🏸 Badminton · Chen Jingyi (陈静仪), drives and overheads
+
+The badminton profile finds **4 strokes in 12 s** from racket-hand speed, classifies each as
+**drive** or **overhead**, and applies stroke-specific checks. On overheads, contact is placed
+at the top of the reach, because the arm keeps accelerating after the hit.
+
+![Chen Jingyi key poses](docs/assets/chen-jingyi-badminton/keyposes.jpg)
+
+| Stroke | Type | Checks in range | Main cue |
+| --- | --- | --- | --- |
+| #1 | drive | 0 / 2 | Long, slow preparation; ready stance very low |
+| #2 | overhead | 2 / 4 | Contact low for an overhead; raise the free arm |
+| #3 | drive | 3 / 3 | ✅ All in range |
+| #4 | overhead | 2 / 4 | Strike at full extension; take the shuttle earlier |
+
+[Report](examples/chen-jingyi-badminton/report.md) · [Overlay video](examples/chen-jingyi-badminton/overlay.mp4) · [Timeline](examples/chen-jingyi-badminton/timeline.png)
 
 ## What It Measures
 
-**Golf** (`address → top → impact → finish`): tempo ratio, backswing/downswing time, lead-arm
-angle at the top, hand height, hip sway, head drift to impact, knee flex, stance width,
-shoulder-hip separation, peak hand speed.
+| | ⛳ Golf | 🏀 Basketball | 🏸 Badminton |
+| --- | --- | --- | --- |
+| **Phases** | address · top · impact · finish | set · dip · lift · release · follow-through · landing | ready · backswing · contact · follow-through · recovery |
+| **Angles** | lead arm, trail elbow, knees, shoulder-hip separation | shooting elbow, knees | racket-arm extension, ready-stance knees |
+| **Position** | hand height, hip sway, head drift, stance width | release height, guide-hand gap, landing drift | contact height, free-arm height, base width |
+| **Timing** | backswing, downswing, tempo ratio, peak hand speed | set-to-release, dip-to-release | backswing-to-contact, recovery, peak hand speed |
+| **Extras** | ball trail (quality-gated, opt-in) | hands-together shot gate for 1v1 | stroke type: overhead / drive / underhand |
 
-**Basketball** (`set → dip → lift → release → follow-through → landing`): elbow extension at
-release, knee bend in the dip, release height above the head, dip-to-release time, guide-hand
-gap, sideways drift on landing.
-
-**Badminton** (`ready → backswing → contact → follow-through → recovery`, each stroke
-classified as overhead, drive or underhand): arm extension and hand height at contact, free-arm
-position, peak racket-hand speed, ready-stance knee bend, base width, swing timing.
-
-Definitions, units and the reasoning behind each reference range are in
-[docs/metrics.md](docs/metrics.md).
-
-## How It Stays Honest
-
-- **Aspect-correct geometry.** MediaPipe normalizes x by width and y by height; angles are
-  computed after undoing that, so portrait phone clips are not distorted.
-- **Image-plane angles.** Monocular depth is noisy enough to swing a knee angle by 20°, so
-  angles use 2D image geometry by default.
-- **Scale-free distances.** Drift and gaps are in *torso lengths*, comparable across zoom levels.
-- **Gaps are not crashes.** Hidden joints become `n/a`, short dropouts are interpolated, and
-  each phase value is a 5-frame median.
-- **Small athletes get a zoom pass.** When the person is under 35% of the frame height, pose
-  runs a second time on a smoothed, upscaled crop around them.
-- **Confidence on every rep.** Detection confidence drops when visibility is low or timing is
-  implausible, and the report says why.
-- **No invented ball flight.** The golf ball trail is drawn only when a rising, ballistic track
-  is actually detected (`--ball-trail detect`). `--ball-trail proxy` draws a clearly dashed,
-  unmeasured arc. No speed, launch, spin, carry or make/miss is claimed.
-
-Auto-detection is heuristic. When it gets a phase wrong, pass hand-marked times with
-`--labels labels.json` (see [examples/golf-swing-demo/labels.json](examples/golf-swing-demo/labels.json)).
+Definitions, units and the reasoning behind every reference range: [docs/metrics.md](docs/metrics.md).
 
 ## Examples
 
-Every artifact below was produced by `swingform analyze` from the clip in the same folder.
-The table is generated from the committed `report.json` files (`python tools/generate_examples_table.py`).
+Every artifact was produced by `motionmirror analyze` from the clip in the same folder. The
+table is generated from the committed reports (`python tools/generate_examples_table.py`).
 
 <!-- examples-table:start -->
 | Session | Sport | Clip | Pose frames | Reps | Report |
@@ -157,60 +177,85 @@ The table is generated from the committed `report.json` files (`python tools/gen
 <!-- examples-table:end -->
 
 Cross-session comparison: [yifan-golf-0520 vs yifan-golf-0601](docs/examples/compare-yifan-golf-0520-vs-yifan-golf-0601.md).
-Make your own with `swingform compare examples/<a> examples/<b>`.
+Make your own with `motionmirror compare examples/<a> examples/<b>`.
 
-## CLI Reference
+## How It Stays Honest
+
+- **Aspect-correct geometry.** MediaPipe normalizes x by width and y by height; angles are
+  computed after undoing that, so portrait phone clips are not distorted.
+- **Image-plane angles.** Monocular depth swings a knee angle by 20° frame to frame, so angles
+  use 2D geometry by default.
+- **Gaps are not crashes.** Hidden joints become `n/a`, short dropouts are interpolated, and
+  each phase value is a 5-frame median.
+- **Confidence on every rep**, with the reason whenever it drops.
+- **No invented ball flight.** A golf ball trail is drawn only when a tee-anchored track passes
+  the quality gate. No speed, launch, spin, carry or make/miss is claimed.
+- **Known limit.** In close 1v1 contact the tracker can switch players; appearance-based
+  re-identification is on the roadmap.
+
+Auto-detection is heuristic. When a phase is wrong, pass hand-marked times with
+`--labels labels.json` ([example](examples/golf-swing-demo/labels.json)).
+
+<details>
+<summary><b>CLI reference</b></summary>
 
 ```text
-swingform analyze SOURCE [--sport golf|basketball|badminton] [--side right|left|auto] [--out DIR]
-                         [--model lite|full|heavy|PATH] [--labels FILE] [--no-render]
-                         [--ball-trail off|detect|proxy] [--min-confidence 0-1] [--json]
-swingform compare SESSION_A SESSION_B                        # same athlete, two sessions
-swingform highlights LONG_VIDEO --session-id ID [--top-k 3]   # cut the best swings
-swingform register VIDEO --sport golf                          # private local manifest
+motionmirror analyze SOURCE [--sport golf|basketball|badminton] [--side right|left|auto]
+                            [--out DIR] [--model lite|full|heavy|PATH] [--labels FILE]
+                            [--no-render] [--ball-trail off|detect|proxy]
+                            [--min-confidence 0-1] [--json]
+motionmirror compare SESSION_A SESSION_B                       # same athlete, two sessions
+motionmirror highlights LONG_VIDEO --session-id ID [--top-k 3]  # cut the best swings
+motionmirror register VIDEO --sport golf                        # private local manifest
 ```
 
-Python API:
+</details>
+
+<details>
+<summary><b>Python API</b></summary>
 
 ```python
-from swingform_ai.schema import PoseSequence
-from swingform_ai.analysis import analyze_sequence
+from motionmirror.schema import PoseSequence
+from motionmirror.analysis import analyze_sequence
 
-analysis = analyze_sequence(PoseSequence.load("pose.json"), sport="golf", side="right")
-for summary in analysis.summaries:
-    print(summary["timing"]["tempo_ratio"], summary["top"]["lead_arm_angle_deg"])
+analysis = analyze_sequence(PoseSequence.load("pose.json"), sport="badminton", side="auto")
+for summary, findings in zip(analysis.summaries, analysis.findings):
+    print(summary["stroke"], [(f.label, f.status) for f in findings])
 ```
 
-## Project Map
+</details>
+
+<details>
+<summary><b>Project map</b></summary>
 
 ```text
-src/swingform_ai/
-  schema.py        pose data model (aspect-aware, visibility-gated)
-  signal.py        gap filling, smoothing, peak finding (pure Python)
-  profiles/        golf.py, basketball.py, badminton.py: metrics, rep detection, checks
-  feedback.py      reference-range checks, scoring, consistency
-  analysis.py      pose sequence -> reps -> summaries -> report
-  video.py         video I/O and MediaPipe pose extraction
-  render.py        overlay video, key-pose sheet, timeline
-  ballflight.py    golf ball trail detection (review aid)
-  reel.py          long-video highlight cutting
-  pipeline.py      one call: source -> output folder
-  cli.py           `swingform` command
-tools/promo/       narrated promo video generator (ElevenLabs voice, cached)
-tests/             synthetic swings/shots/strokes with known phase times
-docs/              website, 3D viewer, metrics, architecture
+src/motionmirror/
+  schema.py           pose data model (aspect-aware, visibility-gated)
+  signal.py           gap filling, smoothing, peak finding (pure Python)
+  profiles/           golf.py · basketball.py · badminton.py
+  feedback.py         reference-range checks, scoring, consistency
+  analysis.py         pose sequence -> reps -> summaries -> report
+  video.py            video I/O, MediaPipe pose, auto-zoom pass
+  tracking.py         primary-athlete selection in multi-person scenes
+  ball_tracking.py    tee-anchored, quality-gated golf ball trail
+  render.py           overlay video, key-pose sheet, timeline
+  compare.py          cross-session comparison
+  pipeline.py · cli.py
+tools/                promo video, README banner, examples table
+tests/                synthetic swings, shots and strokes with known phase times
+docs/                 website, 3D viewer, metrics, architecture
 ```
+
+</details>
 
 ## Development
 
 ```bash
 pip install -e ".[pose,dev]"
-pytest -q && ruff check src tests
+pytest -q && ruff check src tests tools
 ```
 
-Core tests need no video stack; CI also runs an end-to-end smoke test on the bundled clip.
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [CHANGELOG.md](CHANGELOG.md).
+Core tests need no video stack; CI also runs an end-to-end smoke test on a bundled clip.
+Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
----
-
-[Website](https://rayford295.github.io/swingform-ai/) · [3D Viewer](https://rayford295.github.io/swingform-ai/viewer/pose3d.html) · [中文说明](README.zh-CN.md) · MIT License
+<p align="center"><sub>MIT License · Formerly <i>SwingForm AI</i></sub></p>

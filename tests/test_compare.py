@@ -1,6 +1,6 @@
 import unittest
 
-from swingform_ai.compare import comparison_rows, detect_sport, extract_records
+from motionmirror.compare import comparison_rows, detect_sport, extract_records
 
 GOLF_SUMMARY = {
     "swing_summaries": [

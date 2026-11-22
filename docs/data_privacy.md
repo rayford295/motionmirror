@@ -2,7 +2,7 @@
 
 ## Purpose
 
-SwingForm AI should become a long-term personal practice record, not a one-off demo. The project can learn from repeated golf and basketball sessions while publishing examples that are explicitly cleared for open-source release.
+MotionMirror should become a long-term personal practice record, not a one-off demo. The project can learn from repeated golf and basketball sessions while publishing examples that are explicitly cleared for open-source release.
 
 ## Operating Principle
 
@@ -27,7 +27,7 @@ This gives the project room to grow while making the open examples genuinely ins
 Register a session:
 
 ```bash
-swingform register /path/to/golf.mp4 --sport golf
+motionmirror register /path/to/golf.mp4 --sport golf
 ```
 
 The command writes a manifest under `data/local/sessions/`, which is ignored by git until the session is promoted into an open example.
@@ -35,8 +35,8 @@ The command writes a manifest under `data/local/sessions/`, which is ignored by 
 Analyze promoted examples:
 
 ```bash
-swingform analyze /path/to/golf.mp4 --sport golf --out examples/yifan-golf-0520
-swingform analyze /path/to/basketball.mp4 --sport basketball --side auto \
+motionmirror analyze /path/to/golf.mp4 --sport golf --out examples/yifan-golf-0520
+motionmirror analyze /path/to/basketball.mp4 --sport basketball --side auto \
   --out examples/yifan-basketball-0601
 ```
 

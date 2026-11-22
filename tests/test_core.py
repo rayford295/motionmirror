@@ -5,11 +5,11 @@ from pathlib import Path
 
 import pytest
 
-from swingform_ai.cli import main
-from swingform_ai.feedback import Check, evaluate, score
-from swingform_ai.profiles import basketball, get_profile, golf
-from swingform_ai.schema import FramePose, Landmark, PoseSequence
-from swingform_ai.signal import fill_gaps, local_extrema, moving_average, percentile
+from motionmirror.cli import main
+from motionmirror.feedback import Check, evaluate, score
+from motionmirror.profiles import basketball, get_profile, golf
+from motionmirror.schema import FramePose, Landmark, PoseSequence
+from motionmirror.signal import fill_gaps, local_extrema, moving_average, percentile
 from tests.synthetic import golf_swings
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,7 +36,7 @@ def test_aspect_correction_fixes_portrait_angles():
     lms = {"a": Landmark("a", 0.5, 0.25), "b": Landmark("b", 0.5, 0.5),
            "c": Landmark("c", 1.0, 0.5)}
     frame = FramePose(0.0, lms, aspect=0.5)
-    from swingform_ai.geometry import angle_degrees
+    from motionmirror.geometry import angle_degrees
     assert angle_degrees(frame.point("a"), frame.point("b"), frame.point("c")) == pytest.approx(90)
 
 

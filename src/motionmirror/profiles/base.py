@@ -20,9 +20,9 @@ from pathlib import Path
 from statistics import median
 from typing import Any
 
-from swingform_ai.geometry import angle_degrees, distance, line_angle_2d, midpoint
-from swingform_ai.schema import FramePose, PoseSequence
-from swingform_ai.signal import fill_gaps, moving_average, speed_2d
+from motionmirror.geometry import angle_degrees, distance, line_angle_2d, midpoint
+from motionmirror.schema import FramePose, PoseSequence
+from motionmirror.signal import fill_gaps, moving_average, speed_2d
 
 Row = dict[str, Any]
 Point = tuple[float, float, float]

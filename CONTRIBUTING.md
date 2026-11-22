@@ -1,6 +1,6 @@
 # Contributing
 
-SwingForm AI is a pure open-source sports-AI project. The repo should feel useful at first glance and trustworthy after inspection.
+MotionMirror is a pure open-source sports-AI project. The repo should feel useful at first glance and trustworthy after inspection.
 
 ## What Good Contributions Improve
 
@@ -58,8 +58,8 @@ pytest -q && ruff check src tests
 Run the open golf demo:
 
 ```bash
-swingform analyze examples/golf-swing-demo/golf.mp4 --sport golf --out runs/demo
+motionmirror analyze examples/golf-swing-demo/golf.mp4 --sport golf --out runs/demo
 # or with hand-checked phase times:
-swingform analyze examples/golf-swing-demo/golf.mp4 --sport golf \
+motionmirror analyze examples/golf-swing-demo/golf.mp4 --sport golf \
   --labels examples/golf-swing-demo/labels.json --out runs/demo-labels
 ```

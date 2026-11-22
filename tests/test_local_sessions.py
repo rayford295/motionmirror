@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from swingform_ai.local_sessions import build_session_manifest, slugify, write_manifest
+from motionmirror.local_sessions import build_session_manifest, slugify, write_manifest
 
 
 class LocalSessionsTest(unittest.TestCase):

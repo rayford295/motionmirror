@@ -1,6 +1,6 @@
 # Technical Tracks
 
-SwingForm AI now has two primary technical tracks:
+MotionMirror now has two primary technical tracks:
 
 1. Ball trajectory.
 2. 3D-feeling motion review.
@@ -29,7 +29,7 @@ Ball trajectory is the fastest way to make a sports-AI demo feel alive. For golf
 - Ultralytics YOLO tracking supports video object tracking through configurable trackers such as ByteTrack and BoT-SORT, which is a practical first implementation path.
 - Where Is The Ball estimates 3D ball trajectory from 2D monocular tracking. This is the right long-term direction once our 2D tracking is stable.
 
-### First SwingForm Implementation
+### First MotionMirror Implementation
 
 Start with something visually useful:
 
@@ -43,7 +43,7 @@ This keeps the project moving fast and makes the demo immediately stronger.
 
 ### Implementation Retrospective: What We Tried and Where It Breaks
 
-We shipped an initial ball detection pipeline (v0.1 `scripts/golf_render.py`, now `swingform_ai/ball_tracking.py`) and tested it across four real practice videos. The honest assessment is that the results are visually unreliable. This section records what we learned so the next implementation does not repeat the same mistakes.
+We shipped an initial ball detection pipeline (v0.1 `scripts/golf_render.py`, now `motionmirror/ball_tracking.py`) and tested it across four real practice videos. The honest assessment is that the results are visually unreliable. This section records what we learned so the next implementation does not repeat the same mistakes.
 
 #### What we built
 
@@ -117,7 +117,7 @@ Flat 2D pose plots are useful, but 3D-feeling review is what makes the project f
 - WHAM is a stronger world-grounded human motion direction for video, but it brings model downloads, SMPL registration, and heavier runtime assumptions.
 - Mesh-based approaches look better, but the first open demo should use a lightweight 3D skeleton before adding full mesh recovery.
 
-### First SwingForm Implementation
+### First MotionMirror Implementation
 
 Start with a polished 3D skeleton viewer:
 

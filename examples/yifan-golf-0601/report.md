@@ -1,6 +1,6 @@
-# SwingForm report: golf (golf.mp4)
+# MotionMirror report: golf (golf.mp4)
 
-*swingform-ai 0.2.0* | side: **right** | reps detected: **2**
+*motionmirror 0.2.0* | side: **right** | reps detected: **2**
 
 ## Capture quality
 

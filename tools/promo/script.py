@@ -1,4 +1,4 @@
-"""Narration for the SwingForm AI promo, one entry per scene.
+"""Narration for the MotionMirror promo, one entry per scene.
 
 Numbers quoted here must match the example reports; ``make_promo.py`` checks
 them against examples/*/report.json before rendering.
@@ -9,11 +9,11 @@ MODEL_ID = "eleven_multilingual_v2"
 
 SCENES = [
     ("title",
-     "This is SwingForm AI. Open-source motion analysis that turns a single phone video "
+     "This is MotionMirror. Open-source motion analysis that turns a single phone video "
      "into clear, explainable feedback. No sensors. No studio. Just the camera in your pocket."),
     ("bb_intro",
      "Meet Rayford, shooting on an oceanside court. He fills less than a tenth of the frame, "
-     "so SwingForm first finds him, then zooms in, and tracks thirty-three body landmarks "
+     "so MotionMirror first finds him, then zooms in, and tracks thirty-three body landmarks "
      "on every single frame."),
     ("bb_phases",
      "Filmed at a hundred and twenty frames per second, the shot is broken into six phases: "
@@ -26,7 +26,7 @@ SCENES = [
      "Next, Chen Jingyi on the badminton court. A brand-new badminton profile detects every "
      "stroke from the speed of the racket hand, and classifies it: drive, or overhead."),
     ("bd_overhead",
-     "On an overhead, the arm keeps accelerating after the hit. So SwingForm places contact "
+     "On an overhead, the arm keeps accelerating after the hit. So MotionMirror places contact "
      "at the highest point of the reach, then measures arm extension, contact height, "
      "and the position of the free arm."),
     ("bd_feedback",
@@ -37,8 +37,8 @@ SCENES = [
      "timeline, and the raw data, ready for your own analysis."),
     ("honesty",
      "Each number traces back to a frame and a reference range. When the camera can't see "
-     "a joint, SwingForm says so, instead of guessing."),
+     "a joint, MotionMirror says so, instead of guessing."),
     ("close",
      "Golf, basketball, and badminton, today. One command to try it. "
-     "SwingForm AI. See your form."),
+     "MotionMirror. See your form."),
 ]

@@ -8,7 +8,7 @@ from collections.abc import Callable, Iterator
 from dataclasses import dataclass
 from pathlib import Path
 
-from swingform_ai.schema import FramePose, Landmark, PoseSequence
+from motionmirror.schema import FramePose, Landmark, PoseSequence
 
 MODEL_URLS = {
     variant: (
@@ -17,7 +17,7 @@ MODEL_URLS = {
     )
     for variant in ("lite", "full", "heavy")
 }
-DEFAULT_MODEL_DIR = Path.home() / ".cache" / "swingform-ai"
+DEFAULT_MODEL_DIR = Path.home() / ".cache" / "motionmirror"
 
 MP_LANDMARK_NAMES = [
     "nose", "left_eye_inner", "left_eye", "left_eye_outer", "right_eye_inner", "right_eye",
@@ -33,7 +33,7 @@ def _cv2():
     try:
         import cv2
     except ImportError as exc:  # pragma: no cover - depends on extras
-        raise SystemExit('Video features need extras: pip install "swingform-ai[pose]"') from exc
+        raise SystemExit('Video features need extras: pip install "motionmirror[pose]"') from exc
     return cv2
 
 
@@ -117,7 +117,7 @@ def extract_pose(
     frame (median body height under 35% of the image): pass one locates the
     person, pass two runs pose on a smoothed, upscaled crop around them and maps
     landmarks back to full-frame coordinates. ``roi="on"``/``"off"`` force it.
-    When several people are visible, :class:`~swingform_ai.tracking.PrimaryAthleteTracker`
+    When several people are visible, :class:`~motionmirror.tracking.PrimaryAthleteTracker`
     keeps the one continuing the primary athlete's track.
     """
 
@@ -152,7 +152,7 @@ def _bbox(frame: FramePose, min_vis: float = 0.3) -> tuple[float, float, float, 
 def _crop_track(frames: list[FramePose], info: VideoInfo) -> dict[int, tuple[int, int, int, int]]:
     """Smoothed square crop (pixels) around the athlete for every frame."""
 
-    from swingform_ai.signal import fill_gaps, moving_average
+    from motionmirror.signal import fill_gaps, moving_average
 
     n = info.frame_count
     cx: list[float | None] = [None] * n
@@ -195,7 +195,7 @@ def _run_pose(video, info: VideoInfo, model, min_confidence: float,
         min_tracking_confidence=min_confidence,
     )
     aspect = info.width / info.height if info.height else 1.0
-    from swingform_ai.tracking import PrimaryAthleteTracker
+    from motionmirror.tracking import PrimaryAthleteTracker
 
     frames: list[FramePose] = []
     tracker = PrimaryAthleteTracker()

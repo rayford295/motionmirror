@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-"""Render the SwingForm AI promo video from the flagship example outputs.
+"""Render the MotionMirror promo video from the flagship example outputs.
 
     python tools/promo/make_promo.py               # needs ~/.elevenlabs_key (or ELEVENLABS_API_KEY)
     python tools/promo/make_promo.py --no-voice    # silent preview with estimated timing
 
 Narration clips are cached in tools/promo/voice/, so later re-renders are offline.
-Output: docs/assets/promo/swingform-promo.mp4 (+ poster.jpg).
+Output: docs/assets/promo/motionmirror-promo.mp4 (+ poster.jpg).
 """
 
 from __future__ import annotations
@@ -229,9 +229,9 @@ def clean_overlay(folder: Path, video: str, sport: str) -> Path:
     if out.exists() and out.stat().st_mtime > (folder / "report.json").stat().st_mtime:
         return out
     sys.path.insert(0, str(ROOT / "src"))
-    from swingform_ai.analysis import analyze_sequence
-    from swingform_ai.render import render_overlay
-    from swingform_ai.schema import PoseSequence
+    from motionmirror.analysis import analyze_sequence
+    from motionmirror.render import render_overlay
+    from motionmirror.schema import PoseSequence
 
     rep = load(folder / "report.json")
     seq = PoseSequence.load(folder / "pose.json")
@@ -312,7 +312,7 @@ class Data:
 def brand(layer: Image.Image, alpha: float = 1.0):
     d = BlendDraw(layer)
     d.ellipse((60, 52, 84, 76), fill=(*ORANGE, int(255 * alpha)))
-    text(d, (98, 64), "SwingForm AI", font("demi", 28), alpha=alpha, anchor="lm")
+    text(d, (98, 64), "MotionMirror", font("demi", 28), alpha=alpha, anchor="lm")
 
 
 def scene_title(t, dur, D: Data):
@@ -321,7 +321,7 @@ def scene_title(t, dur, D: Data):
     frame = Image.alpha_composite(frame, Image.new("RGBA", (W, H), (*INK, 200)))
     d = BlendDraw(frame)
     a = appear(t, 0.3, 0.9)
-    text(d, (W // 2, 430 + 30 * (1 - a)), "SwingForm AI", font("bold", 150), alpha=a,
+    text(d, (W // 2, 430 + 30 * (1 - a)), "MotionMirror", font("bold", 150), alpha=a,
          anchor="mm")
     b = appear(t, 1.2, 0.8)
     text(d, (W // 2, 555), "One phone video.  Every phase.  Every angle.", font("medium", 46),
@@ -630,7 +630,7 @@ def scene_close(t, dur, D: Data):
     d = BlendDraw(frame)
     a = appear(t, 0.2, 0.8)
     d.ellipse((W // 2 - 40, 250, W // 2 + 40, 330), fill=(*ORANGE, int(255 * a)))
-    text(d, (W // 2, 430), "SwingForm AI", font("bold", 130), alpha=a, anchor="mm")
+    text(d, (W // 2, 430), "MotionMirror", font("bold", 130), alpha=a, anchor="mm")
     text(d, (W // 2, 530), "See your form.", font("medium", 52), fill=MUTED,
          alpha=appear(t, 1.0), anchor="mm")
     b = appear(t, 1.8)
@@ -639,9 +639,9 @@ def scene_close(t, dur, D: Data):
                         outline=(255, 255, 255, int(50 * b)), width=2)
     text(d, (box[0] + 50, 666), "$ pip install -e \".[pose]\"", font("medium", 36),
          fill=MUTED, alpha=b, anchor="lm")
-    text(d, (box[0] + 50, 718), "$ swingform analyze clip.mp4 --sport badminton",
+    text(d, (box[0] + 50, 718), "$ motionmirror analyze clip.mp4 --sport badminton",
          font("demi", 36), fill=WHITE, alpha=b, anchor="lm")
-    text(d, (W // 2, 860), "github.com/rayford295/swingform-ai", font("demi", 40),
+    text(d, (W // 2, 860), "github.com/rayford295/motionmirror", font("demi", 40),
          fill=ORANGE, alpha=appear(t, 2.6), anchor="mm")
     return frame
 
@@ -690,7 +690,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--no-voice", action="store_true", help="Silent preview, estimated timing.")
     ap.add_argument("--only", help="Render a single scene id (preview).")
-    ap.add_argument("--out", type=Path, default=OUT_DIR / "swingform-promo.mp4")
+    ap.add_argument("--out", type=Path, default=OUT_DIR / "motionmirror-promo.mp4")
     args = ap.parse_args(argv)
 
     D = Data()

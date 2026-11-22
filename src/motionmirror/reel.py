@@ -13,9 +13,9 @@ try:
     import cv2
     import numpy as np
 except ImportError as exc:  # pragma: no cover
-    raise SystemExit('Highlights need extras: pip install "swingform-ai[pose]"') from exc
+    raise SystemExit('Highlights need extras: pip install "motionmirror[pose]"') from exc
 
-from swingform_ai.highlight import (
+from motionmirror.highlight import (
     MotionFrameStats,
     SwingCandidate,
     SwingScore,
@@ -297,7 +297,7 @@ def draw_frame_overlay(
 ) -> None:
     draw_trail(frame, track, frame_index)
     lines = [
-        f"SwingForm AI  |  swing {candidate.swing_index}  |  score {score.score:.1f}",
+        f"MotionMirror  |  swing {candidate.swing_index}  |  score {score.score:.1f}",
         f"clip {candidate.start_time_s:.2f}s-{candidate.end_time_s:.2f}s"
         f"  |  trail {trail_kind}",
     ]

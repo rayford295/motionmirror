@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from statistics import mean
 
-from swingform_ai.schema import FramePose
+from motionmirror.schema import FramePose
 
 # A real hip cannot move farther than this (normalized image units) between
 # consecutive tracked frames without the track being considered broken.

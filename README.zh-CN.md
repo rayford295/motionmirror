@@ -1,32 +1,59 @@
-# SwingForm AI
+<p align="center">
+  <img src="docs/assets/readme/banner.png" alt="MotionMirror" width="100%">
+</p>
+
+<p align="center">
+  <a href="https://github.com/rayford295/motionmirror/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/motionmirror/actions/workflows/test.yml/badge.svg"></a>
+  <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
+  <img alt="Sports" src="https://img.shields.io/badge/%E8%BF%90%E5%8A%A8-%E9%AB%98%E5%B0%94%E5%A4%AB%20%C2%B7%20%E7%AF%AE%E7%90%83%20%C2%B7%20%E7%BE%BD%E6%AF%9B%E7%90%83-ff7a45">
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2ec4b6"></a>
+  <a href="https://rayford295.github.io/motionmirror/"><img alt="Website" src="https://img.shields.io/badge/%E7%BD%91%E7%AB%99-%E5%9C%A8%E7%BA%BF-1d6fa5"></a>
+</p>
+
+<p align="center">
+  <a href="README.md">English</a> · <b>中文</b> ·
+  <a href="https://rayford295.github.io/motionmirror/">网站</a> ·
+  <a href="docs/metrics.md">指标说明</a>
+</p>
 
 <!-- PROMO (enabled once the narrated video is rendered)
 <p align="center">
-  <a href="docs/assets/promo/swingform-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="观看 SwingForm AI 宣传片" width="900"></a>
-  <br><sub><b>▶ <a href="docs/assets/promo/swingform-promo.mp4">观看英文配音宣传片</a></b></sub>
+  <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="观看 MotionMirror 宣传片" width="900"></a>
+  <br><sub><b>▶ <a href="docs/assets/promo/motionmirror-promo.mp4">观看英文配音宣传片</a></b></sub>
 </p>
 -->
 
 <table>
 <tr>
-<td width="33%" align="center"><img src="docs/assets/rayford-basketball/demo.gif" alt="Basketball jump shot overlay" width="100%"><br><sub>🏀 <b>跳投</b> · 120 fps · auto-zoom</sub></td>
+<td width="33%" align="center"><img src="docs/assets/rayford-basketball/demo.gif" alt="Basketball jump shot overlay" width="100%"><br><sub>🏀 <b>跳投</b> · 120 fps · 自动放大</sub></td>
 <td width="33%" align="center"><img src="docs/assets/chen-jingyi-badminton/demo.gif" alt="羽毛球高手击球 overlay" width="100%"><br><sub>🏸 <b>羽毛球高手击球</b> · 击球点识别</sub></td>
-<td width="33%" align="center"><img src="docs/assets/yifan-golf-0601/demo.gif" alt="Golf swing overlay" width="100%"><br><sub>⛳ <b>Golf · TopGolf</b> · 挥杆阶段</sub></td>
+<td width="33%" align="center"><img src="docs/assets/yifan-golf-0601/demo.gif" alt="Golf swing overlay" width="100%"><br><sub>⛳ <b>高尔夫挥杆</b> · TopGolf · 挥杆阶段</sub></td>
 </tr>
 </table>
 
-SwingForm AI 把一段普通手机拍摄的高尔夫挥杆、篮球跳投或羽毛球击球视频，转换成分阶段的姿态指标、
+**MotionMirror（动作镜像）** 把一段普通手机拍摄的高尔夫挥杆、篮球跳投或羽毛球击球视频，转换成分阶段的姿态指标、
 通俗易懂的反馈和可回看的可视化结果。每一个数字都能追溯到具体的帧、关节和参考区间。
 
 ```
 视频 ─► 姿态（MediaPipe，33 个关键点）─► 动作次数 + 阶段 ─► 各阶段指标 ─► 反馈 + 报告
 ```
 
+## 亮点
+
+| | |
+| --- | --- |
+| 🎯 **按阶段测量** | 在关键时刻读取指标（上杆顶点、出手、击球点），而不是整段平均 |
+| 💬 **可解释的反馈** | 每项检查都给出数值、参考区间和通俗建议 |
+| 🔍 **小目标与多人场景** | 人物太小时自动放大；1v1 对抗中锁定主运动员并过滤防守动作 |
+| 📐 **诚实的几何计算** | 宽高比校正、2D 角度、以躯干长度为单位；看不到的关节标为 n/a |
+| 🎬 **可直接回看** | 叠加视频、真实关键帧、指标时间线、报告与 CSV |
+| 📈 **自己和自己比** | `motionmirror compare` 对比同一运动的两次训练 |
+
 ## 旗舰演示
 
 ### 篮球：Rayford 海边跳投
 
-投篮者只占 1080×1920、120 fps 画面高度的 **9%**。SwingForm 先定位人物，再放大做第二遍姿态识别，
+投篮者只占 1080×1920、120 fps 画面高度的 **9%**。MotionMirror 先定位人物，再放大做第二遍姿态识别，
 并把投篮拆成六个阶段。出手时肘部伸展 **176°**，出手点高于头顶 **0.52 个躯干长度**，
 下蹲到出手 **0.37 秒**，五项检查全部在参考区间内。
 
@@ -44,9 +71,9 @@ SwingForm AI 把一段普通手机拍摄的高尔夫挥杆、篮球跳投或羽�
 ```bash
 pip install -e ".[pose]"
 
-swingform analyze my_swing.mp4 --sport golf --out runs/range-day
-swingform analyze my_shot.mov  --sport basketball --side auto
-swingform analyze rally.mp4    --sport badminton  --side auto
+motionmirror analyze my_swing.mp4 --sport golf --out runs/range-day
+motionmirror analyze my_shot.mov  --sport basketball --side auto
+motionmirror analyze rally.mp4    --sport badminton  --side auto
 ```
 
 输出文件夹包含：
@@ -60,7 +87,7 @@ swingform analyze rally.mp4    --sport badminton  --side auto
 | `metrics.csv` | 逐帧指标，带阶段标记 |
 | `pose.json` | 原始关键点，可不重跑姿态模型直接再分析 |
 
-已经有关键点数据？`swingform analyze pose.json --sport golf` 不需要任何视频依赖。
+已经有关键点数据？`motionmirror analyze pose.json --sport golf` 不需要任何视频依赖。
 
 ## 测量内容
 
@@ -105,7 +132,7 @@ swingform analyze rally.mp4    --sport badminton  --side auto
 <!-- examples-table:end -->
 
 跨场次对比：[yifan-golf-0520 vs yifan-golf-0601](docs/examples/compare-yifan-golf-0520-vs-yifan-golf-0601.md)，
-可用 `swingform compare examples/<a> examples/<b>` 生成自己的对比。
+可用 `motionmirror compare examples/<a> examples/<b>` 生成自己的对比。
 
 ## 开发
 
@@ -116,4 +143,6 @@ pytest -q && ruff check src tests
 
 ---
 
-[网站](https://rayford295.github.io/swingform-ai/) · [3D 查看器](https://rayford295.github.io/swingform-ai/viewer/pose3d.html) · [English](README.md) · MIT License
+[网站](https://rayford295.github.io/motionmirror/) · [3D 查看器](https://rayford295.github.io/motionmirror/viewer/pose3d.html) · [English](README.md) · MIT License
+
+<p align="center"><sub>MIT License · 原名 <i>SwingForm AI</i></sub></p>

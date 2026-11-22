@@ -2,7 +2,7 @@
 
 ## Project Purpose
 
-SwingForm AI should turn personal sports practice video into interpretable posture feedback. The project begins with golf swing analysis and keeps the core general enough for basketball shooting form.
+MotionMirror should turn personal sports practice video into interpretable posture feedback. The project begins with golf swing analysis and keeps the core general enough for basketball shooting form.
 
 ## Intended Users
 

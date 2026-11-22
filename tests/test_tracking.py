@@ -1,7 +1,7 @@
 import unittest
 
-from swingform_ai.schema import FramePose, Landmark
-from swingform_ai.tracking import PrimaryAthleteTracker, pose_quality
+from motionmirror.schema import FramePose, Landmark
+from motionmirror.tracking import PrimaryAthleteTracker, pose_quality
 
 CORE_JOINTS = ["left_shoulder", "right_shoulder", "left_hip", "right_hip", "left_ankle", "right_ankle"]
 

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from swingform_ai.analysis import analyze_sequence
+from motionmirror.analysis import analyze_sequence
 from tests.synthetic import FPS, basketball_shots, golf_swings
 
 TOL = 3 / FPS  # three frames
@@ -78,7 +78,7 @@ def test_one_arm_contest_is_not_a_shot():
     seq, _ = basketball_shots(n_shots=1)
     from dataclasses import replace
 
-    from swingform_ai.schema import Landmark
+    from motionmirror.schema import Landmark
 
     frames = []
     for f in seq.frames:

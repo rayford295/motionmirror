@@ -1,6 +1,6 @@
-# SwingForm report: basketball (basketball.mp4)
+# MotionMirror report: basketball (basketball.mp4)
 
-*swingform-ai 0.2.0* | side: **right** | reps detected: **2**
+*motionmirror 0.2.0* | side: **right** | reps detected: **2**
 
 ## Capture quality
 

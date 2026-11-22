@@ -5,12 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from swingform_ai.schema import FramePose
-from swingform_ai.video import iter_frames, read_video_info
+from motionmirror.schema import FramePose
+from motionmirror.video import iter_frames, read_video_info
 
 if TYPE_CHECKING:  # pragma: no cover
-    from swingform_ai.analysis import Analysis
-    from swingform_ai.ball_tracking import RepBallTrail as BallTrack
+    from motionmirror.analysis import Analysis
+    from motionmirror.ball_tracking import RepBallTrail as BallTrack
 
 EDGES = {
     "torso": [("left_shoulder", "right_shoulder"), ("left_shoulder", "left_hip"),
@@ -151,7 +151,7 @@ def render_overlay(analysis: Analysis, video: str | Path, output: str | Path,
         hold -= 1
         writer.write(frame)
     writer.release()
-    from swingform_ai.video import reencode_h264
+    from motionmirror.video import reencode_h264
 
     reencode_h264(output)  # smaller files; no-op without imageio-ffmpeg
     return output

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from swingform_ai.highlight import (
+from motionmirror.highlight import (
     MotionFrameStats,
     clip_window,
     detect_swing_candidates,

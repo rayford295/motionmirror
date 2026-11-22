@@ -1,5 +1,16 @@
-"""SwingForm AI: explainable sports posture analysis from ordinary video."""
+"""Deprecated alias: SwingForm AI is now MotionMirror. Use ``import motionmirror``."""
 
-__version__ = "0.2.0"
+import importlib
+import pkgutil
+import sys
+import warnings
 
-__all__ = ["__version__"]
+import motionmirror
+
+warnings.warn("swingform_ai was renamed to motionmirror; please update your imports.",
+              DeprecationWarning, stacklevel=2)
+
+sys.modules[__name__] = motionmirror
+for _mod in pkgutil.walk_packages(motionmirror.__path__, "motionmirror."):
+    _alias = "swingform_ai" + _mod.name[len("motionmirror"):]
+    sys.modules.setdefault(_alias, importlib.import_module(_mod.name))

@@ -1,6 +1,6 @@
-# SwingForm report: badminton (badminton.mp4)
+# MotionMirror report: badminton (badminton.mp4)
 
-*swingform-ai 0.2.0* | side: **right** | reps detected: **4**
+*motionmirror 0.2.0* | side: **right** | reps detected: **4**
 
 ## Capture quality
 

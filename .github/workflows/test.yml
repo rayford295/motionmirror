@@ -36,7 +36,7 @@ jobs:
         run: python -m pip install -e ".[pose,dev]"
       - name: Analyze the bundled golf clip end to end
         run: |
-          swingform analyze examples/golf-swing-demo/golf.mp4 --sport golf \
+          motionmirror analyze examples/golf-swing-demo/golf.mp4 --sport golf \
             --model lite --out smoke --ball-trail detect
           test -s smoke/report.json && test -s smoke/overlay.mp4 && test -s smoke/keyposes.jpg
           python -c "import json; r=json.load(open('smoke/report.json')); assert r['rep_count'] >= 1, r"

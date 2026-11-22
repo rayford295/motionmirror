@@ -1,12 +1,12 @@
 # North Star
 
-SwingForm AI is a long-game open-source sports-AI project.
+MotionMirror is a long-game open-source sports-AI project.
 
 The goal is not to look like the most clinically precise coaching system on day one. The goal is to make sports practice feel visually intelligent, emotionally motivating, and technically inspectable.
 
 ## Product Taste
 
-SwingForm AI should feel:
+MotionMirror should feel:
 
 1. Beautiful enough that people want to open the README.
 2. Practical enough that people can run the demo.

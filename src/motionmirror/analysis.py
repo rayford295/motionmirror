@@ -9,11 +9,11 @@ from pathlib import Path
 from statistics import mean
 from typing import Any
 
-from swingform_ai import __version__
-from swingform_ai.feedback import Finding, consistency, evaluate, score
-from swingform_ai.profiles import get_profile
-from swingform_ai.profiles.base import Rep, Row, load_phase_labels, round_floats
-from swingform_ai.schema import PoseSequence
+from motionmirror import __version__
+from motionmirror.feedback import Finding, consistency, evaluate, score
+from motionmirror.profiles import get_profile
+from motionmirror.profiles.base import Rep, Row, load_phase_labels, round_floats
+from motionmirror.schema import PoseSequence
 
 
 @dataclass
@@ -39,7 +39,7 @@ class Analysis:
             reps.append({**summary, "score": score(findings),
                          "findings": [f.to_mapping() for f in findings]})
         return round_floats({
-            "tool": f"swingform-ai {__version__}",
+            "tool": f"motionmirror {__version__}",
             "sport": self.sport,
             "side": self.side,
             "source": Path(self.sequence.source).name if self.sequence.source else None,

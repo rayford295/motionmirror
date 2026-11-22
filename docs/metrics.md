@@ -100,5 +100,5 @@ shuttle are not tracked, so contact is a pose proxy.
 ## Tuning
 
 The ranges are starter values for spotting outliers in single-camera 2D video, not coaching
-standards. To fit your own baseline, edit `CHECKS` in `src/swingform_ai/profiles/golf.py`,
+standards. To fit your own baseline, edit `CHECKS` in `src/motionmirror/profiles/golf.py`,
 `basketball.py` or `badminton.py` (`CHECKS_BY_STROKE`); each `Check` holds its range, cue text and rationale.

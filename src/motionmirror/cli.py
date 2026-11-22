@@ -1,9 +1,9 @@
-"""``swingform`` command-line interface.
+"""``motionmirror`` command-line interface.
 
-    swingform analyze VIDEO_OR_POSE_JSON --sport golf --out runs/session1
-    swingform compare examples/yifan-golf-0520 examples/yifan-golf-0601
-    swingform highlights LONG_VIDEO --session-id range-day
-    swingform register VIDEO --sport golf
+    motionmirror analyze VIDEO_OR_POSE_JSON --sport golf --out runs/session1
+    motionmirror compare examples/yifan-golf-0520 examples/yifan-golf-0601
+    motionmirror highlights LONG_VIDEO --session-id range-day
+    motionmirror register VIDEO --sport golf
 """
 
 from __future__ import annotations
@@ -13,12 +13,12 @@ import json
 import sys
 from pathlib import Path
 
-from swingform_ai import __version__
-from swingform_ai.profiles import PROFILES
+from motionmirror import __version__
+from motionmirror.profiles import PROFILES
 
 
 def _analyze(args: argparse.Namespace) -> int:
-    from swingform_ai.pipeline import run
+    from motionmirror.pipeline import run
 
     out = args.out or Path("runs") / Path(args.source).stem
     result = run(
@@ -47,7 +47,7 @@ def _analyze(args: argparse.Namespace) -> int:
 
 
 def _compare(args: argparse.Namespace) -> int:
-    from swingform_ai.session_compare import compare_sessions
+    from motionmirror.session_compare import compare_sessions
 
     print(json.dumps(compare_sessions(args.session_a, args.session_b, args.output_doc,
                                       args.asset_output), indent=2))
@@ -55,14 +55,14 @@ def _compare(args: argparse.Namespace) -> int:
 
 
 def _highlights(args: argparse.Namespace) -> int:
-    from swingform_ai import reel
+    from motionmirror import reel
 
     reel.main(args.rest)
     return 0
 
 
 def _register(args: argparse.Namespace) -> int:
-    from swingform_ai.local_sessions import build_session_manifest, write_manifest
+    from motionmirror.local_sessions import build_session_manifest, write_manifest
 
     manifest = build_session_manifest(video_path=args.video, sport=args.sport,
                                       session_id=args.session_id, notes=args.notes,
@@ -73,9 +73,9 @@ def _register(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="swingform", description="Explainable sports posture "
+    parser = argparse.ArgumentParser(prog="motionmirror", description="Explainable sports posture "
                                      "analysis from ordinary video.")
-    parser.add_argument("--version", action="version", version=f"swingform-ai {__version__}")
+    parser.add_argument("--version", action="version", version=f"motionmirror {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
 
     a = sub.add_parser("analyze", help="Analyze a video or an exported pose JSON.")

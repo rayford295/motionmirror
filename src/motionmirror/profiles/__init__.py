@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from types import ModuleType
 
-from swingform_ai.profiles import badminton, basketball, golf
+from motionmirror.profiles import badminton, basketball, golf
 
 PROFILES: dict[str, ModuleType] = {
     golf.NAME: golf, basketball.NAME: basketball, badminton.NAME: badminton}

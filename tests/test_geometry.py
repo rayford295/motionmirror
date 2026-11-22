@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from swingform_ai.geometry import angle_degrees, angle_difference_degrees, distance, midpoint
+from motionmirror.geometry import angle_degrees, angle_difference_degrees, distance, midpoint
 
 
 class GeometryTest(unittest.TestCase):

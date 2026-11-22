@@ -1,4 +1,4 @@
-"""Two-session comparison report: chart + Markdown (``swingform compare``)."""
+"""Two-session comparison report: chart + Markdown (``motionmirror compare``)."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from swingform_ai.compare import ComparisonRow, comparison_rows, extract_records
+from motionmirror.compare import ComparisonRow, comparison_rows, extract_records
 
 # Session identity is fixed to argument order (A = first, B = second).
 SESSION_COLORS = ["#2a78d6", "#1baf7a"]

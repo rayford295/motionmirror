@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from swingform_ai.ball_tracking import (
+from motionmirror.ball_tracking import (
     BallAnchor,
     BallPoint,
     build_proxy_track,

@@ -13,7 +13,7 @@ Output:
 5. Ball trajectory overlay or a clearly marked low-confidence proxy trail.
 6. `swing_report.json` with all timings, scores, and output paths.
 
-This is the first product-shaped workflow for SwingForm AI:
+This is the first product-shaped workflow for MotionMirror:
 
 ```text
 long practice video
@@ -30,7 +30,7 @@ long practice video
 
 ```bash
 python -m pip install -e ".[pose]"
-swingform highlights path/to/long_practice_video.mp4 \
+motionmirror highlights path/to/long_practice_video.mp4 \
   --session-id range-session-001 \
   --top-k 3 \
   --shot-direction right \

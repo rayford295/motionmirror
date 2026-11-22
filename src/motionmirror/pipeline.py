@@ -6,9 +6,9 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from swingform_ai.analysis import Analysis, analyze_sequence
-from swingform_ai.report import write_markdown
-from swingform_ai.schema import PoseSequence
+from motionmirror.analysis import Analysis, analyze_sequence
+from motionmirror.report import write_markdown
+from motionmirror.schema import PoseSequence
 
 
 @dataclass
@@ -49,7 +49,7 @@ def run(
     out.mkdir(parents=True, exist_ok=True)
     is_video = source.suffix.lower() not in (".json",)
     if is_video:
-        from swingform_ai.video import extract_pose
+        from motionmirror.video import extract_pose
 
         print(f"Extracting pose from {source.name} ...", file=sys.stderr)
         sequence = extract_pose(source, model, progress=_progress)
@@ -69,12 +69,12 @@ def run(
 
     assets: dict[str, str] = {}
     if is_video and render:
-        from swingform_ai import render as rd
+        from motionmirror import render as rd
 
         tracks = None
         if analysis.sport == "golf" and ball_trail != "off" and analysis.reps:
-            from swingform_ai.ball_tracking import track_reps
-            from swingform_ai.video import read_video_info
+            from motionmirror.ball_tracking import track_reps
+            from motionmirror.video import read_video_info
 
             info = read_video_info(source)
             tracks = track_reps(source, sequence, analysis.reps, info.fps, info.width,

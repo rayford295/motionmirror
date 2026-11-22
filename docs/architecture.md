@@ -23,10 +23,10 @@ video ──► extract_pose ──► PoseSequence ──► profile.build_rows
 | `feedback.py` | `Check` / `Finding`, range evaluation, score, cross-rep consistency. |
 | `tracking.py` | `PrimaryAthleteTracker`: keeps the primary athlete when several people are detected. |
 | `ball_tracking.py` | Tee-anchored, quality-gated golf ball trail (review aid). |
-| `compare.py`, `session_compare.py` | Cross-session comparison (`swingform compare`). |
+| `compare.py`, `session_compare.py` | Cross-session comparison (`motionmirror compare`). |
 | `analysis.py` | `analyze_sequence` (including `side="auto"` and label overrides), quality warnings, CSV/JSON export. |
 | `pipeline.py` | `run()`: one source in, one output folder out. |
-| `cli.py` | `swingform analyze | highlights | register`. |
+| `cli.py` | `motionmirror analyze | highlights | register`. |
 
 ## Adding a Sport
 
