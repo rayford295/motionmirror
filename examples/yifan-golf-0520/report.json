@@ -1,0 +1,285 @@
+{
+  "tool": "swingform-ai 0.2.0",
+  "sport": "golf",
+  "side": "right",
+  "source": "golf.mp4",
+  "quality": {
+    "fps": 30.0487,
+    "width": 320,
+    "height": 568,
+    "pose_frames": 216,
+    "total_frames": 216,
+    "coverage": 1.0,
+    "mean_visibility": 0.8629,
+    "duration_s": 7.1551
+  },
+  "warnings": [
+    "Rep 1 ball trail: none",
+    "Rep 2 ball trail: none"
+  ],
+  "rep_count": 2,
+  "reps": [
+    {
+      "index": 1,
+      "confidence": 0.5464,
+      "source": "auto",
+      "notes": [
+        "downswing 0.67s is outside the usual 0.12-0.6s window"
+      ],
+      "phases": {
+        "address": {
+          "frame": 50,
+          "time_s": 1.664
+        },
+        "top": {
+          "frame": 90,
+          "time_s": 2.9951
+        },
+        "impact": {
+          "frame": 110,
+          "time_s": 3.6607
+        },
+        "finish": {
+          "frame": 120,
+          "time_s": 3.9935
+        }
+      },
+      "timing": {
+        "backswing_s": 1.3312,
+        "downswing_s": 0.6656,
+        "tempo_ratio": 2.0,
+        "total_s": 2.3296
+      },
+      "address": {
+        "lead_knee_angle_deg": 134.0807,
+        "trail_knee_angle_deg": 155.8907,
+        "trunk_tilt_deg": 27.8801,
+        "stance_width_torso": 0.6007
+      },
+      "top": {
+        "lead_arm_angle_deg": 146.9729,
+        "trail_elbow_angle_deg": 120.4382,
+        "shoulder_hip_separation_deg": 7.0989,
+        "hand_height_torso": 0.1459,
+        "hip_sway_torso": 0.0749
+      },
+      "impact": {
+        "lead_knee_angle_deg": 163.7655,
+        "head_drift_torso": 0.2111,
+        "hip_slide_torso": 0.0276,
+        "peak_hand_speed_torso_s": 4.6152
+      },
+      "finish": {
+        "hand_height_torso": -0.9218,
+        "lead_knee_angle_deg": 139.6984
+      },
+      "score": 60.0,
+      "findings": [
+        {
+          "key": "timing.tempo_ratio",
+          "label": "Tempo (backswing : downswing)",
+          "value": 2.0,
+          "low": 2.0,
+          "high": 4.0,
+          "unit": ":1",
+          "status": "low",
+          "message": "Backswing is quick relative to the downswing; try a smoother, longer takeaway.",
+          "why": "Skilled swings commonly cluster around a 3:1 backswing-to-downswing time ratio."
+        },
+        {
+          "key": "top.lead_arm_angle_deg",
+          "label": "Lead arm at top",
+          "value": 146.973,
+          "low": 145.0,
+          "high": null,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A fairly straight lead arm keeps the swing radius stable."
+        },
+        {
+          "key": "top.hip_sway_torso",
+          "label": "Hip sway in backswing",
+          "value": 0.075,
+          "low": null,
+          "high": 0.35,
+          "unit": "torso",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Lateral hip drift moves the low point of the swing and costs strike consistency."
+        },
+        {
+          "key": "impact.head_drift_torso",
+          "label": "Head movement to impact",
+          "value": 0.211,
+          "low": null,
+          "high": 0.35,
+          "unit": "torso",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A stable head is a common proxy for a stable swing centre."
+        },
+        {
+          "key": "address.lead_knee_angle_deg",
+          "label": "Knee flex at address",
+          "value": 134.081,
+          "low": 135.0,
+          "high": 175.0,
+          "unit": "deg",
+          "status": "low",
+          "message": "Very deep knee flex at address; stand a little taller.",
+          "why": "Moderate knee flex gives an athletic, balanced setup."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "confidence": 0.8388,
+      "source": "auto",
+      "notes": [],
+      "phases": {
+        "address": {
+          "frame": 121,
+          "time_s": 4.0268
+        },
+        "top": {
+          "frame": 153,
+          "time_s": 5.0917
+        },
+        "impact": {
+          "frame": 160,
+          "time_s": 5.3247
+        },
+        "finish": {
+          "frame": 213,
+          "time_s": 7.0885
+        }
+      },
+      "timing": {
+        "backswing_s": 1.0649,
+        "downswing_s": 0.233,
+        "tempo_ratio": 4.5714,
+        "total_s": 3.0617
+      },
+      "address": {
+        "lead_knee_angle_deg": 139.6984,
+        "trail_knee_angle_deg": 153.3296,
+        "trunk_tilt_deg": 22.0663,
+        "stance_width_torso": 0.6044
+      },
+      "top": {
+        "lead_arm_angle_deg": 126.2874,
+        "trail_elbow_angle_deg": 65.9747,
+        "shoulder_hip_separation_deg": 9.4112,
+        "hand_height_torso": 0.1167,
+        "hip_sway_torso": 0.0909
+      },
+      "impact": {
+        "lead_knee_angle_deg": 136.3422,
+        "head_drift_torso": 0.1911,
+        "hip_slide_torso": 0.0616,
+        "peak_hand_speed_torso_s": 7.5181
+      },
+      "finish": {
+        "hand_height_torso": -0.9753,
+        "lead_knee_angle_deg": 151.0192
+      },
+      "score": 60.0,
+      "findings": [
+        {
+          "key": "timing.tempo_ratio",
+          "label": "Tempo (backswing : downswing)",
+          "value": 4.571,
+          "low": 2.0,
+          "high": 4.0,
+          "unit": ":1",
+          "status": "high",
+          "message": "Downswing is slow relative to the backswing; let the transition accelerate.",
+          "why": "Skilled swings commonly cluster around a 3:1 backswing-to-downswing time ratio."
+        },
+        {
+          "key": "top.lead_arm_angle_deg",
+          "label": "Lead arm at top",
+          "value": 126.287,
+          "low": 145.0,
+          "high": null,
+          "unit": "deg",
+          "status": "low",
+          "message": "Lead arm is noticeably bent at the top; a wider arc usually adds consistency.",
+          "why": "A fairly straight lead arm keeps the swing radius stable."
+        },
+        {
+          "key": "top.hip_sway_torso",
+          "label": "Hip sway in backswing",
+          "value": 0.091,
+          "low": null,
+          "high": 0.35,
+          "unit": "torso",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Lateral hip drift moves the low point of the swing and costs strike consistency."
+        },
+        {
+          "key": "impact.head_drift_torso",
+          "label": "Head movement to impact",
+          "value": 0.191,
+          "low": null,
+          "high": 0.35,
+          "unit": "torso",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A stable head is a common proxy for a stable swing centre."
+        },
+        {
+          "key": "address.lead_knee_angle_deg",
+          "label": "Knee flex at address",
+          "value": 139.698,
+          "low": 135.0,
+          "high": 175.0,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Moderate knee flex gives an athletic, balanced setup."
+        }
+      ]
+    }
+  ],
+  "consistency": {
+    "timing.tempo_ratio": {
+      "mean": 3.2857,
+      "std": 1.2857,
+      "n": 2,
+      "min": 2.0,
+      "max": 4.5714
+    },
+    "timing.backswing_s": {
+      "mean": 1.1981,
+      "std": 0.1331,
+      "n": 2,
+      "min": 1.0649,
+      "max": 1.3312
+    },
+    "top.lead_arm_angle_deg": {
+      "mean": 136.6302,
+      "std": 10.3427,
+      "n": 2,
+      "min": 126.2874,
+      "max": 146.9729
+    },
+    "impact.head_drift_torso": {
+      "mean": 0.2011,
+      "std": 0.01,
+      "n": 2,
+      "min": 0.1911,
+      "max": 0.2111
+    },
+    "top.hand_height_torso": {
+      "mean": 0.1313,
+      "std": 0.0146,
+      "n": 2,
+      "min": 0.1167,
+      "max": 0.1459
+    }
+  },
+  "disclaimer": "Metrics are 2D single-camera pose proxies. Reference ranges are broad starter values for spotting outliers, not coaching verdicts. No club, ball-flight or make/miss measurement is performed."
+}

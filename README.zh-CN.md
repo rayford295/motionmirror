@@ -1,127 +1,101 @@
 # SwingForm AI
 
 <p align="center">
-  <img src="docs/assets/readme/hero.png" alt="SwingForm AI golf swing analysis hero" width="980">
+  <a href="docs/assets/promo/swingform-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="观看 SwingForm AI 宣传片" width="900"></a>
+  <br><sub><b>▶ <a href="docs/assets/promo/swingform-promo.mp4">观看英文配音宣传片</a></b></sub>
 </p>
 
-SwingForm AI 是一个纯开源 sports-AI 项目：把真实训练视频变成姿态关键点、动作阶段和可解释的姿势指标。Golf 和 basketball 分成两个运动 profile，但共享同一个姿态分析核心。
+SwingForm AI 把一段普通手机拍摄的高尔夫挥杆、篮球跳投或羽毛球击球视频，转换成分阶段的姿态指标、
+通俗易懂的反馈和可回看的可视化结果。每一个数字都能追溯到具体的帧、关节和参考区间。
 
-这不是论文仓库，而是一个要好看、好用、可复现、能长期成长的开源项目。
-
-```text
-训练视频 -> 姿态关键点 -> 动作阶段 -> 可解释指标 -> 反馈
+```
+视频 ─► 姿态（MediaPipe，33 个关键点）─► 动作次数 + 阶段 ─► 各阶段指标 ─► 反馈 + 报告
 ```
 
-现在最明确的产品闭环是：
+## 旗舰演示
 
-```text
-长训练视频 -> 统计挥杆次数 -> 挑出最好几次 -> 输出高质量短视频 -> 加球轨迹特效
-```
+### 篮球：Rayford 海边跳投
 
-## 开源示例
+投篮者只占 1080×1920、120 fps 画面高度的 **9%**。SwingForm 先定位人物，再放大做第二遍姿态识别，
+并把投篮拆成六个阶段。出手时肘部伸展 **176°**，出手点高于头顶 **0.52 个躯干长度**，
+下蹲到出手 **0.37 秒**，五项检查全部在参考区间内。
 
-现在仓库里有 golf 和 basketball 两类个人运动示例。每个示例都包含原视频、姿态 JSON、指标 CSV、报告摘要和视觉索引。
+![Rayford 关键姿态](docs/assets/rayford-basketball/keyposes.jpg)
 
-| 示例 | 运动 | 姿态覆盖 | 事件 | 报告 |
-| --- | --- | ---: | --- | --- |
-| `yifan-golf-0520` | golf | 216 / 216 frames | 2 swings | [报告](docs/examples/yifan-golf-0520.md) |
-| `yifan-basketball-0601` | basketball | 244 / 244 frames | 1 release-proxy event | [报告](docs/examples/yifan-basketball-0601.md) |
-| `golf-swing-demo` | golf | 361 / 361 frames | 2 swings | [报告](docs/examples/golf_swing_demo_2026-05-31.md) |
+### 羽毛球：陈静仪
 
-![Golf swing metric timeline](docs/assets/golf-swing-demo/metric_timeline.png)
+全新的羽毛球分析在 12 秒内识别出 **4 次击球**，自动分为**平抽**和**高手击球**，并按击球类型给出建议。
+高手击球的击球点取手臂伸到最高的那一帧，因为击球后手臂还会继续加速向下。
 
-![Golf swing skeleton keyposes](docs/assets/golf-swing-demo/skeleton_keyposes.png)
-
-![Basketball motion timeline](docs/assets/yifan-basketball-0601/metric_timeline.png)
-
-Basketball 目前已经能做身体动作记录和 pose-based release proxy，但还不声称能测出命中结果、真实出手角度、球路或篮筐交互。
+![陈静仪 关键姿态](docs/assets/chen-jingyi-badminton/keyposes.jpg)
 
 ## 快速开始
 
-安装：
-
 ```bash
-python -m pip install -e .
+pip install -e ".[pose]"
+
+swingform analyze my_swing.mp4 --sport golf --out runs/range-day
+swingform analyze my_shot.mov  --sport basketball --side auto
+swingform analyze rally.mp4    --sport badminton  --side auto
 ```
 
-运行小型姿态 JSON demo：
+输出文件夹包含：
 
-```bash
-python -m swingform_ai.analyze_pose_json examples/sample_pose_sequence.json --sport golf
-python -m swingform_ai.analyze_pose_json examples/sample_pose_sequence.json --sport basketball
-```
-
-复现 golf 示例：
-
-```bash
-python -m pip install -e ".[pose]"
-python scripts/analyze_local_golf_video.py \
-  examples/golf-swing-demo/golf.mp4 \
-  --session-id golf-swing-demo \
-  --handedness right \
-  --events-json examples/golf_swing_demo_events.json
-```
-
-复现 basketball 示例：
-
-```bash
-python scripts/analyze_local_basketball_video.py \
-  examples/yifan-basketball-0601/basketball.mp4 \
-  --session-id yifan-basketball-0601 \
-  --shooting-side right \
-  --copy-video \
-  --render-overlay
-```
-
-从长视频生成 highlight reel：
-
-```bash
-python scripts/build_highlight_reel.py path/to/long_practice_video.mp4 \
-  --session-id range-session-001 \
-  --top-k 3 \
-  --shot-direction right
-```
-
-## 仓库结构
-
-| 路径 | 用途 |
+| 文件 | 内容 |
 | --- | --- |
-| `examples/golf-swing-demo/` | 开源原视频、姿态导出、指标和报告输入 |
-| `examples/yifan-golf-0520/` | Yifan golf 个人练习示例 |
-| `examples/yifan-basketball-0601/` | Yifan basketball 个人动作记录示例 |
-| `docs/examples/` | 可读的 demo 报告 |
-| `docs/assets/` | README 和报告图片 |
-| `scripts/analyze_local_golf_video.py` | golf 视频分析脚本 |
-| `scripts/analyze_local_basketball_video.py` | basketball 视频分析脚本 |
-| `scripts/build_highlight_reel.py` | 长视频剪辑和球轨迹特效脚本 |
-| `src/swingform_ai/` | 姿态 schema、几何计算、运动 profile 和 CLI |
-| `tests/` | 单元测试 |
+| `report.md` / `report.json` | 每次动作的阶段、节奏、指标、参考区间检查、多次动作一致性 |
+| `overlay.mp4` | 骨架、残影、阶段标签和实时关节角度（H.264，浏览器可直接播放） |
+| `keyposes.jpg` | 每个阶段的真实画面，每次动作一行 |
+| `timeline.png` | 手部/手腕信号与角度曲线，标注各阶段 |
+| `metrics.csv` | 逐帧指标，带阶段标记 |
+| `pose.json` | 原始关键点，可不重跑姿态模型直接再分析 |
 
-## 项目原则
+已经有关键点数据？`swingform analyze pose.json --sport golf` 不需要任何视频依赖。
 
-1. 美观很重要：README、图表和报告都应该容易扫读。
-2. 实用很重要：每个指标都要能回到具体帧、阶段或姿态。
-3. 开源示例很重要：别人应该能看到输入和输出一起出现。
-4. 运动 profile 要分开：golf 和 basketball 共享 pose core，但保留各自阶段和指标。
-5. 结论要克制：单摄像头姿态估计有价值，但不是 launch monitor，也不是职业教练替代品。
+## 测量内容
 
-项目气质和长期方向见 [docs/north_star.md](docs/north_star.md)。
+**高尔夫**（准备 → 顶点 → 击球 → 收杆）：节奏比、上杆/下杆时间、顶点时前臂角度、手部高度、
+髋部侧移、击球时头部位移、膝盖弯曲、站位宽度、肩髋分离、手部峰值速度。
 
-## 技术主线
+**篮球**（持球 → 下蹲 → 上提 → 出手 → 随球 → 落地）：出手时肘部伸展、下蹲时膝盖弯曲、
+出手高度（高于头部多少）、下蹲到出手时间、辅助手间距、落地横向漂移。
 
-下一阶段聚焦两个方向：
+**羽毛球**（准备 → 引拍 → 击球 → 随挥 → 回位，每次击球自动分为高手/平抽/低手）：击球时手臂伸展与击球高度、
+非持拍手位置、持拍手峰值速度、准备姿势膝盖弯曲、击球时站位宽度、引拍节奏。
 
-1. 球的轨迹：球检测、轨迹渲染、平滑拟合，后面再做相机几何下的 3D flight。
-2. 3D 视觉：pseudo-3D skeleton、motion trails，后面再接 world-grounded motion reconstruction。
+各指标的定义、单位和参考区间的依据见 [docs/metrics.md](docs/metrics.md)。
 
-具体技术路径见 [docs/technical_tracks.md](docs/technical_tracks.md)。
+## 如何保证结果可信
 
-长视频到短视频的具体工作流见 [docs/highlight_reel_pipeline.md](docs/highlight_reel_pipeline.md)。
+- **宽高比校正**：MediaPipe 的 x 按宽度、y 按高度归一化，计算角度前先还原，竖屏视频不会失真。
+- **图像平面角度**：单目深度 z 噪声很大，会让膝盖角度跳动 20°，因此默认使用 2D 几何。
+- **与尺度无关的距离**：位移以“躯干长度”为单位，不受拍摄远近影响。
+- **缺帧不崩溃**：被遮挡的关节记为 n/a，短暂缺失会插值，阶段值取 5 帧中位数。
+- **每次动作都有置信度**：可见度低或时间不合理时置信度降低，并在报告中说明原因。
+- **不虚构球路**：只有真正检测到上升的抛物线轨迹时才画球迹（`--ball-trail detect`）；
+  `--ball-trail proxy` 画出的虚线弧只是示意，不是测量值。不估计球速、发射角、转速、
+  飞行距离或命中与否。
 
-## 下一步
+自动检测基于启发式规则。若某个阶段判断有误，可用 `--labels labels.json` 提供人工标注时间
+（示例见 [examples/golf-swing-demo/labels.json](examples/golf-swing-demo/labels.json)）。
 
-1. 先把长视频变成 scored highlight reel。
-2. 先做 ball trajectory 和漂亮的 trail overlay。
-3. 做 pseudo-3D skeleton review。
-4. 给 basketball 加 multi-person tracking，先稳定选中投篮者。
-5. 再加 golf club tracking、basketball ball/rim association 和更可靠的模型训练数据。
+## 示例
+
+| 会话 | 次数 | 报告 |
+| --- | --- | --- |
+| `rayford-basketball` | 1 次投篮 | [report.md](examples/rayford-basketball/report.md) |
+| `chen-jingyi-badminton` | 4 次击球 | [report.md](examples/chen-jingyi-badminton/report.md) |
+| `yifan-golf-0520` | 2 次挥杆 | [report.md](examples/yifan-golf-0520/report.md) |
+| `golf-swing-demo` | 2 次挥杆 | [report.md](examples/golf-swing-demo/report.md) |
+| `yifan-basketball-0601` | 1 次投篮 | [report.md](examples/yifan-basketball-0601/report.md) |
+
+## 开发
+
+```bash
+pip install -e ".[pose,dev]"
+pytest -q && ruff check src tests
+```
+
+---
+
+[网站](https://rayford295.github.io/swingform-ai/) · [3D 查看器](https://rayford295.github.io/swingform-ai/viewer/pose3d.html) · [English](README.md) · MIT License

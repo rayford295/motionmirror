@@ -34,3 +34,4 @@ reports/
 
 # macOS
 .DS_Store
+tools/promo/.cache/

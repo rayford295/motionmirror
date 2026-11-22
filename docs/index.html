@@ -210,6 +210,8 @@ section{padding:96px 80px;}
 
 /* ─── DEMO ────────────────────────────────────────── */
 #demo{background:#fff;border-top:1px solid var(--border);}
+#flagship{background:#fff;border-top:1px solid var(--border);}
+#flagship .demo-grid{align-items:start;}
 .demo-grid{
   display:grid;grid-template-columns:1fr 1fr;
   gap:32px;align-items:start;
@@ -375,6 +377,7 @@ footer{
     SWING<span>FORM</span> AI
   </a>
   <ul class="nav-links">
+    <li><a href="#promo">Watch</a></li>
     <li><a href="#demo">Demo</a></li>
     <li><a href="#pipeline">Pipeline</a></li>
     <li><a href="#examples">Examples</a></li>
@@ -397,8 +400,8 @@ footer{
       AI
     </h1>
     <p class="hero-desc">
-      Turn real practice video into pose landmarks, sport-specific phases,
-      and explainable posture metrics — from a single phone clip.
+      Turn a golf swing, a jump shot or a badminton stroke into sport-specific phases,
+      explainable posture metrics and plain-language feedback, from a single phone clip.
     </p>
     <div class="hero-pipeline">
       video <span>→</span> pose landmarks <span>→</span> swing phases<br>
@@ -409,20 +412,20 @@ footer{
         <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
         View on GitHub
       </a>
-      <a href="#demo" class="btn-ghost">See Demo ↓</a>
+      <a href="#promo" class="btn-ghost">Watch the Promo ↓</a>
     </div>
     <div class="status-band" aria-label="Project status">
       <div class="status-item">
-        <div class="status-value">3</div>
+        <div class="status-value">5</div>
         <div class="status-label">Open sessions</div>
       </div>
       <div class="status-item">
-        <div class="status-value">821</div>
+        <div class="status-value">1,891</div>
         <div class="status-label">Pose frames</div>
       </div>
       <div class="status-item">
-        <div class="status-value">3D</div>
-        <div class="status-label">Viewer ready</div>
+        <div class="status-value">3</div>
+        <div class="status-label">Sports</div>
       </div>
       <div class="status-item">
         <div class="status-value">MIT</div>
@@ -437,6 +440,33 @@ footer{
   </div>
 </section>
 
+<!-- ── PROMO + FLAGSHIP ─────────────────────────────────── -->
+<section id="promo">
+  <div class="section-label">Watch</div>
+  <h2 class="section-title">SwingForm AI in 90 Seconds</h2>
+  <p class="section-sub">Narrated walkthrough of the two flagship demos: a 120 fps jump shot and a badminton rally.</p>
+  <div class="demo-card" style="max-width:1100px;margin:0 auto;">
+    <video src="assets/promo/swingform-promo.mp4" poster="assets/promo/poster.jpg" controls playsinline preload="metadata" style="width:100%;border-radius:12px;"></video>
+  </div>
+</section>
+
+<section id="flagship">
+  <div class="section-label">Flagship Demos</div>
+  <h2 class="section-title">Basketball and Badminton, Measured</h2>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <div class="demo-card-label"><span>●</span> Rayford · Jump Shot · 120 fps</div>
+      <video src="https://raw.githubusercontent.com/rayford295/swingform-ai/main/examples/rayford-basketball/overlay.mp4" poster="assets/rayford-basketball/keyposes.jpg" controls muted playsinline preload="metadata" style="max-height:560px;width:100%;object-fit:contain;background:#000;"></video>
+      <div class="demo-caption">The shooter fills 9% of the frame, so a second zoomed pose pass tracks him. Six phases, and all five checks in range: 176° elbow extension at release, release 0.52 torso above the head, 0.37 s from dip to release.</div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-card-label"><span>◆</span> Chen Jingyi (陈静仪) · Badminton · 4 Strokes</div>
+      <video src="https://raw.githubusercontent.com/rayford295/swingform-ai/main/examples/chen-jingyi-badminton/overlay.mp4" poster="assets/chen-jingyi-badminton/keyposes.jpg" controls muted playsinline preload="metadata" style="width:100%;"></video>
+      <div class="demo-caption">Strokes found from racket-hand speed and classified as drive or overhead. Overhead contact sits at the top of the reach, with stroke-specific cues such as "take the shuttle earlier, above the head."</div>
+    </div>
+  </div>
+</section>
+
 <!-- ── DEMO ─────────────────────────────────────────────── -->
 <section id="demo">
   <div class="section-label">Live Results</div>
@@ -447,25 +477,25 @@ footer{
 
   <div class="demo-grid">
     <div class="demo-card">
-      <div class="demo-card-label"><span>●</span> Skeleton + Ball Trail · Yifan Golf 05.20</div>
+      <div class="demo-card-label"><span>●</span> Overlay · Phases + Live Angles · Yifan Golf 05.20</div>
       <video
-        src="https://raw.githubusercontent.com/rayford295/swingform-ai/main/examples/yifan-golf-0520/golf_effects.mp4"
-        poster="assets/yifan-golf-0520/effects_poster.jpg"
+        src="https://raw.githubusercontent.com/rayford295/swingform-ai/main/examples/yifan-golf-0520/overlay.mp4"
+        poster="assets/yifan-golf-0520/poster.jpg"
         autoplay muted loop playsinline style="max-height:520px;object-fit:cover;"></video>
       <div class="demo-caption">
-        Depth-aware skeleton coloring with a tee-anchored ball-trail aid. Detector confidence gates keep noisy highlights from looking like measured flight.
+        Skeleton with ghost trail, auto-detected swing phases and live joint angles. A ball trail is drawn only when a real rising track is detected; nothing is invented.
       </div>
     </div>
     <div>
       <div class="demo-card" style="margin-bottom:20px;">
-        <div class="demo-card-label"><span>◆</span> Skeleton Keyposes · 2 Swing Cycles</div>
-        <img src="assets/yifan-golf-0520/skeleton_keyposes.png" alt="Skeleton keyposes">
-        <div class="demo-caption">Address → Top → Impact proxy → Finish, detected automatically from wrist trajectory</div>
+        <div class="demo-card-label"><span>◆</span> Key Poses · Real Frames · 2 Swings</div>
+        <img src="assets/yifan-golf-0520/keyposes.jpg" alt="Key poses">
+        <div class="demo-caption">Address → Top → Impact → Finish, detected from the hand path; full swings measure a 0.23 s downswing</div>
       </div>
       <div class="demo-card">
-        <div class="demo-card-label"><span>▲</span> Metric Timeline · 4 Kinematic Signals</div>
-        <img src="assets/yifan-golf-0520/metric_timeline.png" alt="Metric timeline">
-        <div class="demo-caption">Hand height · Lead arm angle · Shoulder-hip separation · Wrist speed — per-frame across the session</div>
+        <div class="demo-card-label"><span>▲</span> Metric Timeline · Phase Markers</div>
+        <img src="assets/yifan-golf-0520/timeline.png" alt="Metric timeline">
+        <div class="demo-caption">Hand height · hand speed · lead arm angle, per frame, with every detected phase marked</div>
       </div>
     </div>
   </div>
@@ -476,8 +506,8 @@ footer{
       <div class="metric-lbl">Pose coverage</div>
     </div>
     <div class="metric-cell">
-      <div class="metric-val">7</div>
-      <div class="metric-lbl">Kinematic metrics per frame</div>
+      <div class="metric-val">5</div>
+      <div class="metric-lbl">Explainable checks per rep</div>
     </div>
     <div class="metric-cell">
       <div class="metric-val">30<span class="unit">fps</span></div>
@@ -494,7 +524,7 @@ footer{
 <section id="pipeline">
   <div class="section-label">How It Works</div>
   <h2 class="section-title" style="color:#fff;">The Full Pipeline</h2>
-  <p class="section-sub">Five stages from raw video to feedback-ready output.</p>
+  <p class="section-sub">Five stages from raw video to feedback you can check frame by frame.</p>
 
   <div class="pipeline-steps">
     <div class="step">
@@ -510,17 +540,17 @@ footer{
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-name">Profiles</div>
-      <div class="step-desc">Golf address/top/impact/finish · Basketball set/dip/release proxy</div>
+      <div class="step-desc">Golf address→finish · Basketball set→landing · Badminton ready→recovery · per-rep confidence</div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
       <div class="step-name">Metrics</div>
-      <div class="step-desc">Elbow · knee · wrist height · shoulder-hip · body speed · drift proxies</div>
+      <div class="step-desc">Aspect-corrected angles · tempo · torso-normalized drift · release height</div>
     </div>
     <div class="step">
       <div class="step-num">5</div>
       <div class="step-name">Output</div>
-      <div class="step-desc">CSV · JSON · effects video · 3D viewer · Markdown report</div>
+      <div class="step-desc">Feedback with reference ranges · report · overlay · key poses · CSV</div>
     </div>
   </div>
 </section>
@@ -529,48 +559,72 @@ footer{
 <section id="examples">
   <div class="section-label">Open Examples</div>
   <h2 class="section-title">Inspectable End-to-End</h2>
-  <p class="section-sub">Every example is committed with its source clip, pose export, metrics, and visual output — so every step is reproducible.</p>
+  <p class="section-sub">Every example is committed with its source clip and everything <code>swingform analyze</code> produced from it, so every number is reproducible.</p>
 
   <div class="examples-grid">
     <div class="ex-card">
-      <img src="assets/yifan-golf-0520/skeleton_keyposes.png" alt="Yifan Golf 05.20">
+      <img src="assets/rayford-basketball/keyposes.jpg" alt="Rayford basketball">
+      <div class="ex-card-body">
+        <div class="ex-tag">BASKETBALL · 1080×1920 · 120fps</div>
+        <div class="ex-card-title">Rayford — Oceanside jump shot</div>
+        <div class="ex-card-meta">6.8s · auto-zoom pose pass · 1 shot · 5/5 checks in range</div>
+        <div class="ex-files">
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/rayford-basketball/overlay.mp4" class="ex-file-link" target="_blank">overlay.mp4</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/rayford-basketball/report.md" class="ex-file-link" target="_blank">report.md</a>
+        </div>
+      </div>
+    </div>
+    <div class="ex-card">
+      <img src="assets/chen-jingyi-badminton/keyposes.jpg" alt="Chen Jingyi badminton">
+      <div class="ex-card-body">
+        <div class="ex-tag">BADMINTON · 1920×1080 · 30fps</div>
+        <div class="ex-card-title">Chen Jingyi — Drives and overheads</div>
+        <div class="ex-card-meta">12.1s · 4 strokes · stroke type auto-classified</div>
+        <div class="ex-files">
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/chen-jingyi-badminton/overlay.mp4" class="ex-file-link" target="_blank">overlay.mp4</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/chen-jingyi-badminton/report.md" class="ex-file-link" target="_blank">report.md</a>
+        </div>
+      </div>
+    </div>
+    <div class="ex-card">
+      <img src="assets/yifan-golf-0520/keyposes.jpg" alt="Yifan Golf 05.20">
       <div class="ex-card-body">
         <div class="ex-tag">GOLF · 320×568 · 30fps</div>
         <div class="ex-card-title">Yifan Golf 05.20 — Short practice clip</div>
         <div class="ex-card-meta">7.19s · 216 frames · 2 swings · 100% pose coverage</div>
         <div class="ex-files">
           <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0520/golf.mp4" class="ex-file-link" target="_blank">golf.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0520/pose_sequence.json" class="ex-file-link" target="_blank">pose.json</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0520/pose.json" class="ex-file-link" target="_blank">pose.json</a>
           <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0520/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/docs/examples/yifan-golf-0520.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-golf-0520/report.md" class="ex-file-link" target="_blank">report.md</a>
         </div>
       </div>
     </div>
     <div class="ex-card">
-      <img src="assets/yifan-basketball-0601/overlay_poster.jpg" alt="Yifan Basketball 06.01">
+      <img src="assets/yifan-basketball-0601/keyposes.jpg" alt="Yifan Basketball 06.01">
       <div class="ex-card-body">
         <div class="ex-tag">BASKETBALL · 568×320 · 30fps</div>
-        <div class="ex-card-title">Yifan Basketball 06.01 — Simple release-proxy clip</div>
-        <div class="ex-card-meta">8.13s · 244 / 244 pose frames · 1 release-proxy event</div>
+        <div class="ex-card-title">Yifan Basketball 06.01 — One jump shot</div>
+        <div class="ex-card-meta">8.13s · 244 / 244 pose frames · 1 shot · side auto-detected</div>
         <div class="ex-files">
           <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0601/basketball.mp4" class="ex-file-link" target="_blank">basketball.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0601/basketball_overlay.mp4" class="ex-file-link" target="_blank">overlay.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0601/pose_sequence.json" class="ex-file-link" target="_blank">pose.json</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/docs/examples/yifan-basketball-0601.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0601/overlay.mp4" class="ex-file-link" target="_blank">overlay.mp4</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0601/pose.json" class="ex-file-link" target="_blank">pose.json</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/yifan-basketball-0601/report.md" class="ex-file-link" target="_blank">report.md</a>
         </div>
       </div>
     </div>
     <div class="ex-card">
-      <img src="assets/golf-swing-demo/skeleton_keyposes.png" alt="Open demo">
+      <img src="assets/golf-swing-demo/keyposes.jpg" alt="Open demo">
       <div class="ex-card-body">
         <div class="ex-tag">GOLF · 320×568 · 30fps</div>
         <div class="ex-card-title">Golf Swing Demo — Original open example</div>
         <div class="ex-card-meta">14.44s · 361 frames · 2 swings · 100% pose coverage</div>
         <div class="ex-files">
           <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/golf-swing-demo/golf.mp4" class="ex-file-link" target="_blank">golf.mp4</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/golf-swing-demo/pose_sequence.json" class="ex-file-link" target="_blank">pose.json</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/golf-swing-demo/pose.json" class="ex-file-link" target="_blank">pose.json</a>
           <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/golf-swing-demo/metrics.csv" class="ex-file-link" target="_blank">metrics.csv</a>
-          <a href="https://github.com/rayford295/swingform-ai/blob/main/docs/examples/golf_swing_demo_2026-05-31.md" class="ex-file-link" target="_blank">report.md</a>
+          <a href="https://github.com/rayford295/swingform-ai/blob/main/examples/golf-swing-demo/report.md" class="ex-file-link" target="_blank">report.md</a>
         </div>
       </div>
     </div>
@@ -581,27 +635,23 @@ footer{
 <section id="quickstart">
   <div class="section-label">Get Started</div>
   <h2 class="section-title">Quickstart</h2>
-  <p class="section-sub">Install and run on your own video in three steps.</p>
+  <p class="section-sub">Install once, then one command per clip.</p>
 
   <div class="code-block">
     <span class="comment"># 1. Install</span><br>
-    <span class="cmd">python -m pip install -e ".[pose]"</span>
+    <span class="cmd">pip install -e ".[pose]"</span>
   </div>
   <div class="code-block">
-    <span class="comment"># 2. Analyze a golf video (pose + metrics + charts)</span><br>
-    <span class="cmd">python scripts/analyze_local_golf_video.py <span class="flag">your_video.mp4</span> \</span><br>
-    &nbsp;&nbsp;<span class="flag">--session-id</span> <span class="cmd">my-session</span> <span class="flag">--handedness</span> <span class="cmd">right</span>
+    <span class="comment"># 2. Analyze a golf swing: report, overlay, key poses, timeline</span><br>
+    <span class="cmd">swingform analyze <span class="flag">your_swing.mp4</span> <span class="flag">--sport</span> golf <span class="flag">--out</span> runs/session1</span>
   </div>
   <div class="code-block">
-    <span class="comment"># 3. Analyze a basketball clip (pose + metrics + overlay)</span><br>
-    <span class="cmd">python scripts/analyze_local_basketball_video.py <span class="flag">your_video.mp4</span> \</span><br>
-    &nbsp;&nbsp;<span class="flag">--session-id</span> <span class="cmd">my-basketball-session</span> <span class="flag">--shooting-side</span> <span class="cmd">right</span> \<br>
-    &nbsp;&nbsp;<span class="flag">--copy-video</span> <span class="flag">--render-overlay</span>
+    <span class="comment"># 3. Analyze a jump shot (auto-detects the shooting hand, even in mirrored selfie video)</span><br>
+    <span class="cmd">swingform analyze <span class="flag">your_shot.mov</span> <span class="flag">--sport</span> basketball <span class="flag">--side</span> auto</span>
   </div>
   <div class="code-block">
-    <span class="comment"># 4. Render golf skeleton + ball trail video (one command)</span><br>
-    <span class="cmd">python scripts/golf_render.py <span class="flag">your_video.mp4</span> \</span><br>
-    &nbsp;&nbsp;<span class="flag">--output</span> <span class="cmd">output_effects.mp4</span>
+    <span class="comment"># 4. Cut the best swings out of a long range session</span><br>
+    <span class="cmd">swingform highlights <span class="flag">range_day.mp4</span> <span class="flag">--session-id</span> range-day <span class="flag">--top-k</span> 3</span>
   </div>
 
   <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">

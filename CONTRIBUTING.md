@@ -52,15 +52,14 @@ python -m pip install -e ".[pose]"
 Test:
 
 ```bash
-python -m unittest discover -s tests
+pytest -q && ruff check src tests
 ```
 
 Run the open golf demo:
 
 ```bash
-python scripts/analyze_local_golf_video.py \
-  examples/golf-swing-demo/golf.mp4 \
-  --session-id golf-swing-demo \
-  --handedness right \
-  --events-json examples/golf_swing_demo_events.json
+swingform analyze examples/golf-swing-demo/golf.mp4 --sport golf --out runs/demo
+# or with hand-checked phase times:
+swingform analyze examples/golf-swing-demo/golf.mp4 --sport golf \
+  --labels examples/golf-swing-demo/labels.json --out runs/demo-labels
 ```

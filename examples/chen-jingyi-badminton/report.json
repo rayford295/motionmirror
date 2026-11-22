@@ -1,0 +1,432 @@
+{
+  "tool": "swingform-ai 0.2.0",
+  "sport": "badminton",
+  "side": "right",
+  "source": "badminton.mp4",
+  "quality": {
+    "fps": 30.0,
+    "width": 1920,
+    "height": 1080,
+    "pose_frames": 364,
+    "total_frames": 364,
+    "coverage": 1.0,
+    "mean_visibility": 0.8675,
+    "duration_s": 12.1
+  },
+  "warnings": [
+    "side=auto picked 'right' (fastest-moving hand)."
+  ],
+  "rep_count": 4,
+  "reps": [
+    {
+      "index": 1,
+      "confidence": 0.8534,
+      "source": "auto",
+      "notes": [
+        "stroke type: drive"
+      ],
+      "stroke": "drive",
+      "phases": {
+        "ready": {
+          "frame": 0,
+          "time_s": 0.0
+        },
+        "backswing": {
+          "frame": 7,
+          "time_s": 0.2333
+        },
+        "contact": {
+          "frame": 24,
+          "time_s": 0.8
+        },
+        "follow_through": {
+          "frame": 35,
+          "time_s": 1.1667
+        },
+        "recovery": {
+          "frame": 45,
+          "time_s": 1.5
+        }
+      },
+      "timing": {
+        "backswing_to_contact_s": 0.5667,
+        "contact_to_recovery_s": 0.7
+      },
+      "ready": {
+        "knee_angle_deg": 88.3271,
+        "stance_width_torso": 0.5423
+      },
+      "backswing": {
+        "racket_elbow_angle_deg": 83.1466,
+        "off_hand_height_torso": -0.1347
+      },
+      "contact": {
+        "racket_elbow_angle_deg": 166.2535,
+        "racket_hand_height_torso": -0.5961,
+        "peak_hand_speed_torso_s": 5.4451,
+        "stance_width_torso": null,
+        "trunk_tilt_deg": 2.6979
+      },
+      "recovery": {
+        "hip_travel_torso": 0.8648
+      },
+      "score": 0.0,
+      "findings": [
+        {
+          "key": "timing.backswing_to_contact_s",
+          "label": "Backswing-to-contact time",
+          "value": 0.567,
+          "low": 0.08,
+          "high": 0.5,
+          "unit": "s",
+          "status": "high",
+          "message": "Long, slow swing; a compact preparation is easier to time.",
+          "why": "Compact, early preparation is a hallmark of consistent drives and lifts."
+        },
+        {
+          "key": "contact.stance_width_torso",
+          "label": "Base width at contact",
+          "value": null,
+          "low": 0.7,
+          "high": null,
+          "unit": "torso",
+          "status": "unknown",
+          "message": "Not measurable in this clip (joint hidden or phase missing).",
+          "why": "A wide base keeps balance on fast mid-court and net strokes."
+        },
+        {
+          "key": "ready.knee_angle_deg",
+          "label": "Ready-position knee bend",
+          "value": 88.327,
+          "low": 115.0,
+          "high": 165.0,
+          "unit": "deg",
+          "status": "low",
+          "message": "Very low ready stance; it can slow your first step.",
+          "why": "A flexed, athletic ready stance shortens the first step to the shuttle."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "confidence": 0.5775,
+      "source": "auto",
+      "notes": [
+        "stroke type: overhead",
+        "backswing-to-contact 0.60s is outside 0.05-0.6s"
+      ],
+      "stroke": "overhead",
+      "phases": {
+        "ready": {
+          "frame": 63,
+          "time_s": 2.1
+        },
+        "backswing": {
+          "frame": 72,
+          "time_s": 2.4
+        },
+        "contact": {
+          "frame": 90,
+          "time_s": 3.0
+        },
+        "follow_through": {
+          "frame": 108,
+          "time_s": 3.6
+        },
+        "recovery": {
+          "frame": 113,
+          "time_s": 3.7667
+        }
+      },
+      "timing": {
+        "backswing_to_contact_s": 0.6,
+        "contact_to_recovery_s": 0.7667
+      },
+      "ready": {
+        "knee_angle_deg": 131.3825,
+        "stance_width_torso": 0.5427
+      },
+      "backswing": {
+        "racket_elbow_angle_deg": 97.1405,
+        "off_hand_height_torso": -0.0393
+      },
+      "contact": {
+        "racket_elbow_angle_deg": 167.759,
+        "racket_hand_height_torso": 0.6551,
+        "peak_hand_speed_torso_s": 6.2148,
+        "stance_width_torso": null,
+        "trunk_tilt_deg": 2.7408
+      },
+      "recovery": {
+        "hip_travel_torso": 0.8983
+      },
+      "score": 50.0,
+      "findings": [
+        {
+          "key": "contact.racket_elbow_angle_deg",
+          "label": "Arm extension at contact",
+          "value": 167.759,
+          "low": 150.0,
+          "high": null,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Contact at full reach gives the steepest angle and most power overhead."
+        },
+        {
+          "key": "contact.racket_hand_height_torso",
+          "label": "Contact height",
+          "value": 0.655,
+          "low": 0.8,
+          "high": null,
+          "unit": "torso",
+          "status": "low",
+          "message": "Contact is low for an overhead; take the shuttle earlier, above the head.",
+          "why": "The higher the contact point, the more options and the steeper the shot."
+        },
+        {
+          "key": "backswing.off_hand_height_torso",
+          "label": "Non-racket arm raised",
+          "value": -0.039,
+          "low": 0.0,
+          "high": null,
+          "unit": "torso",
+          "status": "low",
+          "message": "Non-racket arm stays low; raise it to aim and to balance the rotation.",
+          "why": "Pointing the free arm at the shuttle helps timing and trunk rotation."
+        },
+        {
+          "key": "ready.knee_angle_deg",
+          "label": "Ready-position knee bend",
+          "value": 131.383,
+          "low": 115.0,
+          "high": 165.0,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A flexed, athletic ready stance shortens the first step to the shuttle."
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "confidence": 0.8944,
+      "source": "auto",
+      "notes": [
+        "stroke type: drive"
+      ],
+      "stroke": "drive",
+      "phases": {
+        "ready": {
+          "frame": 163,
+          "time_s": 5.4333
+        },
+        "backswing": {
+          "frame": 171,
+          "time_s": 5.7
+        },
+        "contact": {
+          "frame": 186,
+          "time_s": 6.2
+        },
+        "follow_through": {
+          "frame": 192,
+          "time_s": 6.4
+        },
+        "recovery": {
+          "frame": 208,
+          "time_s": 6.9333
+        }
+      },
+      "timing": {
+        "backswing_to_contact_s": 0.5,
+        "contact_to_recovery_s": 0.7333
+      },
+      "ready": {
+        "knee_angle_deg": 130.2001,
+        "stance_width_torso": 0.362
+      },
+      "backswing": {
+        "racket_elbow_angle_deg": 83.4224,
+        "off_hand_height_torso": -0.2682
+      },
+      "contact": {
+        "racket_elbow_angle_deg": 154.6009,
+        "racket_hand_height_torso": -0.4814,
+        "peak_hand_speed_torso_s": 5.0187,
+        "stance_width_torso": 0.9468,
+        "trunk_tilt_deg": 14.1649
+      },
+      "recovery": {
+        "hip_travel_torso": 0.7305
+      },
+      "score": 100.0,
+      "findings": [
+        {
+          "key": "timing.backswing_to_contact_s",
+          "label": "Backswing-to-contact time",
+          "value": 0.5,
+          "low": 0.08,
+          "high": 0.5,
+          "unit": "s",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Compact, early preparation is a hallmark of consistent drives and lifts."
+        },
+        {
+          "key": "contact.stance_width_torso",
+          "label": "Base width at contact",
+          "value": 0.947,
+          "low": 0.7,
+          "high": null,
+          "unit": "torso",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A wide base keeps balance on fast mid-court and net strokes."
+        },
+        {
+          "key": "ready.knee_angle_deg",
+          "label": "Ready-position knee bend",
+          "value": 130.2,
+          "low": 115.0,
+          "high": 165.0,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A flexed, athletic ready stance shortens the first step to the shuttle."
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "confidence": 0.8279,
+      "source": "auto",
+      "notes": [
+        "stroke type: overhead"
+      ],
+      "stroke": "overhead",
+      "phases": {
+        "ready": {
+          "frame": 294,
+          "time_s": 9.8
+        },
+        "backswing": {
+          "frame": 316,
+          "time_s": 10.5333
+        },
+        "contact": {
+          "frame": 333,
+          "time_s": 11.1
+        },
+        "follow_through": {
+          "frame": 346,
+          "time_s": 11.5333
+        },
+        "recovery": {
+          "frame": 357,
+          "time_s": 11.9
+        }
+      },
+      "timing": {
+        "backswing_to_contact_s": 0.5667,
+        "contact_to_recovery_s": 0.8
+      },
+      "ready": {
+        "knee_angle_deg": 149.1261,
+        "stance_width_torso": 0.0841
+      },
+      "backswing": {
+        "racket_elbow_angle_deg": 150.8381,
+        "off_hand_height_torso": 0.3181
+      },
+      "contact": {
+        "racket_elbow_angle_deg": 125.0564,
+        "racket_hand_height_torso": 0.5837,
+        "peak_hand_speed_torso_s": 6.8102,
+        "stance_width_torso": null,
+        "trunk_tilt_deg": 4.2807
+      },
+      "recovery": {
+        "hip_travel_torso": 0.7778
+      },
+      "score": 50.0,
+      "findings": [
+        {
+          "key": "contact.racket_elbow_angle_deg",
+          "label": "Arm extension at contact",
+          "value": 125.056,
+          "low": 150.0,
+          "high": null,
+          "unit": "deg",
+          "status": "low",
+          "message": "Hitting with a bent arm; reach up and strike at full extension.",
+          "why": "Contact at full reach gives the steepest angle and most power overhead."
+        },
+        {
+          "key": "contact.racket_hand_height_torso",
+          "label": "Contact height",
+          "value": 0.584,
+          "low": 0.8,
+          "high": null,
+          "unit": "torso",
+          "status": "low",
+          "message": "Contact is low for an overhead; take the shuttle earlier, above the head.",
+          "why": "The higher the contact point, the more options and the steeper the shot."
+        },
+        {
+          "key": "backswing.off_hand_height_torso",
+          "label": "Non-racket arm raised",
+          "value": 0.318,
+          "low": 0.0,
+          "high": null,
+          "unit": "torso",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Pointing the free arm at the shuttle helps timing and trunk rotation."
+        },
+        {
+          "key": "ready.knee_angle_deg",
+          "label": "Ready-position knee bend",
+          "value": 149.126,
+          "low": 115.0,
+          "high": 165.0,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A flexed, athletic ready stance shortens the first step to the shuttle."
+        }
+      ]
+    }
+  ],
+  "consistency": {
+    "contact.racket_elbow_angle_deg": {
+      "mean": 153.4175,
+      "std": 17.1479,
+      "n": 4,
+      "min": 125.0564,
+      "max": 167.759
+    },
+    "contact.peak_hand_speed_torso_s": {
+      "mean": 5.8722,
+      "std": 0.6907,
+      "n": 4,
+      "min": 5.0187,
+      "max": 6.8102
+    },
+    "timing.backswing_to_contact_s": {
+      "mean": 0.5583,
+      "std": 0.0363,
+      "n": 4,
+      "min": 0.5,
+      "max": 0.6
+    },
+    "ready.knee_angle_deg": {
+      "mean": 124.759,
+      "std": 22.33,
+      "n": 4,
+      "min": 88.3271,
+      "max": 149.1261
+    }
+  },
+  "disclaimer": "Metrics are 2D single-camera pose proxies. Reference ranges are broad starter values for spotting outliers, not coaching verdicts. No club, ball-flight or make/miss measurement is performed."
+}

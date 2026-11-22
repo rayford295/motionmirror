@@ -30,7 +30,7 @@ long practice video
 
 ```bash
 python -m pip install -e ".[pose]"
-python scripts/build_highlight_reel.py path/to/long_practice_video.mp4 \
+swingform highlights path/to/long_practice_video.mp4 \
   --session-id range-session-001 \
   --top-k 3 \
   --shot-direction right \

@@ -1,0 +1,45 @@
+# Changelog
+
+## 0.2.0 (2026-11-22)
+
+A full rebuild. The analysis logic moved out of four standalone scripts and into a tested
+package with one CLI.
+
+### Fixed
+
+- **Distorted joint angles.** Angles were computed on coordinates normalized separately by
+  width and height, which skews any non-square video. Geometry is now aspect-corrected.
+- **Noisy angles from depth.** 3D angles used MediaPipe's monocular `z`; angles now use the
+  image plane (`FramePose.point3d` still exposes depth).
+- **Wrong golf impact.** Impact was "hands back near address height", which produced
+  downswings of about 1.2 s. It is now the first low point after the top; full swings in the
+  examples measure 0.23 to 0.24 s.
+- **Follow-through mistaken for the top** when the finish ended higher than the top.
+- **Fake ball trails.** The renderer drew an invented arc whenever ball detection failed.
+  Trails are now drawn only for detected rising tracks; the proxy arc is opt-in and dashed.
+- **Videos that would not play in browsers.** Overlays are written as H.264 when available.
+- **Privacy.** Published pose files no longer contain absolute local paths.
+- A single hidden joint no longer crashes an analysis.
+
+### Added
+
+- `swingform analyze` for video or pose JSON, with `--side auto` for mirrored selfie clips,
+  `--labels` overrides, `--model lite|full|heavy`, `--ball-trail`, `--min-confidence`.
+- Per-rep phase metrics, reference-range checks with plain-language cues, scores,
+  cross-rep consistency, detection confidence with reasons, and capture-quality warnings.
+- Markdown and JSON reports, phase-tagged metrics CSV, a real-frame key-pose sheet, a timeline.
+- Torso-length normalization for all distances.
+- Synthetic swing and shot generators with known phase times; 28 tests; CI on Python
+  3.10 to 3.13 plus an end-to-end video smoke test.
+- `docs/metrics.md` describing every metric and range.
+
+### Removed
+
+- `scripts/golf_render.py`, `analyze_local_golf_video.py`, `analyze_local_basketball_video.py`,
+  `register_local_session.py` (replaced by `swingform analyze` / `swingform register`).
+  `build_highlight_reel.py` moved to `swingform highlights`.
+- The `swingform-analyze` entry point (use `swingform analyze pose.json`).
+
+## 0.1.0
+
+Initial golf and basketball demos.

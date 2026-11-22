@@ -27,23 +27,17 @@ This gives the project room to grow while making the open examples genuinely ins
 Register a session:
 
 ```bash
-python scripts/register_local_session.py /path/to/golf.mp4 --sport golf
+swingform register /path/to/golf.mp4 --sport golf
 ```
 
 The command writes a manifest under `data/local/sessions/`, which is ignored by git until the session is promoted into an open example.
 
-Analyze promoted examples with sport-specific scripts:
+Analyze promoted examples:
 
 ```bash
-python scripts/analyze_local_golf_video.py /path/to/golf.mp4 \
-  --session-id yifan-golf-0520 \
-  --handedness right
-
-python scripts/analyze_local_basketball_video.py /path/to/basketball.mp4 \
-  --session-id yifan-basketball-0601 \
-  --shooting-side right \
-  --copy-video \
-  --render-overlay
+swingform analyze /path/to/golf.mp4 --sport golf --out examples/yifan-golf-0520
+swingform analyze /path/to/basketball.mp4 --sport basketball --side auto \
+  --out examples/yifan-basketball-0601
 ```
 
 ## Longitudinal Metrics

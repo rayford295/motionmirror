@@ -8,7 +8,7 @@ from math import acos, atan2, degrees, sqrt
 def _xyz(point: object) -> tuple[float, float, float]:
     if hasattr(point, "x") and hasattr(point, "y"):
         z_value = getattr(point, "z", 0.0)
-        return (float(getattr(point, "x")), float(getattr(point, "y")), float(z_value or 0.0))
+        return (float(point.x), float(point.y), float(z_value or 0.0))
 
     try:
         values = list(point)  # type: ignore[arg-type]

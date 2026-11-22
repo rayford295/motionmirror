@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "swingform-ai"
-version = "0.1.0"
-description = "AI-assisted golf swing analysis with a shared posture-control core for basketball shot form."
+version = "0.2.0"
+description = "Explainable golf swing and basketball shot analysis from ordinary video."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -14,20 +14,32 @@ dependencies = []
 
 [project.optional-dependencies]
 pose = [
-  "mediapipe>=0.10",
+  "mediapipe>=0.10.14",
   "opencv-python>=4.9",
+  "numpy>=1.24",
   "matplotlib>=3.8",
 ]
 dev = [
+  "pytest>=8",
   "ruff>=0.4",
 ]
 
 [project.scripts]
-swingform-analyze = "swingform_ai.analyze_pose_json:main"
+swingform = "swingform_ai.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.ruff]
-line-length = 100
+line-length = 105
 target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B905"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/swingform_ai/reel.py" = ["E501", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
