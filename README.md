@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/rayford295/motionmirror/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/motionmirror/actions/workflows/test.yml/badge.svg"></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
-  <img alt="Sports" src="https://img.shields.io/badge/sports-golf%20%C2%B7%20basketball%20%C2%B7%20badminton-ff7a45">
+  <img alt="Sports" src="https://img.shields.io/badge/sports-basketball%20%C2%B7%20badminton-ff7a45">
   <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2ec4b6"></a>
   <a href="https://rayford295.github.io/motionmirror/"><img alt="Website" src="https://img.shields.io/badge/website-live-1d6fa5"></a>
   <a href="https://rayford295.github.io/motionmirror/viewer/pose3d.html"><img alt="3D Viewer" src="https://img.shields.io/badge/3D%20viewer-open-7c3aed"></a>
@@ -32,8 +32,8 @@
 </tr>
 </table>
 
-**MotionMirror** turns an ordinary phone video of a golf swing, a basketball jump shot or a
-badminton stroke into phase-by-phase posture metrics, plain-language feedback and review
+**MotionMirror** turns an ordinary phone video of a basketball jump shot or a badminton
+stroke into phase-by-phase posture metrics, plain-language feedback and review
 visuals. Every number traces back to a frame, a joint and a reference range.
 
 ```text
@@ -47,7 +47,7 @@ video ─► pose (33 landmarks) ─► reps + phases ─► metrics at each pha
 <td width="33%" valign="top">
 
 **🎯 Phase-aware**<br>
-Metrics are read at the moment that matters (top of the backswing, release, contact), not
+Metrics are read at the moment that matters (the dip, the release, the contact), not
 averaged over the whole clip.
 
 </td>
@@ -94,21 +94,20 @@ Overlay video, real-frame key-pose sheet, metric timeline, Markdown and JSON rep
 ```bash
 pip install -e ".[pose]"
 
-motionmirror analyze my_swing.mp4 --sport golf --out runs/range-day
-motionmirror analyze my_shot.mov  --sport basketball --side auto
-motionmirror analyze rally.mp4    --sport badminton  --side auto
+motionmirror analyze my_shot.mov --sport basketball --side auto --out runs/court-day
+motionmirror analyze rally.mp4   --sport badminton  --side auto
 ```
 
 ```text
-golf: 2 rep(s), side=right
-  rep 2: 60% in range (confidence 0.84)
-    - Tempo (backswing : downswing): Downswing is slow relative to the backswing; ...
-    - Lead arm at top: Lead arm is noticeably bent at the top; a wider arc usually adds consistency.
+badminton: 4 rep(s), side=right
+  rep 4: 50% in range (confidence 0.83)
+    - Arm extension at contact: Hitting with a bent arm; reach up and strike at full extension.
+    - Contact height: Contact is low for an overhead; take the shuttle earlier, above the head.
 Wrote:
-  runs/range-day/pose.json  metrics.csv  report.json  report.md  overlay.mp4  timeline.png  keyposes.jpg
+  runs/court-day/pose.json  metrics.csv  report.json  report.md  overlay.mp4  timeline.png  keyposes.jpg
 ```
 
-Already have landmarks? `motionmirror analyze pose.json --sport golf` needs no video
+Already have landmarks? `motionmirror analyze pose.json --sport badminton` needs no video
 dependencies at all. The old `swingform` command still works as an alias.
 
 ## Flagship Demos
@@ -149,15 +148,16 @@ at the top of the reach, because the arm keeps accelerating after the hit.
 
 ## What It Measures
 
-| | ⛳ Golf | 🏀 Basketball | 🏸 Badminton |
-| --- | --- | --- | --- |
-| **Phases** | address · top · impact · finish | set · dip · lift · release · follow-through · landing | ready · backswing · contact · follow-through · recovery |
-| **Angles** | lead arm, trail elbow, knees, shoulder-hip separation | shooting elbow, knees | racket-arm extension, ready-stance knees |
-| **Position** | hand height, hip sway, head drift, stance width | release height, guide-hand gap, landing drift | contact height, free-arm height, base width |
-| **Timing** | backswing, downswing, tempo ratio, peak hand speed | set-to-release, dip-to-release | backswing-to-contact, recovery, peak hand speed |
-| **Extras** | ball trail (quality-gated, opt-in) | hands-together shot gate for 1v1 | stroke type: overhead / drive / underhand |
+| | 🏀 Basketball | 🏸 Badminton |
+| --- | --- | --- |
+| **Phases** | set · dip · lift · release · follow-through · landing | ready · backswing · contact · follow-through · recovery |
+| **Angles** | shooting elbow, knees | racket-arm extension, ready-stance knees |
+| **Position** | release height, guide-hand gap, landing drift | contact height, free-arm height, base width |
+| **Timing** | set-to-release, dip-to-release | backswing-to-contact, recovery, peak hand speed |
+| **Extras** | hands-together shot gate for 1v1 | stroke type: overhead / drive / underhand |
 
 Definitions, units and the reasoning behind every reference range: [docs/metrics.md](docs/metrics.md).
+A golf profile (`--sport golf`) also ships and is documented there.
 
 ## Examples
 
@@ -170,13 +170,9 @@ table is generated from the committed reports (`python tools/generate_examples_t
 | [rayford-basketball](examples/rayford-basketball/) | 🏀 Basketball · 120 fps | 6.8 s · 1080×1920 | 706 / 820 | 1 shot | [report.md](examples/rayford-basketball/report.md) |
 | [chen-jingyi-badminton](examples/chen-jingyi-badminton/) | 🏸 Badminton | 12.1 s · 1920×1080 | 364 / 364 | 4 strokes | [report.md](examples/chen-jingyi-badminton/report.md) |
 | [yifan-basketball-0710](examples/yifan-basketball-0710/) | 🏀 Basketball · 1v1 | 56.1 s · 480×854 | 1592 / 1712 | 2 shots | [report.md](examples/yifan-basketball-0710/report.md) |
-| [yifan-golf-0601](examples/yifan-golf-0601/) | ⛳ Golf | 26.9 s · 720×1280 | 801 / 809 | 2 swings | [report.md](examples/yifan-golf-0601/report.md) |
-| [yifan-golf-0520](examples/yifan-golf-0520/) | ⛳ Golf | 7.2 s · 320×568 | 216 / 216 | 2 swings | [report.md](examples/yifan-golf-0520/report.md) |
-| [golf-swing-demo](examples/golf-swing-demo/) | ⛳ Golf | 14.4 s · 320×568 | 361 / 361 | 2 swings | [report.md](examples/golf-swing-demo/report.md) |
 <!-- examples-table:end -->
 
-Cross-session comparison: [yifan-golf-0520 vs yifan-golf-0601](docs/examples/compare-yifan-golf-0520-vs-yifan-golf-0601.md).
-Make your own with `motionmirror compare examples/<a> examples/<b>`.
+Compare two sessions of the same sport with `motionmirror compare examples/<a> examples/<b>`.
 
 ## How It Stays Honest
 
@@ -187,13 +183,11 @@ Make your own with `motionmirror compare examples/<a> examples/<b>`.
 - **Gaps are not crashes.** Hidden joints become `n/a`, short dropouts are interpolated, and
   each phase value is a 5-frame median.
 - **Confidence on every rep**, with the reason whenever it drops.
-- **No invented ball flight.** A golf ball trail is drawn only when a tee-anchored track passes
-  the quality gate. No speed, launch, spin, carry or make/miss is claimed.
 - **Known limit.** In close 1v1 contact the tracker can switch players; appearance-based
   re-identification is on the roadmap.
 
 Auto-detection is heuristic. When a phase is wrong, pass hand-marked times with
-`--labels labels.json` ([example](examples/golf-swing-demo/labels.json)).
+`--labels labels.json`.
 
 <details>
 <summary><b>CLI reference</b></summary>
@@ -205,7 +199,7 @@ motionmirror analyze SOURCE [--sport golf|basketball|badminton] [--side right|le
                             [--min-confidence 0-1] [--json]
 motionmirror compare SESSION_A SESSION_B                       # same athlete, two sessions
 motionmirror highlights LONG_VIDEO --session-id ID [--top-k 3]  # cut the best swings
-motionmirror register VIDEO --sport golf                        # private local manifest
+motionmirror register VIDEO --sport badminton                      # private local manifest
 ```
 
 </details>

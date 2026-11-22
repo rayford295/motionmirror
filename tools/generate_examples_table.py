@@ -16,6 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 START, END = "<!-- examples-table:start -->", "<!-- examples-table:end -->"
 ICON = {"golf": "⛳ Golf", "basketball": "🏀 Basketball", "badminton": "🏸 Badminton"}
 WORD = {"golf": "swing", "basketball": "shot", "badminton": "stroke"}
+# Sports featured in the README tables (other sessions stay in examples/).
+FEATURED = {"basketball", "badminton"}
 # Display order and optional context notes; sessions not listed are appended.
 ORDER = [("rayford-basketball", "120 fps"), ("chen-jingyi-badminton", None),
          ("yifan-basketball-0710", "1v1"), ("yifan-golf-0601", None),
@@ -34,6 +36,8 @@ def rows() -> list[str]:
         if not path.exists():
             continue
         r = json.loads(path.read_text(encoding="utf-8"))
+        if r["sport"] not in FEATURED:
+            continue
         q = r["quality"]
         sport = ICON.get(r["sport"], r["sport"]) + (f" · {notes[name]}" if notes.get(name) else "")
         n = r["rep_count"]
