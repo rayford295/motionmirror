@@ -5,6 +5,7 @@
 <p align="center">
   <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/teaser.gif" alt="观看 MotionMirror 宣传片" width="100%"></a>
   <br><b><a href="docs/assets/promo/motionmirror-promo.mp4">▶ 观看完整英文配音版视频（2:08，有声音）</a></b>
+  <br><sub>封面：<a href="docs/assets/promo/cover-pixel.png">横版</a> · <a href="docs/assets/promo/cover-pixel-vertical.png">竖版</a></sub>
 </p>
 
 <p align="center">
