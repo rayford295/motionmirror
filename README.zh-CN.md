@@ -3,6 +3,11 @@
 </p>
 
 <p align="center">
+  <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/teaser.gif" alt="观看 MotionMirror 宣传片" width="100%"></a>
+  <br><b><a href="docs/assets/promo/motionmirror-promo.mp4">▶ 观看完整英文配音版视频（2:08，有声音）</a></b>
+</p>
+
+<p align="center">
   <a href="https://github.com/rayford295/motionmirror/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/motionmirror/actions/workflows/test.yml/badge.svg"></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
   <img alt="Sports" src="https://img.shields.io/badge/%E8%BF%90%E5%8A%A8-%E7%AF%AE%E7%90%83%20%C2%B7%20%E7%BE%BD%E6%AF%9B%E7%90%83-ff7a45">
@@ -14,11 +19,6 @@
   <a href="README.md">English</a> · <b>中文</b> ·
   <a href="https://rayford295.github.io/motionmirror/">网站</a> ·
   <a href="docs/metrics.md">指标说明</a>
-</p>
-
-<p align="center">
-  <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="观看 MotionMirror 宣传片" width="900"></a>
-  <br><sub><b>▶ <a href="docs/assets/promo/motionmirror-promo.mp4">观看英文配音宣传片</a></b></sub>
 </p>
 
 <table>

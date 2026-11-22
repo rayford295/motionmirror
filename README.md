@@ -3,6 +3,11 @@
 </p>
 
 <p align="center">
+  <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/teaser.gif" alt="Watch the MotionMirror promo" width="100%"></a>
+  <br><b><a href="docs/assets/promo/motionmirror-promo.mp4">▶ Watch the full narrated video (2:08, with sound)</a></b>
+</p>
+
+<p align="center">
   <a href="https://github.com/rayford295/motionmirror/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/motionmirror/actions/workflows/test.yml/badge.svg"></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
   <img alt="Sports" src="https://img.shields.io/badge/sports-basketball%20%C2%B7%20badminton-ff7a45">
@@ -16,11 +21,6 @@
   <a href="https://rayford295.github.io/motionmirror/">Website</a> ·
   <a href="docs/metrics.md">Metrics</a> ·
   <a href="CHANGELOG.md">Changelog</a>
-</p>
-
-<p align="center">
-  <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="Watch the MotionMirror promo (narrated)" width="900"></a>
-  <br><sub><b>▶ <a href="docs/assets/promo/motionmirror-promo.mp4">Watch the narrated promo</a></b></sub>
 </p>
 
 <table>
