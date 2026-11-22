@@ -801,7 +801,8 @@ def main(argv=None) -> int:
     else:
         silent.replace(args.out)
     if poster is not None:
-        poster.convert("RGB").save(args.out.parent / "poster.jpg", quality=88)
+        CACHE.mkdir(exist_ok=True)  # the designed cover comes from make_cover.py
+        poster.convert("RGB").save(CACHE / "frame-poster.jpg", quality=88)
     print(f"Wrote {args.out} ({total:.1f}s)")
     return 0
 
