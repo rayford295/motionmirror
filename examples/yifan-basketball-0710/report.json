@@ -1,0 +1,273 @@
+{
+  "tool": "swingform-ai 0.2.0",
+  "sport": "basketball",
+  "side": "right",
+  "source": "basketball.mp4",
+  "quality": {
+    "fps": 30.0,
+    "width": 480,
+    "height": 854,
+    "pose_frames": 1592,
+    "total_frames": 1712,
+    "coverage": 0.9299,
+    "mean_visibility": 0.8731,
+    "duration_s": 56.1
+  },
+  "warnings": [
+    "side=auto picked 'right' (mirrored selfie video flips it)."
+  ],
+  "rep_count": 2,
+  "reps": [
+    {
+      "index": 1,
+      "confidence": 0.8382,
+      "source": "auto",
+      "notes": [],
+      "phases": {
+        "set": {
+          "frame": 812,
+          "time_s": 27.0667
+        },
+        "dip": {
+          "frame": 830,
+          "time_s": 27.6667
+        },
+        "lift": {
+          "frame": 841,
+          "time_s": 28.0333
+        },
+        "release": {
+          "frame": 841,
+          "time_s": 28.0333
+        },
+        "follow_through": {
+          "frame": 841,
+          "time_s": 28.0333
+        },
+        "landing": {
+          "frame": 856,
+          "time_s": 28.5333
+        }
+      },
+      "timing": {
+        "set_to_release_s": 0.9667,
+        "dip_to_release_s": 0.3667
+      },
+      "set": {
+        "shooting_elbow_angle_deg": 131.7918
+      },
+      "dip": {
+        "shooting_knee_angle_deg": 106.2836,
+        "guide_knee_angle_deg": 114.2003
+      },
+      "release": {
+        "shooting_elbow_angle_deg": 148.1226,
+        "wrist_above_head_torso": 0.4699,
+        "guide_hand_gap_torso": 0.1535,
+        "trunk_tilt_deg": 6.3552
+      },
+      "landing": {
+        "lateral_drift_torso": 0.6858
+      },
+      "score": 80.0,
+      "findings": [
+        {
+          "key": "release.shooting_elbow_angle_deg",
+          "label": "Elbow extension at release",
+          "value": 148.123,
+          "low": 145.0,
+          "high": null,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Full extension at release makes the launch more repeatable."
+        },
+        {
+          "key": "dip.shooting_knee_angle_deg",
+          "label": "Knee bend in the dip",
+          "value": 106.284,
+          "low": 95.0,
+          "high": 160.0,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Leg drive supplies most of the shot's power."
+        },
+        {
+          "key": "release.wrist_above_head_torso",
+          "label": "Release height",
+          "value": 0.47,
+          "low": 0.2,
+          "high": null,
+          "unit": "torso",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A release well above the head is a common proxy for a high set point."
+        },
+        {
+          "key": "timing.dip_to_release_s",
+          "label": "Dip-to-release time",
+          "value": 0.367,
+          "low": 0.2,
+          "high": 0.8,
+          "unit": "s",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Fluid shots move from dip to release in a fraction of a second."
+        },
+        {
+          "key": "landing.lateral_drift_torso",
+          "label": "Sideways drift",
+          "value": 0.686,
+          "low": null,
+          "high": 0.5,
+          "unit": "torso",
+          "status": "high",
+          "message": "Hips drift sideways between set and landing; aim to land where you took off.",
+          "why": "Landing on the take-off spot is a simple balance proxy."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "confidence": 0.84,
+      "source": "auto",
+      "notes": [],
+      "phases": {
+        "set": {
+          "frame": 1112,
+          "time_s": 37.0667
+        },
+        "dip": {
+          "frame": 1125,
+          "time_s": 37.5
+        },
+        "lift": {
+          "frame": 1138,
+          "time_s": 37.9333
+        },
+        "release": {
+          "frame": 1138,
+          "time_s": 37.9333
+        },
+        "follow_through": {
+          "frame": 1138,
+          "time_s": 37.9333
+        },
+        "landing": {
+          "frame": 1162,
+          "time_s": 38.7333
+        }
+      },
+      "timing": {
+        "set_to_release_s": 0.8667,
+        "dip_to_release_s": 0.4333
+      },
+      "set": {
+        "shooting_elbow_angle_deg": 123.4275
+      },
+      "dip": {
+        "shooting_knee_angle_deg": 120.3878,
+        "guide_knee_angle_deg": 123.5907
+      },
+      "release": {
+        "shooting_elbow_angle_deg": 164.9194,
+        "wrist_above_head_torso": 0.6144,
+        "guide_hand_gap_torso": null,
+        "trunk_tilt_deg": 6.569
+      },
+      "landing": {
+        "lateral_drift_torso": 2.3311
+      },
+      "score": 80.0,
+      "findings": [
+        {
+          "key": "release.shooting_elbow_angle_deg",
+          "label": "Elbow extension at release",
+          "value": 164.919,
+          "low": 145.0,
+          "high": null,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Full extension at release makes the launch more repeatable."
+        },
+        {
+          "key": "dip.shooting_knee_angle_deg",
+          "label": "Knee bend in the dip",
+          "value": 120.388,
+          "low": 95.0,
+          "high": 160.0,
+          "unit": "deg",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Leg drive supplies most of the shot's power."
+        },
+        {
+          "key": "release.wrist_above_head_torso",
+          "label": "Release height",
+          "value": 0.614,
+          "low": 0.2,
+          "high": null,
+          "unit": "torso",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "A release well above the head is a common proxy for a high set point."
+        },
+        {
+          "key": "timing.dip_to_release_s",
+          "label": "Dip-to-release time",
+          "value": 0.433,
+          "low": 0.2,
+          "high": 0.8,
+          "unit": "s",
+          "status": "ok",
+          "message": "Within the reference range.",
+          "why": "Fluid shots move from dip to release in a fraction of a second."
+        },
+        {
+          "key": "landing.lateral_drift_torso",
+          "label": "Sideways drift",
+          "value": 2.331,
+          "low": null,
+          "high": 0.5,
+          "unit": "torso",
+          "status": "high",
+          "message": "Hips drift sideways between set and landing; aim to land where you took off.",
+          "why": "Landing on the take-off spot is a simple balance proxy."
+        }
+      ]
+    }
+  ],
+  "consistency": {
+    "release.shooting_elbow_angle_deg": {
+      "mean": 156.521,
+      "std": 8.3984,
+      "n": 2,
+      "min": 148.1226,
+      "max": 164.9194
+    },
+    "dip.shooting_knee_angle_deg": {
+      "mean": 113.3357,
+      "std": 7.0521,
+      "n": 2,
+      "min": 106.2836,
+      "max": 120.3878
+    },
+    "timing.dip_to_release_s": {
+      "mean": 0.4,
+      "std": 0.0333,
+      "n": 2,
+      "min": 0.3667,
+      "max": 0.4333
+    },
+    "release.wrist_above_head_torso": {
+      "mean": 0.5422,
+      "std": 0.0722,
+      "n": 2,
+      "min": 0.4699,
+      "max": 0.6144
+    }
+  },
+  "disclaimer": "Metrics are 2D single-camera pose proxies. Reference ranges are broad starter values for spotting outliers, not coaching verdicts. No club, ball-flight or make/miss measurement is performed."
+}

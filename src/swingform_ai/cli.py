@@ -1,6 +1,7 @@
 """``swingform`` command-line interface.
 
     swingform analyze VIDEO_OR_POSE_JSON --sport golf --out runs/session1
+    swingform compare examples/yifan-golf-0520 examples/yifan-golf-0601
     swingform highlights LONG_VIDEO --session-id range-day
     swingform register VIDEO --sport golf
 """
@@ -42,6 +43,14 @@ def _analyze(args: argparse.Namespace) -> int:
     print("\nWrote:")
     for path in result.files.values():
         print(f"  {path}")
+    return 0
+
+
+def _compare(args: argparse.Namespace) -> int:
+    from swingform_ai.session_compare import compare_sessions
+
+    print(json.dumps(compare_sessions(args.session_a, args.session_b, args.output_doc,
+                                      args.asset_output), indent=2))
     return 0
 
 
@@ -88,6 +97,13 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--height", type=int, help="Frame height, for pose JSON without size info.")
     a.add_argument("--json", action="store_true", help="Print the full report JSON.")
     a.set_defaults(func=_analyze)
+
+    c = sub.add_parser("compare", help="Compare two analyzed sessions of the same sport.")
+    c.add_argument("session_a", type=Path, help="First session folder (report.json inside).")
+    c.add_argument("session_b", type=Path, help="Second session folder.")
+    c.add_argument("--output-doc", type=Path, help="Default: docs/examples/compare-<a>-vs-<b>.md")
+    c.add_argument("--asset-output", type=Path, help="Default: docs/assets/compare-<a>-vs-<b>")
+    c.set_defaults(func=_compare)
 
     h = sub.add_parser("highlights", help="Cut the best swings from a long practice video.",
                        add_help=False)

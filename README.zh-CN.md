@@ -7,6 +7,14 @@
 </p>
 -->
 
+<table>
+<tr>
+<td width="33%" align="center"><img src="docs/assets/rayford-basketball/demo.gif" alt="Basketball jump shot overlay" width="100%"><br><sub>🏀 <b>跳投</b> · 120 fps · auto-zoom</sub></td>
+<td width="33%" align="center"><img src="docs/assets/chen-jingyi-badminton/demo.gif" alt="羽毛球高手击球 overlay" width="100%"><br><sub>🏸 <b>羽毛球高手击球</b> · 击球点识别</sub></td>
+<td width="33%" align="center"><img src="docs/assets/yifan-golf-0601/demo.gif" alt="Golf swing overlay" width="100%"><br><sub>⛳ <b>Golf · TopGolf</b> · 挥杆阶段</sub></td>
+</tr>
+</table>
+
 SwingForm AI 把一段普通手机拍摄的高尔夫挥杆、篮球跳投或羽毛球击球视频，转换成分阶段的姿态指标、
 通俗易懂的反馈和可回看的可视化结果。每一个数字都能追溯到具体的帧、关节和参考区间。
 
@@ -83,13 +91,21 @@ swingform analyze rally.mp4    --sport badminton  --side auto
 
 ## 示例
 
-| 会话 | 次数 | 报告 |
-| --- | --- | --- |
-| `rayford-basketball` | 1 次投篮 | [report.md](examples/rayford-basketball/report.md) |
-| `chen-jingyi-badminton` | 4 次击球 | [report.md](examples/chen-jingyi-badminton/report.md) |
-| `yifan-golf-0520` | 2 次挥杆 | [report.md](examples/yifan-golf-0520/report.md) |
-| `golf-swing-demo` | 2 次挥杆 | [report.md](examples/golf-swing-demo/report.md) |
-| `yifan-basketball-0601` | 1 次投篮 | [report.md](examples/yifan-basketball-0601/report.md) |
+下表由各示例的 `report.json` 自动生成（`python tools/generate_examples_table.py`）。
+
+<!-- examples-table:start -->
+| Session | Sport | Clip | Pose frames | Reps | Report |
+|---|---|---|---|---|---|
+| [rayford-basketball](examples/rayford-basketball/) | 🏀 Basketball · 120 fps | 6.8 s · 1080×1920 | 706 / 820 | 1 shot | [report.md](examples/rayford-basketball/report.md) |
+| [chen-jingyi-badminton](examples/chen-jingyi-badminton/) | 🏸 Badminton | 12.1 s · 1920×1080 | 364 / 364 | 4 strokes | [report.md](examples/chen-jingyi-badminton/report.md) |
+| [yifan-basketball-0710](examples/yifan-basketball-0710/) | 🏀 Basketball · 1v1 | 56.1 s · 480×854 | 1592 / 1712 | 2 shots | [report.md](examples/yifan-basketball-0710/report.md) |
+| [yifan-golf-0601](examples/yifan-golf-0601/) | ⛳ Golf | 26.9 s · 720×1280 | 801 / 809 | 2 swings | [report.md](examples/yifan-golf-0601/report.md) |
+| [yifan-golf-0520](examples/yifan-golf-0520/) | ⛳ Golf | 7.2 s · 320×568 | 216 / 216 | 2 swings | [report.md](examples/yifan-golf-0520/report.md) |
+| [golf-swing-demo](examples/golf-swing-demo/) | ⛳ Golf | 14.4 s · 320×568 | 361 / 361 | 2 swings | [report.md](examples/golf-swing-demo/report.md) |
+<!-- examples-table:end -->
+
+跨场次对比：[yifan-golf-0520 vs yifan-golf-0601](docs/examples/compare-yifan-golf-0520-vs-yifan-golf-0601.md)，
+可用 `swingform compare examples/<a> examples/<b>` 生成自己的对比。
 
 ## 开发
 

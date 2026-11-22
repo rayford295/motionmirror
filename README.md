@@ -10,6 +10,7 @@
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
   <img alt="Sports" src="https://img.shields.io/badge/sports-golf%20%C2%B7%20basketball%20%C2%B7%20badminton-c46a2c">
   <a href="https://rayford295.github.io/swingform-ai/"><img alt="Website" src="https://img.shields.io/badge/website-live-1d6fa5"></a>
+  <a href="https://rayford295.github.io/swingform-ai/viewer/pose3d.html"><img alt="3D Viewer" src="https://img.shields.io/badge/3D%20viewer-open-7c3aed"></a>
 </p>
 
 <!-- PROMO (enabled once the narrated video is rendered)
@@ -18,6 +19,14 @@
   <br><sub><b>▶ <a href="docs/assets/promo/swingform-promo.mp4">Watch the narrated promo</a></b> · or on the <a href="https://rayford295.github.io/swingform-ai/">website</a></sub>
 </p>
 -->
+
+<table>
+<tr>
+<td width="33%" align="center"><img src="docs/assets/rayford-basketball/demo.gif" alt="Basketball jump shot overlay" width="100%"><br><sub>🏀 <b>Jump shot</b> · 120 fps · auto-zoom</sub></td>
+<td width="33%" align="center"><img src="docs/assets/chen-jingyi-badminton/demo.gif" alt="Badminton overhead overlay" width="100%"><br><sub>🏸 <b>Badminton overhead</b> · contact detection</sub></td>
+<td width="33%" align="center"><img src="docs/assets/yifan-golf-0601/demo.gif" alt="Golf swing overlay" width="100%"><br><sub>⛳ <b>Golf · TopGolf</b> · swing phases</sub></td>
+</tr>
+</table>
 
 SwingForm AI turns an ordinary phone video of a golf swing, a basketball jump shot or a badminton stroke into
 phase-by-phase posture metrics, plain-language feedback, and review visuals. Every number
@@ -134,14 +143,21 @@ Auto-detection is heuristic. When it gets a phase wrong, pass hand-marked times 
 ## Examples
 
 Every artifact below was produced by `swingform analyze` from the clip in the same folder.
+The table is generated from the committed `report.json` files (`python tools/generate_examples_table.py`).
 
-| Session | Reps | Report | Visuals |
-| --- | --- | --- | --- |
-| `rayford-basketball` | 1 shot | [report.md](examples/rayford-basketball/report.md) | [overlay](examples/rayford-basketball/overlay.mp4) · [key poses](examples/rayford-basketball/keyposes.jpg) · [timeline](examples/rayford-basketball/timeline.png) |
-| `chen-jingyi-badminton` | 4 strokes | [report.md](examples/chen-jingyi-badminton/report.md) | [overlay](examples/chen-jingyi-badminton/overlay.mp4) · [key poses](examples/chen-jingyi-badminton/keyposes.jpg) · [timeline](examples/chen-jingyi-badminton/timeline.png) |
-| `yifan-golf-0520` | 2 swings | [report.md](examples/yifan-golf-0520/report.md) | [overlay](examples/yifan-golf-0520/overlay.mp4) · [key poses](examples/yifan-golf-0520/keyposes.jpg) · [timeline](examples/yifan-golf-0520/timeline.png) |
-| `golf-swing-demo` | 2 swings | [report.md](examples/golf-swing-demo/report.md) | [overlay](examples/golf-swing-demo/overlay.mp4) · [key poses](examples/golf-swing-demo/keyposes.jpg) · [timeline](examples/golf-swing-demo/timeline.png) |
-| `yifan-basketball-0601` | 1 shot | [report.md](examples/yifan-basketball-0601/report.md) | [overlay](examples/yifan-basketball-0601/overlay.mp4) · [key poses](examples/yifan-basketball-0601/keyposes.jpg) · [timeline](examples/yifan-basketball-0601/timeline.png) |
+<!-- examples-table:start -->
+| Session | Sport | Clip | Pose frames | Reps | Report |
+|---|---|---|---|---|---|
+| [rayford-basketball](examples/rayford-basketball/) | 🏀 Basketball · 120 fps | 6.8 s · 1080×1920 | 706 / 820 | 1 shot | [report.md](examples/rayford-basketball/report.md) |
+| [chen-jingyi-badminton](examples/chen-jingyi-badminton/) | 🏸 Badminton | 12.1 s · 1920×1080 | 364 / 364 | 4 strokes | [report.md](examples/chen-jingyi-badminton/report.md) |
+| [yifan-basketball-0710](examples/yifan-basketball-0710/) | 🏀 Basketball · 1v1 | 56.1 s · 480×854 | 1592 / 1712 | 2 shots | [report.md](examples/yifan-basketball-0710/report.md) |
+| [yifan-golf-0601](examples/yifan-golf-0601/) | ⛳ Golf | 26.9 s · 720×1280 | 801 / 809 | 2 swings | [report.md](examples/yifan-golf-0601/report.md) |
+| [yifan-golf-0520](examples/yifan-golf-0520/) | ⛳ Golf | 7.2 s · 320×568 | 216 / 216 | 2 swings | [report.md](examples/yifan-golf-0520/report.md) |
+| [golf-swing-demo](examples/golf-swing-demo/) | ⛳ Golf | 14.4 s · 320×568 | 361 / 361 | 2 swings | [report.md](examples/golf-swing-demo/report.md) |
+<!-- examples-table:end -->
+
+Cross-session comparison: [yifan-golf-0520 vs yifan-golf-0601](docs/examples/compare-yifan-golf-0520-vs-yifan-golf-0601.md).
+Make your own with `swingform compare examples/<a> examples/<b>`.
 
 ## CLI Reference
 
@@ -149,6 +165,7 @@ Every artifact below was produced by `swingform analyze` from the clip in the sa
 swingform analyze SOURCE [--sport golf|basketball|badminton] [--side right|left|auto] [--out DIR]
                          [--model lite|full|heavy|PATH] [--labels FILE] [--no-render]
                          [--ball-trail off|detect|proxy] [--min-confidence 0-1] [--json]
+swingform compare SESSION_A SESSION_B                        # same athlete, two sessions
 swingform highlights LONG_VIDEO --session-id ID [--top-k 3]   # cut the best swings
 swingform register VIDEO --sport golf                          # private local manifest
 ```

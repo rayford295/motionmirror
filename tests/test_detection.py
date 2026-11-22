@@ -70,3 +70,20 @@ def test_badminton_classifies_strokes_and_finds_overhead_contact():
         assert rep.time("contact") == pytest.approx(expected["contact"], abs=0.2)
     # overhead strokes get overhead-specific checks
     assert any(f.key == "contact.racket_hand_height_torso" for f in a.findings[0])
+
+
+def test_one_arm_contest_is_not_a_shot():
+    """A defender reaching up with one arm while the other hangs at the hip."""
+
+    seq, _ = basketball_shots(n_shots=1)
+    from dataclasses import replace
+
+    from swingform_ai.schema import Landmark
+
+    frames = []
+    for f in seq.frames:
+        lms = dict(f.landmarks)
+        lms["left_wrist"] = Landmark("left_wrist", 0.75, 0.58, 0.0, 0.95)  # far, at the hip
+        frames.append(replace(f, landmarks=lms))
+    contest = replace(seq, frames=frames)
+    assert analyze_sequence(contest, "basketball").reps == []

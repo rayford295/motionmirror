@@ -10,7 +10,7 @@ from swingform_ai.video import iter_frames, read_video_info
 
 if TYPE_CHECKING:  # pragma: no cover
     from swingform_ai.analysis import Analysis
-    from swingform_ai.ballflight import BallTrack
+    from swingform_ai.ball_tracking import RepBallTrail as BallTrack
 
 EDGES = {
     "torso": [("left_shoulder", "right_shoulder"), ("left_shoulder", "left_hip"),
@@ -151,6 +151,9 @@ def render_overlay(analysis: Analysis, video: str | Path, output: str | Path,
         hold -= 1
         writer.write(frame)
     writer.release()
+    from swingform_ai.video import reencode_h264
+
+    reencode_h264(output)  # smaller files; no-op without imageio-ffmpeg
     return output
 
 

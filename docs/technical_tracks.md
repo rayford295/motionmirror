@@ -43,7 +43,7 @@ This keeps the project moving fast and makes the demo immediately stronger.
 
 ### Implementation Retrospective: What We Tried and Where It Breaks
 
-We shipped an initial ball detection pipeline (v0.1 `scripts/golf_render.py`, now `swingform_ai/ballflight.py`) and tested it across four real practice videos. The honest assessment is that the results are visually unreliable. This section records what we learned so the next implementation does not repeat the same mistakes.
+We shipped an initial ball detection pipeline (v0.1 `scripts/golf_render.py`, now `swingform_ai/ball_tracking.py`) and tested it across four real practice videos. The honest assessment is that the results are visually unreliable. This section records what we learned so the next implementation does not repeat the same mistakes.
 
 #### What we built
 

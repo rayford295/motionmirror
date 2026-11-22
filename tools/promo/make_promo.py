@@ -19,7 +19,7 @@ import subprocess
 import sys
 import urllib.request
 import wave
-from functools import lru_cache
+from functools import cache, lru_cache
 from pathlib import Path
 
 import cv2
@@ -52,7 +52,7 @@ DIN = "/System/Library/Fonts/Supplemental/DIN Condensed Bold.ttf"
 WEIGHT = {"bold": 0, "demi": 2, "medium": 5, "regular": 7, "heavy": 8, "light": 10}
 
 
-@lru_cache(maxsize=None)
+@cache
 def font(weight: str, size: int) -> ImageFont.FreeTypeFont:
     if weight == "din":
         return ImageFont.truetype(DIN, size)
@@ -422,7 +422,6 @@ def scene_bb_metrics(t, dur, D: Data):
     rel = int(rep["phases"]["release"]["time_s"] * 120)
     cam = rounded(D.follow(rel, 720, 900, scale=2.0 - 0.1 * t / dur))
     shadowed(frame, cam, (140, 90))
-    d = BlendDraw(frame)
     pill(frame, (170, 120), "RELEASE", color=ORANGE, size=26)
     f = {k: D.finding(rep, k) for k in ("release.shooting_elbow_angle_deg",
                                         "release.wrist_above_head_torso",

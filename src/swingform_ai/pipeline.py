@@ -73,14 +73,13 @@ def run(
 
         tracks = None
         if analysis.sport == "golf" and ball_trail != "off" and analysis.reps:
-            from swingform_ai.ballflight import track_balls
+            from swingform_ai.ball_tracking import track_reps
             from swingform_ai.video import read_video_info
 
-            impacts = [(r.index, r.phases["impact"].frame_index) for r in analysis.reps
-                       if "impact" in r.phases]
-            tracks = track_balls(source, sequence, impacts, read_video_info(source),
-                                 allow_proxy=ball_trail == "proxy",
-                                 direction=1 if analysis.side == "right" else -1)
+            info = read_video_info(source)
+            tracks = track_reps(source, sequence, analysis.reps, info.fps, info.width,
+                                info.height, allow_proxy=ball_trail == "proxy",
+                                shot_direction="right" if analysis.side == "right" else "left")
             for t in tracks:
                 analysis.warnings.append(f"Rep {t.rep} ball trail: {t.kind}"
                                          + (" (drawn dashed, not measured)" if t.kind == "proxy"

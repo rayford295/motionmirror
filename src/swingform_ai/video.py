@@ -117,8 +117,8 @@ def extract_pose(
     frame (median body height under 35% of the image): pass one locates the
     person, pass two runs pose on a smoothed, upscaled crop around them and maps
     landmarks back to full-frame coordinates. ``roi="on"``/``"off"`` force it.
-    When several people are visible, the one continuing the previous track
-    (largest at the start) is kept.
+    When several people are visible, :class:`~swingform_ai.tracking.PrimaryAthleteTracker`
+    keeps the one continuing the primary athlete's track.
     """
 
     info = read_video_info(video)
@@ -195,8 +195,10 @@ def _run_pose(video, info: VideoInfo, model, min_confidence: float,
         min_tracking_confidence=min_confidence,
     )
     aspect = info.width / info.height if info.height else 1.0
+    from swingform_ai.tracking import PrimaryAthleteTracker
+
     frames: list[FramePose] = []
-    last: tuple[float, float, float, float] | None = None
+    tracker = PrimaryAthleteTracker()
     with vision.PoseLandmarker.create_from_options(options) as landmarker:
         for idx, frame in iter_frames(video):
             x0, y0, cw, ch = 0, 0, info.width, info.height
@@ -221,14 +223,36 @@ def _run_pose(video, info: VideoInfo, model, min_confidence: float,
                 }
                 candidates.append(FramePose(time_s=idx / info.fps, landmarks=named,
                                             frame_index=idx, aspect=aspect))
-            if candidates:
-                if last is None:
-                    best = max(candidates, key=lambda f: _bbox(f)[3])  # largest person
-                else:
-                    best = min(candidates, key=lambda f: abs(_bbox(f)[0] - last[0])
-                               + abs(_bbox(f)[1] - last[1]) + abs(_bbox(f)[3] - last[3]))
-                last = _bbox(best)
+            best = tracker.select(candidates, idx / info.fps)
+            if best is not None:
                 frames.append(best)
             if progress and idx % 15 == 0:
                 progress(idx, info.frame_count)
     return frames
+
+
+def reencode_h264(video_path: Path, crf: int = 26) -> bool:
+    """Re-encode a video in place to web-playable H.264 via imageio-ffmpeg.
+
+    Returns False (leaving the file untouched) when imageio-ffmpeg is not
+    installed or ffmpeg fails.
+    """
+
+    import subprocess
+
+    try:
+        import imageio_ffmpeg
+    except ImportError:
+        return False
+    tmp_path = video_path.with_suffix(".h264.mp4")
+    result = subprocess.run(
+        [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-i", str(video_path), "-c:v", "libx264",
+         "-crf", str(crf), "-preset", "medium", "-pix_fmt", "yuv420p", "-an",
+         "-movflags", "+faststart", str(tmp_path)],
+        capture_output=True,
+    )
+    if result.returncode != 0 or not tmp_path.exists():
+        tmp_path.unlink(missing_ok=True)
+        return False
+    tmp_path.replace(video_path)
+    return True

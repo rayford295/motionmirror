@@ -1,0 +1,102 @@
+{
+  "schema_version": "basketball-session-v1",
+  "source": "examples/yifan-basketball-0710/basketball.mp4",
+  "release_note": "This open example includes a cleared source clip plus derived pose and metric files.",
+  "video": {
+    "duration_s": 57.06666666666667,
+    "fps": 30.0,
+    "total_frames": 1712,
+    "width": 480,
+    "height": 854
+  },
+  "pose": {
+    "backend": "MediaPipe Pose Landmarker Lite",
+    "detected_frames": 1621,
+    "total_frames": 1712,
+    "coverage_pct": 94.68457943925233,
+    "mean_visibility": 0.8604418039777175
+  },
+  "sport": "basketball",
+  "shot_events": [
+    {
+      "shot": 1,
+      "score": 1.0024212589558756,
+      "reliable": true,
+      "set_frame": 511,
+      "set_time_s": 17.033333333333335,
+      "dip_frame": 525,
+      "dip_time_s": 17.5,
+      "lift_frame": 538,
+      "lift_time_s": 17.933333333333334,
+      "release_frame": 540,
+      "release_time_s": 18.0,
+      "follow_through_frame": 552,
+      "follow_through_time_s": 18.4,
+      "landing_frame": 569,
+      "landing_time_s": 18.966666666666665
+    },
+    {
+      "shot": 2,
+      "score": 1.1011080795901151,
+      "reliable": true,
+      "set_frame": 1041,
+      "set_time_s": 34.7,
+      "dip_frame": 1054,
+      "dip_time_s": 35.13333333333333,
+      "lift_frame": 1073,
+      "lift_time_s": 35.766666666666666,
+      "release_frame": 1078,
+      "release_time_s": 35.93333333333333,
+      "follow_through_frame": 1079,
+      "follow_through_time_s": 35.96666666666667,
+      "landing_frame": 1105,
+      "landing_time_s": 36.833333333333336
+    }
+  ],
+  "review_frames": [
+    {
+      "phase": "start",
+      "frame": 0,
+      "time_s": 0.0
+    },
+    {
+      "phase": "court_read",
+      "frame": 371,
+      "time_s": 12.366666666666667
+    },
+    {
+      "phase": "plant",
+      "frame": 709,
+      "time_s": 23.633333333333333
+    },
+    {
+      "phase": "arm_extension",
+      "frame": 1012,
+      "time_s": 33.733333333333334
+    },
+    {
+      "phase": "shot_context",
+      "frame": 1232,
+      "time_s": 41.06666666666667
+    },
+    {
+      "phase": "finish",
+      "frame": 1687,
+      "time_s": 56.233333333333334
+    }
+  ],
+  "motion_summary": {
+    "mean_visibility": 0.8525814382281894,
+    "mean_shooting_elbow_angle_deg": 115.50987458053355,
+    "max_shooting_wrist_height_norm": 0.619994580745697,
+    "min_shooting_knee_angle_deg": 22.485927692725205,
+    "mean_body_speed_norm_per_s": 0.6520245789344324
+  },
+  "motion_summary_scope": "plausible frames within detected shot windows",
+  "limitations": [
+    "Single-camera 2D/pseudo-3D body pose only.",
+    "The detector tracks the primary visible athlete and uses body pose only.",
+    "The release label is a pose-based proxy from visible wrist height, wrist speed, and arm extension.",
+    "No ball, rim, make/miss, release angle, shot arc, or jump height model is claimed."
+  ]
+}

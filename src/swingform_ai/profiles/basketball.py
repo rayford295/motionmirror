@@ -109,6 +109,17 @@ def detect_reps(rows: list[Row], fps: float) -> list[Rep]:
         dip = argmin(knee, rel - int(0.9 * fps), rel - int(0.08 * fps))
         if dip is None:
             continue
+        # Shooters bring both hands together on the ball before release; a defender
+        # contesting a shot usually reaches with one arm (hands meet only when hanging
+        # at the hips). If the guide hand is visible but never joins the shooting hand
+        # at chest height or above, this is not this player's shot.
+        window = rows[max(0, dip - int(0.6 * fps)): rel + 1]
+        seen = [r for r in window if r.get("guide_hand_gap_torso") is not None
+                and r.get("wrist_above_head_torso") is not None]
+        together = [r for r in seen if r["guide_hand_gap_torso"] < 0.6
+                    and r["wrist_above_head_torso"] > -0.9]  # on the ball, chest height+
+        if seen and not together:
+            continue
         set_ = argmin(wspd, dip - int(0.6 * fps), dip + 1)
         lift = argmax(wspd, dip, rel + 1)
         follow = argmin(wy, rel, min(n, rel + int(0.45 * fps)))
