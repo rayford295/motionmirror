@@ -27,9 +27,8 @@
 
 <table>
 <tr>
-<td width="33%" align="center"><img src="docs/assets/rayford-basketball/demo.gif" alt="Basketball jump shot overlay" width="100%"><br><sub>🏀 <b>Jump shot</b> · 120 fps · auto-zoom</sub></td>
-<td width="33%" align="center"><img src="docs/assets/chen-jingyi-badminton/demo.gif" alt="Badminton overhead overlay" width="100%"><br><sub>🏸 <b>Badminton overhead</b> · contact detection</sub></td>
-<td width="33%" align="center"><img src="docs/assets/yifan-golf-0601/demo.gif" alt="Golf swing overlay" width="100%"><br><sub>⛳ <b>Golf swing</b> · TopGolf · phases</sub></td>
+<td width="50%" align="center"><img src="docs/assets/rayford-basketball/demo.gif" alt="Basketball jump shot overlay" width="100%"><br><sub>🏀 <b>Jump shot</b> · 120 fps · auto-zoom</sub></td>
+<td width="50%" align="center"><img src="docs/assets/chen-jingyi-badminton/demo.gif" alt="Badminton overhead overlay" width="100%"><br><sub>🏸 <b>Badminton overhead</b> · contact detection</sub></td>
 </tr>
 </table>
 

@@ -16,8 +16,7 @@ from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 W, H = 1800, 640
 AVENIR = "/System/Library/Fonts/Avenir Next.ttc"
-TILES = [("rayford-basketball", "release"), ("chen-jingyi-badminton", "contact"),
-         ("yifan-golf-0601", "top")]
+TILES = [("rayford-basketball", "release"), ("chen-jingyi-badminton", "contact")]
 
 
 def font(index: int, size: int) -> ImageFont.FreeTypeFont:
@@ -53,7 +52,7 @@ def main() -> None:
     ImageDraw.Draw(glow).ellipse((900, -300, 2100, 500), fill=(255, 122, 69, 60))
     bg = Image.alpha_composite(bg, glow.filter(ImageFilter.GaussianBlur(180)))
 
-    x = 830
+    x = 1000
     for name, phase in TILES:
         tile = athlete_crop(name, phase)
         mask = Image.new("L", tile.size, 0)
@@ -71,7 +70,7 @@ def main() -> None:
         x += 315
 
     d = ImageDraw.Draw(bg, "RGBA")
-    d.line((830, 462, W - 50, 462), fill=(96, 104, 118), width=2)
+    d.line((1000, 462, 1615, 462), fill=(96, 104, 118), width=2)
     d.ellipse((90, 150, 124, 184), fill=(255, 122, 69, 255))
     d.text((140, 167), "MotionMirror", font=font(0, 92), fill=(245, 247, 250), anchor="lm")
     d.text((92, 262), "See your form, phase by phase.", font=font(5, 40), fill=(170, 182, 200))
