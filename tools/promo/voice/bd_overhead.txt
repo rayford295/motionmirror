@@ -1,0 +1,1 @@
+edge|en-US-ChristopherNeural|+0%|On an overhead, the arm keeps accelerating after the hit. So MotionMirror places contact at the highest point of the reach, then measures arm extension, contact height, and the position of the free arm.

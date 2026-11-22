@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 """Render the MotionMirror promo video from the flagship example outputs.
 
-    python tools/promo/make_promo.py               # needs ~/.elevenlabs_key (or ELEVENLABS_API_KEY)
+    python tools/promo/make_promo.py               # free edge-tts neural voice (default)
+    python tools/promo/make_promo.py --tts elevenlabs   # needs ~/.elevenlabs_key
     python tools/promo/make_promo.py --no-voice    # silent preview with estimated timing
 
 Narration clips are cached in tools/promo/voice/, so later re-renders are offline.
@@ -117,6 +118,25 @@ def tts(scene_id: str, text: str, prev: str, nxt: str, key: str) -> Path:
         mp3.write_bytes(resp.read())
     meta.write_text(text)
     print(f"  voiced {scene_id}")
+    return mp3
+
+
+def tts_edge(scene_id: str, text: str, voice: str, rate: str) -> Path:
+    """Free Microsoft neural voice via edge-tts (no key); cached per text+voice."""
+
+    import asyncio
+
+    import edge_tts
+
+    VOICE_DIR.mkdir(parents=True, exist_ok=True)
+    mp3 = VOICE_DIR / f"{scene_id}.mp3"
+    meta = VOICE_DIR / f"{scene_id}.txt"
+    stamp = f"edge|{voice}|{rate}|{text}"
+    if mp3.exists() and meta.exists() and meta.read_text() == stamp:
+        return mp3
+    asyncio.run(edge_tts.Communicate(text, voice, rate=rate).save(str(mp3)))
+    meta.write_text(stamp)
+    print(f"  voiced {scene_id} ({voice})")
     return mp3
 
 
@@ -689,6 +709,11 @@ def draw_caption(frame: Image.Image, s: str):
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--no-voice", action="store_true", help="Silent preview, estimated timing.")
+    ap.add_argument("--tts", choices=["edge", "elevenlabs"], default="edge",
+                    help="edge = free Microsoft neural voice (default); elevenlabs needs a key.")
+    ap.add_argument("--voice", default="en-US-ChristopherNeural",
+                    help="edge-tts voice (the ray-resilience teaser voice)")
+    ap.add_argument("--rate", default="+0%", help="edge-tts speaking rate")
     ap.add_argument("--only", help="Render a single scene id (preview).")
     ap.add_argument("--out", type=Path, default=OUT_DIR / "motionmirror-promo.mp4")
     args = ap.parse_args(argv)
@@ -697,11 +722,14 @@ def main(argv=None) -> int:
     D.verify_script()
 
     clips: dict[str, np.ndarray] = {}
-    key = None if args.no_voice else api_key()
-    if not args.no_voice:
+    if not args.no_voice and args.tts == "edge":
+        for sid, txt in SCENES:
+            clips[sid] = to_wav(tts_edge(sid, txt, args.voice, args.rate))
+    elif not args.no_voice:
+        key = api_key()
         if key is None and not all((VOICE_DIR / f"{s}.mp3").exists() for s, _ in SCENES):
             print("No ElevenLabs key (~/.elevenlabs_key or ELEVENLABS_API_KEY). "
-                  "Use --no-voice for a silent preview.")
+                  "Use --tts edge or --no-voice.")
             return 1
         for i, (sid, txt) in enumerate(SCENES):
             prev = SCENES[i - 1][1] if i else ""

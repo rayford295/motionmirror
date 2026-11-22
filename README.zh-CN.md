@@ -16,12 +16,10 @@
   <a href="docs/metrics.md">指标说明</a>
 </p>
 
-<!-- PROMO (enabled once the narrated video is rendered)
 <p align="center">
   <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="观看 MotionMirror 宣传片" width="900"></a>
   <br><sub><b>▶ <a href="docs/assets/promo/motionmirror-promo.mp4">观看英文配音宣传片</a></b></sub>
 </p>
--->
 
 <table>
 <tr>

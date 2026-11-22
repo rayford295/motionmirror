@@ -35,3 +35,4 @@ reports/
 # macOS
 .DS_Store
 tools/promo/.cache/
+tools/promo/.tts-venv/

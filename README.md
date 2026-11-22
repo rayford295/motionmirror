@@ -18,12 +18,10 @@
   <a href="CHANGELOG.md">Changelog</a>
 </p>
 
-<!-- PROMO (enabled once the narrated video is rendered)
 <p align="center">
   <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/poster.jpg" alt="Watch the MotionMirror promo (narrated)" width="900"></a>
   <br><sub><b>▶ <a href="docs/assets/promo/motionmirror-promo.mp4">Watch the narrated promo</a></b></sub>
 </p>
--->
 
 <table>
 <tr>

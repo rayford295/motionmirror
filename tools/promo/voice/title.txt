@@ -1,0 +1,1 @@
+edge|en-US-ChristopherNeural|+0%|This is MotionMirror. Open-source motion analysis that turns a single phone video into clear, explainable feedback. No sensors. No studio. Just the camera in your pocket.

@@ -1,0 +1,1 @@
+edge|en-US-ChristopherNeural|+0%|Next, Chen Jingyi on the badminton court. A brand-new badminton profile detects every stroke from the speed of the racket hand, and classifies it: drive, or overhead.

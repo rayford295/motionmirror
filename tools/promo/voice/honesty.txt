@@ -1,0 +1,1 @@
+edge|en-US-ChristopherNeural|+0%|Each number traces back to a frame and a reference range. When the camera can't see a joint, MotionMirror says so, instead of guessing.
