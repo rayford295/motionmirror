@@ -36,3 +36,4 @@ reports/
 .DS_Store
 tools/promo/.cache/
 tools/promo/.tts-venv/
+.superpowers/
