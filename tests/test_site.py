@@ -70,3 +70,28 @@ def test_facts_kept():
     for slug in ("rayford-basketball", "chen-jingyi-badminton", "yifan-golf-0601",
                  "yifan-basketball-0710", "yifan-golf-0520", "golf-swing-demo"):
         assert slug in PAGE, slug
+
+
+def _module_script() -> str:
+    return PAGE.split('<script type="module">', 1)[1]
+
+
+def test_3d_orbit_respects_reduced_motion():
+    assert "prefers-reduced-motion: reduce" in _module_script()
+
+
+def test_no_hardcoded_ci_test_count():
+    # A fixed count goes stale and differs between local and CI runs.
+    assert "UNIT TESTS" not in PAGE
+
+
+def test_golf_demo_frame_rate_matches_report():
+    report = (DOCS.parent / "examples" / "golf-swing-demo" / "report.md").read_text(encoding="utf-8")
+    assert re.search(r"^\|[^|]+\|\s*25\s*\|\s*320x568\s*\|", report, re.M), "report FPS column"
+    card = PAGE.split("<h3>Golf Swing Demo</h3>")[0].rsplit('<span class="tag golf">', 1)[1]
+    assert "25 FPS" in card
+
+
+def test_overhead_contact_described_as_method_not_result():
+    assert "contact sits at the top of the reach" not in PAGE
+    assert "contact is placed at the top of the reach" in PAGE
