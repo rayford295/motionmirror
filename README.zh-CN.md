@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/readme/banner.png" alt="MotionMirror" width="100%">
+  <a href="https://rayford295.github.io/motionmirror/"><img src="docs/assets/readme/banner-pixel.png" alt="MotionMirror（动作镜像）：看清每个阶段的动作" width="100%"></a>
 </p>
 
 <p align="center">
@@ -10,15 +10,15 @@
 
 <p align="center">
   <a href="https://github.com/rayford295/motionmirror/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/motionmirror/actions/workflows/test.yml/badge.svg"></a>
-  <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
-  <img alt="Sports" src="https://img.shields.io/badge/%E8%BF%90%E5%8A%A8-%E7%AF%AE%E7%90%83%20%C2%B7%20%E7%BE%BD%E6%AF%9B%E7%90%83-ff7a45">
-  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2ec4b6"></a>
-  <a href="https://rayford295.github.io/motionmirror/"><img alt="Website" src="https://img.shields.io/badge/%E7%BD%91%E7%AB%99-%E5%9C%A8%E7%BA%BF-1d6fa5"></a>
+  <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-0d1d36">
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-d6a858"></a>
 </p>
 
 <p align="center">
   <a href="README.md">English</a> · <b>中文</b> ·
-  <a href="https://rayford295.github.io/motionmirror/">网站</a> ·
+  <a href="https://rayford295.github.io/motionmirror/"><b>网站</b></a> ·
+  <a href="https://youtu.be/Kd4xoJ1RMb0">视频</a> ·
+  <a href="https://rayford295.github.io/motionmirror/viewer/pose3d.html">3D 查看器</a> ·
   <a href="docs/metrics.md">指标说明</a>
 </p>
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/readme/banner.png" alt="MotionMirror: see your form, phase by phase" width="100%">
+  <a href="https://rayford295.github.io/motionmirror/"><img src="docs/assets/readme/banner-pixel.png" alt="MotionMirror: see your form, phase by phase" width="100%"></a>
 </p>
 
 <p align="center">
@@ -10,16 +10,15 @@
 
 <p align="center">
   <a href="https://github.com/rayford295/motionmirror/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/motionmirror/actions/workflows/test.yml/badge.svg"></a>
-  <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-2458a6">
-  <img alt="Sports" src="https://img.shields.io/badge/sports-basketball%20%C2%B7%20badminton-ff7a45">
-  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2ec4b6"></a>
-  <a href="https://rayford295.github.io/motionmirror/"><img alt="Website" src="https://img.shields.io/badge/website-live-1d6fa5"></a>
-  <a href="https://rayford295.github.io/motionmirror/viewer/pose3d.html"><img alt="3D Viewer" src="https://img.shields.io/badge/3D%20viewer-open-7c3aed"></a>
+  <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-0d1d36">
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-d6a858"></a>
 </p>
 
 <p align="center">
   <b>English</b> · <a href="README.zh-CN.md">中文</a> ·
-  <a href="https://rayford295.github.io/motionmirror/">Website</a> ·
+  <a href="https://rayford295.github.io/motionmirror/"><b>Website</b></a> ·
+  <a href="https://youtu.be/Kd4xoJ1RMb0">Video</a> ·
+  <a href="https://rayford295.github.io/motionmirror/viewer/pose3d.html">3D viewer</a> ·
   <a href="docs/metrics.md">Metrics</a> ·
   <a href="CHANGELOG.md">Changelog</a>
 </p>
