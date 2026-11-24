@@ -40,3 +40,27 @@ def test_export_writes_assets(tmp_path):
         assert sheet.height == sprite.height + 1
 
     assert Image.open(paths["banner"]).size == (1920, 480)
+
+
+def test_export_writes_readme_strips(tmp_path):
+    mod = _load_exporter()
+    paths = mod.export(tmp_path / "pixel", tmp_path / "readme")
+
+    for key in mod.STAGES:
+        img = Image.open(paths[f"stage-{key}"])
+        assert img.size == (1920, 96), key
+    assert Image.open(paths["hiscore"]).size == (1920, 240)
+    assert Image.open(paths["levelmap"]).size == (1920, 336)
+    assert Image.open(paths["footer"]).size == (1920, 336)
+
+
+def test_readme_local_images_exist():
+    import re
+
+    for name in ("README.md", "README.zh-CN.md"):
+        text = (ROOT / name).read_text(encoding="utf-8")
+        srcs = re.findall(r'<img[^>]+src="([^"]+)"', text) + re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text)
+        for src in srcs:
+            if src.startswith("http"):
+                continue
+            assert (ROOT / src).exists(), f"{name}: {src}"

@@ -65,6 +65,103 @@ def banner() -> Image.Image:
     return img
 
 
+MIST = (196, 208, 230)
+DIM = (140, 154, 186)
+NAVY_3 = (26, 52, 96)
+
+# README section labels, matching the website's stage tags.
+STAGES = {
+    "watch": ("STAGE 1", "WATCH"),
+    "results": ("STAGE 2", "REAL RESULTS"),
+    "gameplay": ("STAGE 3", "BUILT FOR GAMEPLAY"),
+    "how": ("STAGE 4", "HOW IT WORKS"),
+    "examples": ("STAGE 5", "LEVEL SELECT"),
+    "compare": ("STAGE 6", "YOU VS. YOU"),
+    "start": ("CONTINUE?", "QUICKSTART"),
+    "dev": ("BONUS", "DEVELOPMENT"),
+}
+
+
+def stage_strip(no: str, label: str) -> Image.Image:
+    """320x16 label: gold stage number, dim label, dotted gold trail."""
+    W, H = 320, 16
+    img = Image.new("RGBA", (W, H), (*C.NAVY, 255))
+    d = ImageDraw.Draw(img)
+    d.rectangle((0, 0, 2, H - 1), fill=C.GOLD)
+    C.text_l(d, 8, 4, no, 8, C.GOLD, shadow=C.OUTLINE)
+    x = 8 + int(d.textlength(no + " ", font=C.font(8)))
+    C.text_l(d, x, 4, "· " + label, 8, MIST)
+    x += int(d.textlength("· " + label, font=C.font(8))) + 8
+    for dx in range(x, W - 4, 6):
+        d.rectangle((dx, 7, dx + 2, 8), fill=C.GOLD_DARK)
+    return img
+
+
+def hiscore() -> Image.Image:
+    """320x40 arcade high-score strip with the site's four headline numbers."""
+    W, H = 320, 40
+    img = Image.new("RGBA", (W, H), (*C.NAVY_2, 255))
+    d = ImageDraw.Draw(img)
+    cells = (("3", "SPORTS"), ("6", "EXAMPLES"), ("33", "LANDMARKS"), ("1", "COMMAND"))
+    cw = W / len(cells)
+    for i, (num, lab) in enumerate(cells):
+        cx = cw * i + cw / 2
+        C.text_c(d, cx, 7, num, 16, C.GOLD, shadow=C.OUTLINE)
+        C.text_c(d, cx, 27, lab, 8, MIST)
+        if i:
+            for y in range(6, H - 6, 4):
+                d.rectangle((int(cw * i), y, int(cw * i) + 1, y + 1), fill=NAVY_3)
+    C.frame(d, W, H, bg=C.NAVY)
+    return img
+
+
+def levelmap() -> Image.Image:
+    """320x56 world map: five pads on a dotted path, labelled below."""
+    W, H = 320, 56
+    img = Image.new("RGBA", (W, H), (*C.NAVY_2, 255))
+    d = ImageDraw.Draw(img)
+    steps = (("1-1", "VIDEO"), ("1-2", "POSE"), ("1-3", "PHASES"),
+             ("1-4", "METRICS"), ("GOAL", "REPORT"))
+    cw = W / len(steps)
+    pw, ph, py = 38, 18, 10
+    for x in range(int(cw / 2), int(W - cw / 2), 8):
+        d.rectangle((x, py + ph // 2 - 1, x + 3, py + ph // 2), fill=C.GOLD)
+    for i, (pad, lab) in enumerate(steps):
+        cx = int(cw * i + cw / 2)
+        x0 = cx - pw // 2
+        if i == len(steps) - 1:
+            face, hi, lo = C.GRASS, C.GRASS_LIGHT, C.GRASS_DARK
+        else:
+            face, hi, lo = C.GOLD, (240, 204, 130), C.GOLD_DARK
+        d.rectangle((x0 - 1, py - 1, x0 + pw, py + ph), fill=C.OUTLINE)
+        d.rectangle((x0, py, x0 + pw - 1, py + ph - 1), fill=face)
+        d.line((x0, py, x0 + pw - 1, py), fill=hi)
+        d.line((x0, py + ph - 1, x0 + pw - 1, py + ph - 1), fill=lo)
+        C.text_c(d, cx, py + 5, pad, 8, C.NAVY)
+        C.text_c(d, cx, py + ph + 9, lab, 8, C.CREAM)
+    C.frame(d, W, H, bg=C.NAVY)
+    return img
+
+
+def footer() -> Image.Image:
+    """320x56 closing scene: starfield, both athletes on the grass."""
+    W, H, GRASS_TOP = 320, 56, 46
+    img = Image.new("RGBA", (W, H), (*C.NAVY, 255))
+    d = ImageDraw.Draw(img)
+    C.stars(d, W, GRASS_TOP - 4, 22, seed=9, avoid=[(130, 0, 190, GRASS_TOP)])
+    C.grass(d, W, GRASS_TOP, H)
+    ray, ch = C.rayford(), C.chen()
+    C.paste(img, ray, 136, GRASS_TOP - ray.height + 1, 1)
+    C.paste(img, ch, 160, GRASS_TOP - ch.height + 1, 1)
+    return img
+
+
+def _save_scaled(img: Image.Image, path: Path) -> Path:
+    img.convert("RGB").resize((img.width * C.SCALE, img.height * C.SCALE), Image.NEAREST) \
+        .save(path, optimize=True)
+    return path
+
+
 def export(out_dir: Path, readme_dir: Path) -> dict[str, Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     readme_dir.mkdir(parents=True, exist_ok=True)
@@ -76,10 +173,12 @@ def export(out_dir: Path, readme_dir: Path) -> dict[str, Path]:
     for name in ("rayford", "chen"):
         paths[f"{name}-idle"] = out_dir / f"{name}-idle.png"
         idle_sheet(sprites[name]).save(paths[f"{name}-idle"], optimize=True)
-    b = banner()
-    paths["banner"] = readme_dir / "banner-pixel.png"
-    b.convert("RGB").resize((b.width * C.SCALE, b.height * C.SCALE), Image.NEAREST) \
-        .save(paths["banner"], optimize=True)
+    paths["banner"] = _save_scaled(banner(), readme_dir / "banner-pixel.png")
+    for key, (no, label) in STAGES.items():
+        paths[f"stage-{key}"] = _save_scaled(stage_strip(no, label), readme_dir / f"stage-{key}.png")
+    paths["hiscore"] = _save_scaled(hiscore(), readme_dir / "hiscore.png")
+    paths["levelmap"] = _save_scaled(levelmap(), readme_dir / "levelmap.png")
+    paths["footer"] = _save_scaled(footer(), readme_dir / "footer.png")
     return paths
 
 
