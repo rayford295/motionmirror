@@ -6,15 +6,11 @@
   <a href="https://github.com/rayford295/motionmirror/actions/workflows/test.yml"><img alt="Tests" src="https://github.com/rayford295/motionmirror/actions/workflows/test.yml/badge.svg"></a>
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-0d1d36">
   <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-d6a858"></a>
-</p>
-
-<p align="center">
+  <br>
   <b>English</b> · <a href="README.zh-CN.md">中文</a> ·
   <a href="https://rayford295.github.io/motionmirror/"><b>▶ Website</b></a> ·
   <a href="https://youtu.be/Kd4xoJ1RMb0">Video</a> ·
-  <a href="https://rayford295.github.io/motionmirror/viewer/pose3d.html">3D viewer</a> ·
-  <a href="docs/metrics.md">Metrics</a> ·
-  <a href="CHANGELOG.md">Changelog</a>
+  <a href="https://rayford295.github.io/motionmirror/viewer/pose3d.html">3D viewer</a>
 </p>
 
 <table>
@@ -24,151 +20,30 @@
 </tr>
 </table>
 
-**MotionMirror** turns an ordinary phone video of a basketball jump shot or a badminton
-stroke into phase-by-phase posture metrics, plain-language feedback and review
-visuals. Every number traces back to a frame, a joint and a reference range.
-
-<p align="center">
-  <img src="docs/assets/readme/hiscore.png" alt="3 sports · 6 example sessions · 33 body landmarks per frame · 1 command" width="100%">
-</p>
+**MotionMirror** turns one phone video of a jump shot or a badminton stroke into phases,
+measurements and plain-language feedback. Every number traces back to a frame and a joint.
 
 <img src="docs/assets/readme/stage-watch.png" alt="Stage 1 · Watch" width="100%">
 
-## The 2-Minute Tour
-
 <p align="center">
-  <a href="https://youtu.be/Kd4xoJ1RMb0"><img src="docs/assets/promo/teaser.gif" alt="Watch the MotionMirror promo on YouTube" width="100%"></a>
-  <br><b><a href="https://youtu.be/Kd4xoJ1RMb0">▶ Watch the full narrated video on YouTube (2:08, with sound)</a></b>
-  <br><sub>Covers: <a href="docs/assets/promo/cover-pixel.png">horizontal</a> · <a href="docs/assets/promo/cover-pixel-vertical.png">vertical</a></sub>
+  <a href="https://youtu.be/Kd4xoJ1RMb0"><img src="docs/assets/promo/teaser.gif" alt="Watch the MotionMirror video on YouTube" width="100%"></a>
+  <br><b><a href="https://youtu.be/Kd4xoJ1RMb0">▶ Watch the 2-minute video on YouTube</a></b>
 </p>
 
-<img src="docs/assets/readme/stage-results.png" alt="Stage 2 · Real results" width="100%">
+<img src="docs/assets/readme/stage-start.png" alt="Continue? · Quickstart" width="100%">
 
-## Real Results
+```bash
+pip install -e ".[pose]"
+motionmirror analyze my_shot.mov --sport basketball --side auto
+motionmirror analyze rally.mp4   --sport badminton  --side auto
+```
 
-### 🏀 Basketball · Rayford, oceanside jump shot
+You get a report with feedback, a skeleton overlay video, key poses and a metrics CSV.
+Results, examples and how it works: **[the website](https://rayford295.github.io/motionmirror/)**.
+Metric definitions: [docs/metrics.md](docs/metrics.md).
 
-The shooter fills only **9% of a 1080×1920, 120 fps frame**. MotionMirror locates him, zooms in
-for a second pose pass, and splits the shot into six phases.
-
-![Rayford key poses](docs/assets/rayford-basketball/keyposes.jpg)
-
-| Check | Value | Reference | |
-| --- | --- | --- | --- |
-| Elbow extension at release | **176°** | ≥ 145° | ✅ |
-| Knee bend in the dip | **152°** | 95° to 160° | ✅ |
-| Release height above head | **+0.52 torso** | ≥ 0.2 | ✅ |
-| Dip-to-release time | **0.37 s** | 0.2 to 0.8 s | ✅ |
-| Sideways drift on landing | **0.23 torso** | ≤ 0.5 | ✅ |
-
-[Report](examples/rayford-basketball/report.md) · [Overlay video](examples/rayford-basketball/overlay.mp4) · [Timeline](examples/rayford-basketball/timeline.png)
-
-### 🏸 Badminton · Chen Jingyi (陈静仪), drives and overheads
-
-The badminton profile finds **4 strokes in 12 s** from racket-hand speed, classifies each as
-**drive** or **overhead**, and applies stroke-specific checks. On overheads, contact is placed
-at the top of the reach, because the arm keeps accelerating after the hit.
-
-![Chen Jingyi key poses](docs/assets/chen-jingyi-badminton/keyposes.jpg)
-
-| Stroke | Type | Checks in range | Main cue |
-| --- | --- | --- | --- |
-| 1 | drive | 🟥🟥 0 / 2 | Long, slow preparation; ready stance very low |
-| 2 | overhead | 🟩🟩🟥🟥 2 / 4 | Contact low for an overhead; raise the free arm |
-| 3 | drive | 🟩🟩🟩 3 / 3 | ✅ All in range |
-| 4 | overhead | 🟩🟩🟥🟥 2 / 4 | Strike at full extension; take the shuttle earlier |
-
-[Report](examples/chen-jingyi-badminton/report.md) · [Overlay video](examples/chen-jingyi-badminton/overlay.mp4) · [Timeline](examples/chen-jingyi-badminton/timeline.png)
-
-<img src="docs/assets/readme/stage-gameplay.png" alt="Stage 3 · Built for gameplay" width="100%">
-
-## How It Stays Honest
-
-<table>
-<tr>
-<td width="33%" valign="top">
-
-**🎯 Phase-aware**<br>
-Metrics are read at the moment that matters (the dip, the release, the contact), not
-averaged over the whole clip.
-
-</td>
-<td width="33%" valign="top">
-
-**💬 Explainable feedback**<br>
-Each check shows the value, the reference range and a plain-language cue, so you can see why
-a cue was raised.
-
-</td>
-<td width="33%" valign="top">
-
-**🔍 Small or crowded scenes**<br>
-An auto-zoom pass handles tiny athletes; a primary-athlete tracker and shot gate handle
-1v1 gameplay.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-**📐 Honest geometry**<br>
-Aspect-corrected, image-plane angles; distances in torso lengths; hidden joints shown as
-`n/a`, never guessed.
-
-</td>
-<td valign="top">
-
-**🎬 Review-ready output**<br>
-Overlay video, real-frame key-pose sheet, metric timeline, Markdown and JSON report, CSV.
-
-</td>
-<td valign="top">
-
-**📈 You vs. you**<br>
-`motionmirror compare` lines up two sessions of the same sport, per rep and per metric.
-
-</td>
-</tr>
-</table>
-
-- **Aspect-correct geometry.** MediaPipe normalizes x by width and y by height; angles are
-  computed after undoing that, so portrait phone clips are not distorted.
-- **Image-plane angles.** Monocular depth swings a knee angle by 20° frame to frame, so angles
-  use 2D geometry by default.
-- **Gaps are not crashes.** Hidden joints become `n/a`, short dropouts are interpolated, and
-  each phase value is a 5-frame median.
-- **Confidence on every rep**, with the reason whenever it drops.
-- **Known limit.** In close 1v1 contact the tracker can switch players; appearance-based
-  re-identification is on the roadmap.
-
-Auto-detection is heuristic. When a phase is wrong, pass hand-marked times with
-`--labels labels.json`.
-
-<img src="docs/assets/readme/stage-how.png" alt="Stage 4 · How it works" width="100%">
-
-## How It Works
-
-<p align="center">
-  <img src="docs/assets/readme/levelmap.png" alt="Video → pose (33 landmarks) → reps and phases → metrics at each phase → feedback and report" width="100%">
-</p>
-
-| | 🏀 Basketball | 🏸 Badminton |
-| --- | --- | --- |
-| **Phases** | set · dip · lift · release · follow-through · landing | ready · backswing · contact · follow-through · recovery |
-| **Angles** | shooting elbow, knees | racket-arm extension, ready-stance knees |
-| **Position** | release height, guide-hand gap, landing drift | contact height, free-arm height, base width |
-| **Timing** | set-to-release, dip-to-release | backswing-to-contact, recovery, peak hand speed |
-| **Extras** | hands-together shot gate for 1v1 | stroke type: overhead / drive / underhand |
-
-Definitions, units and the reasoning behind every reference range: [docs/metrics.md](docs/metrics.md).
-A golf profile (`--sport golf`) also ships and is documented there.
-
-<img src="docs/assets/readme/stage-examples.png" alt="Stage 5 · Level select" width="100%">
-
-## Examples
-
-Every artifact was produced by `motionmirror analyze` from the clip in the same folder. The
-table is generated from the committed reports (`python tools/generate_examples_table.py`).
+<details>
+<summary><b>Examples</b></summary>
 
 <!-- examples-table:start -->
 | Session | Sport | Clip | Pose frames | Reps | Report |
@@ -178,43 +53,7 @@ table is generated from the committed reports (`python tools/generate_examples_t
 | [yifan-basketball-0710](examples/yifan-basketball-0710/) | 🏀 Basketball · 1v1 | 56.1 s · 480×854 | 1592 / 1712 | 2 shots | [report.md](examples/yifan-basketball-0710/report.md) |
 <!-- examples-table:end -->
 
-More sessions, including golf, are on the [website's level select](https://rayford295.github.io/motionmirror/#examples).
-
-<img src="docs/assets/readme/stage-compare.png" alt="Stage 6 · You vs. you" width="100%">
-
-## Compare You Against You
-
-Every session exports the same metrics, so any two sessions of the same sport line up per rep
-and per metric:
-
-```bash
-motionmirror compare examples/yifan-golf-0520 examples/yifan-golf-0601
-```
-
-See the [full comparison report](docs/examples/compare-yifan-golf-0520-vs-yifan-golf-0601.md).
-
-<img src="docs/assets/readme/stage-start.png" alt="Continue? · Quickstart" width="100%">
-
-## Quickstart
-
-```bash
-pip install -e ".[pose]"
-
-motionmirror analyze my_shot.mov --sport basketball --side auto --out runs/court-day
-motionmirror analyze rally.mp4   --sport badminton  --side auto
-```
-
-```text
-badminton: 4 rep(s), side=right
-  rep 4: 50% in range (confidence 0.83)
-    - Arm extension at contact: Hitting with a bent arm; reach up and strike at full extension.
-    - Contact height: Contact is low for an overhead; take the shuttle earlier, above the head.
-Wrote:
-  runs/court-day/pose.json  metrics.csv  report.json  report.md  overlay.mp4  timeline.png  keyposes.jpg
-```
-
-Already have landmarks? `motionmirror analyze pose.json --sport badminton` needs no video
-dependencies at all. The old `swingform` command still works as an alias.
+</details>
 
 <details>
 <summary><b>CLI reference</b></summary>
@@ -232,57 +71,19 @@ motionmirror register VIDEO --sport badminton                      # private loc
 </details>
 
 <details>
-<summary><b>Python API</b></summary>
-
-```python
-from motionmirror.schema import PoseSequence
-from motionmirror.analysis import analyze_sequence
-
-analysis = analyze_sequence(PoseSequence.load("pose.json"), sport="badminton", side="auto")
-for summary, findings in zip(analysis.summaries, analysis.findings):
-    print(summary["stroke"], [(f.label, f.status) for f in findings])
-```
-
-</details>
-
-<details>
-<summary><b>Project map</b></summary>
-
-```text
-src/motionmirror/
-  schema.py           pose data model (aspect-aware, visibility-gated)
-  signal.py           gap filling, smoothing, peak finding (pure Python)
-  profiles/           golf.py · basketball.py · badminton.py
-  feedback.py         reference-range checks, scoring, consistency
-  analysis.py         pose sequence -> reps -> summaries -> report
-  video.py            video I/O, MediaPipe pose, auto-zoom pass
-  tracking.py         primary-athlete selection in multi-person scenes
-  ball_tracking.py    tee-anchored, quality-gated golf ball trail
-  render.py           overlay video, key-pose sheet, timeline
-  compare.py          cross-session comparison
-  pipeline.py · cli.py
-tools/                promo video, pixel art (covers, site sprites, README art), examples table
-tests/                synthetic swings, shots and strokes with known phase times; site checks
-docs/                 website, 3D viewer, metrics, architecture
-```
-
-</details>
-
-<img src="docs/assets/readme/stage-dev.png" alt="Bonus · Development" width="100%">
-
-## Development
+<summary><b>Development</b></summary>
 
 ```bash
 pip install -e ".[pose,dev]"
 pytest -q && ruff check src tests tools
 ```
 
-Core tests need no video stack; CI also runs an end-to-end smoke test on a bundled clip.
-The pixel art in the README and on the website is drawn in code:
-`python tools/promo/make_pixel_assets.py`. Contributions are welcome; see
-[CONTRIBUTING.md](CONTRIBUTING.md).
+The pixel art is drawn in code: `python tools/promo/make_pixel_assets.py`.
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the [changelog](CHANGELOG.md).
+
+</details>
 
 <p align="center">
   <img src="docs/assets/readme/footer.png" alt="" width="100%">
-  <br><sub>MIT License · Formerly <i>SwingForm AI</i> · <a href="https://rayford295.github.io/motionmirror/">rayford295.github.io/motionmirror</a></sub>
+  <br><sub>MIT License · Formerly <i>SwingForm AI</i></sub>
 </p>
