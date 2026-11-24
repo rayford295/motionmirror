@@ -73,12 +73,8 @@ NAVY_3 = (26, 52, 96)
 STAGES = {
     "watch": ("STAGE 1", "WATCH"),
     "results": ("STAGE 2", "REAL RESULTS"),
-    "gameplay": ("STAGE 3", "BUILT FOR GAMEPLAY"),
-    "how": ("STAGE 4", "HOW IT WORKS"),
-    "examples": ("STAGE 5", "LEVEL SELECT"),
-    "compare": ("STAGE 6", "YOU VS. YOU"),
+    "how": ("STAGE 3", "HOW IT WORKS"),
     "start": ("CONTINUE?", "QUICKSTART"),
-    "dev": ("BONUS", "DEVELOPMENT"),
 }
 
 

@@ -23,12 +23,54 @@
 **MotionMirror** turns one phone video of a jump shot or a badminton stroke into phases,
 measurements and plain-language feedback. Every number traces back to a frame and a joint.
 
+<img src="docs/assets/readme/hiscore.png" alt="3 sports · 6 example sessions · 33 body landmarks per frame · 1 command" width="100%">
+
 <img src="docs/assets/readme/stage-watch.png" alt="Stage 1 · Watch" width="100%">
 
 <p align="center">
   <a href="https://youtu.be/Kd4xoJ1RMb0"><img src="docs/assets/promo/teaser.gif" alt="Watch the MotionMirror video on YouTube" width="100%"></a>
   <br><b><a href="https://youtu.be/Kd4xoJ1RMb0">▶ Watch the 2-minute video on YouTube</a></b>
 </p>
+
+<img src="docs/assets/readme/stage-results.png" alt="Stage 2 · Real results" width="100%">
+
+<table>
+<tr>
+<th width="50%">🏀 Rayford · jump shot · <a href="examples/rayford-basketball/report.md">report</a></th>
+<th width="50%">🏸 Chen Jingyi · 4 strokes · <a href="examples/chen-jingyi-badminton/report.md">report</a></th>
+</tr>
+<tr>
+<td valign="top">
+
+| Check | Value | |
+| --- | --- | --- |
+| Elbow at release | **176°** | ✅ |
+| Knee bend in dip | **152°** | ✅ |
+| Release height | **+0.52 torso** | ✅ |
+| Dip → release | **0.37 s** | ✅ |
+| Landing drift | **0.23 torso** | ✅ |
+
+</td>
+<td valign="top">
+
+| Stroke | Type | In range |
+| --- | --- | --- |
+| 1 | drive | 🟥🟥 |
+| 2 | overhead | 🟩🟩🟥🟥 |
+| 3 | drive | 🟩🟩🟩 |
+| 4 | overhead | 🟩🟩🟥🟥 |
+
+</td>
+</tr>
+</table>
+
+<img src="docs/assets/readme/stage-how.png" alt="Stage 3 · How it works" width="100%">
+
+<img src="docs/assets/readme/levelmap.png" alt="Video → pose (33 landmarks) → reps and phases → metrics at each phase → feedback and report" width="100%">
+
+Metrics are read at the moment that matters (the dip, the release, the contact), checked
+against a reference range, and explained in plain words. Tiny or contested athletes get an
+auto-zoom pass and a primary-athlete tracker.
 
 <img src="docs/assets/readme/stage-start.png" alt="Continue? · Quickstart" width="100%">
 

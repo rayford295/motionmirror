@@ -23,12 +23,53 @@
 **MotionMirror（动作镜像）** 把一段手机拍的篮球跳投或羽毛球击球视频，变成分阶段的测量和通俗的建议。
 每个数字都能追溯到具体的帧和关节。
 
+<img src="docs/assets/readme/hiscore.png" alt="3 种运动 · 6 个公开示例 · 每帧 33 个人体关键点 · 1 条命令" width="100%">
+
 <img src="docs/assets/readme/stage-watch.png" alt="第 1 关 · 观看" width="100%">
 
 <p align="center">
   <a href="https://youtu.be/Kd4xoJ1RMb0"><img src="docs/assets/promo/teaser.gif" alt="在 YouTube 观看 MotionMirror 视频" width="100%"></a>
   <br><b><a href="https://youtu.be/Kd4xoJ1RMb0">▶ 在 YouTube 观看两分钟介绍视频</a></b>
 </p>
+
+<img src="docs/assets/readme/stage-results.png" alt="第 2 关 · 真实结果" width="100%">
+
+<table>
+<tr>
+<th width="50%">🏀 Rayford · 跳投 · <a href="examples/rayford-basketball/report.md">报告</a></th>
+<th width="50%">🏸 陈静仪 · 4 次击球 · <a href="examples/chen-jingyi-badminton/report.md">报告</a></th>
+</tr>
+<tr>
+<td valign="top">
+
+| 检查项 | 数值 | |
+| --- | --- | --- |
+| 出手时肘部伸展 | **176°** | ✅ |
+| 下蹲时膝盖弯曲 | **152°** | ✅ |
+| 出手点高于头顶 | **+0.52 躯干** | ✅ |
+| 下蹲到出手 | **0.37 秒** | ✅ |
+| 落地横向漂移 | **0.23 躯干** | ✅ |
+
+</td>
+<td valign="top">
+
+| 击球 | 类型 | 达标项 |
+| --- | --- | --- |
+| 1 | 平抽 | 🟥🟥 |
+| 2 | 高手 | 🟩🟩🟥🟥 |
+| 3 | 平抽 | 🟩🟩🟩 |
+| 4 | 高手 | 🟩🟩🟥🟥 |
+
+</td>
+</tr>
+</table>
+
+<img src="docs/assets/readme/stage-how.png" alt="第 3 关 · 工作原理" width="100%">
+
+<img src="docs/assets/readme/levelmap.png" alt="视频 → 姿态（33 个关键点）→ 动作次数与阶段 → 各阶段指标 → 反馈与报告" width="100%">
+
+在关键时刻（下蹲、出手、击球点）读取指标，与参考区间对比，并用通俗的话解释。
+人物太小或多人对抗时，会自动放大并锁定主运动员。
 
 <img src="docs/assets/readme/stage-start.png" alt="继续？· 快速开始" width="100%">
 
