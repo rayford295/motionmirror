@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <a href="docs/assets/promo/motionmirror-promo.mp4"><img src="docs/assets/promo/teaser.gif" alt="Watch the MotionMirror promo" width="100%"></a>
-  <br><b><a href="docs/assets/promo/motionmirror-promo.mp4">▶ Watch the full narrated video (2:08, with sound)</a></b>
+  <a href="https://youtu.be/Kd4xoJ1RMb0"><img src="docs/assets/promo/teaser.gif" alt="Watch the MotionMirror promo on YouTube" width="100%"></a>
+  <br><b><a href="https://youtu.be/Kd4xoJ1RMb0">▶ Watch the full narrated video on YouTube (2:08, with sound)</a></b>
   <br><sub>Covers: <a href="docs/assets/promo/cover-pixel.png">horizontal</a> · <a href="docs/assets/promo/cover-pixel-vertical.png">vertical</a></sub>
 </p>
 
